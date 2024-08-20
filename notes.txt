@@ -1,0 +1,7 @@
+Notes:
+
+Changes to RAGAS library were needed because its current adaptation (v 0.1.15 as shown on install, but I think I downloaded 0.1.14, as 0.1.15 isn't available as of 8/16/24) was not compatible with Google Gemini. Namely, they included the temperature variable in the LangChainLLM (BaseRagasLLM) class that Gemini does not use it. See the following pull request/files:
+
+https://github.com/explodinggradients/ragas/pull/657
+
+To resolve this, I cloned the RAGAS library locally, then edited src/ragas/llms/base.py, tests/conftest.py, and tests/unit/llms/test_llm.py to not include references to 'temperature'. I then 'python -m pip install -e ./ragas_location' to install it locally in editable mode, which means that any other changes needed to the library to get it to work would be reflected in the installation immediately.
