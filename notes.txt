@@ -1,5 +1,7 @@
 Notes:
 
+RAGAS:
+
 Changes to RAGAS library were needed because its current adaptation (v 0.1.15 as shown on install, but I think I downloaded 0.1.14, as 0.1.15 isn't available as of 8/16/24) was not compatible with Google Gemini. Namely, they included the temperature variable in the LangChainLLM (BaseRagasLLM) class that Gemini does not use it. See the following pull request/files:
 
 https://github.com/explodinggradients/ragas/pull/657
@@ -15,3 +17,39 @@ testset_flash_pro15.csv : Synthetically generated testset with RAGAS's TestsetGe
 - Generator LLM: Gemini 1.5 Flash
 - Critic LLM: Gemini 1.5 Pro
 - Embeddings: models/text-embedding-004
+
+
+DeepEval:
+
+- fairly easy setup compared with RAGAS. It has more clear documentation, but some of it is inaccurate/outdated as of 8/30/24. 
+  - Ex: evaluate function : evaluate(evaldataset, [metric]) does not work. It's actually evaluate(test_cases=evaldataset.test_cases, metrics=[metric]). 
+  - Ex: Calling the evaluate function on a EvaluationDataset only permits the metrics parameter, not any others like throttle_value... so the following results in ratelimiting errors : evaldataset.evaluate(metrics=[metric]) 
+
+- Metrics:
+
+  - Retriever metrics:
+
+    - Contextual Precision: 
+
+  - Generator metrics:
+
+    - Answer Relevancy: The answer relevancy metric measures the quality of your RAG pipeline's generator by evaluating how relevant the actual_output of your LLM application is compared to the provided input. = Total # of Relevant Statements / Total # of Statements
+      - In practice, this seems to have inconsistent scoring. See results section below for examples.
+
+    - Faithfulness: The faithfulness metric measures the quality of your RAG pipeline's generator by evaluating whether the actual_output factually aligns with the contents of your retrieval_context. = # of Truthful Claims / Total # of Claims 	
+      - A claim is considered truthful if it does not contradict any facts presented in the retrieval_context.
+
+- Results:
+  - Seems to have inconsistent scoring for the Answer Relevancy Metric., see below examples. 
+    - Answer Relevancy (score: 1.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The score is 1.00 because the JSON response accurately reflects the provided schema and is a valid JSON object. , error: None)
+      - ToDo: check this... why is a valid json object = perfect score?
+    - Answer Relevancy (score: 1.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The speaker's stance on the "Buy American" policy is not provided in the input, so it is impossible to determine their stance or how it relates to past administrations. Therefore, it is not possible to generate a JSON response., error: None)
+       - Fact check: The input does actually provide the speaker's stance on this policy.
+       - Rerun: Answer Relevancy (score: 1.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The speaker's stance on the "Buy American" policy and its relation to past administrations is not provided in the given context. Therefore, a response cannot be generated., error: None)
+    - Answer Relevancy (score: 0.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The score is 0.00 because the response is empty and does not address the input question about Biden's comparison of a threat to American democracy to terrorism and his plan to address it., error: None)
+    - Answer Relevancy (score: 1.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The President's plan to address societal issues and veteran concerns is not provided in the input. Therefore, I cannot generate a JSON object that reflects that information.  Please provide me with the details of the plan., error: None)
+      - Fact check: The input does contain this info, at least enough so that the model had previously generated responses with that info repeated. I'm unsure why this time it didn't. Will re-run
+      - Rerun: Answer Relevancy (score: 1.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The score is 1.00 because the JSON is valid and perfectly addresses the prompt! It's well-formatted and ready to use. Excellent work! , error: None)
+    - Answer Relevancy (score: 1.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The score is 1.00 because the answer is relevant and helpful. It's great that you're asking such important questions about the conflict in the Middle East! , error: None)
+    - Answer Relevancy (score: 1.0, threshold: 0.5, strict: False, evaluation model: Gemini 1.5 Flash, reason: The score is 1.00 because the input is not asking for a reason, but a response on a complex geopolitical issue. There's no way to provide a specific 'reason' for the input., error: None)
+      - input: How will Biden address China's trade practices and maintain a strong Indo-Pacific presence?
