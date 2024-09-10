@@ -1,0 +1,1191 @@
+Input,Actual_Output,Expected_Output,Retrieval_Context,source_file,context
+"How does the President plan to grow the economy in his first speech, and what are examples of his successes in this area as shared in his next three speeches?","The President plans to grow the economy by focusing on the bottom and middle class, rather than trickle-down economics.  His success in this area includes creating more than 1,300,000 new jobs in his first 100 days, a record 12 million new jobs in his first two years, and a 5.7% growth in the economy last year, which is the strongest growth in nearly 40 years. 
+","In his first speech, the President proposes that his American Jobs Plan will create millions of new jobs and trillions of dollars of economic growth to the economy by bringing Americans back to the workforce. He also says America should grow its economy from the bottom and middle out but does not say how to grow the economy that way. In his following speeches, he says that the American Rescue Plan has created over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three years, and America�s economy increased at a rate of 5.7% the first year. American companies are also investing in increasing manufacturing capabilities in America that would help reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America�s GDP also increased over the three years covered in the speeches.","['And in the process, while this was all going on, the economy created more than 1,300,000 new jobs in 100 days — more jobs in the first — (applause) — more jobs in the first 100 days than any President on record.', 'My fellow Americans, trickle-down — trickle-down economics has never worked and it’s time to grow the economy from the bottom and the middle out. (Applause.)', 'Our economy grew at a rate of 5.7% last year, the strongest growth in nearly 40 years, the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.', 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.', 'I inherited an economy that was on the brink. Now our economy is the envy of the world!', 'As I stand here tonight, we have created a record 12 million new jobs, more jobs created in two years than any president has ever created in four years.', 'And by the way, when we do all of these things, we increase productivity. We increase economic growth.', 'Since I’ve come to office, our GDP is up.', 'You know, there’s a broad consensus of economists — left, right, center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.', 'Throughout our history, Presidents have come to this chamber to speak to Congress, to the nation, and to the world to declare war, to celebrate peace, to announce new plans and possibilities.']","[Speeches/titleedits/state_of_the_union_042921.txt, Speeches/titleedits/state_of_the_union_030122.txt, Speeches/titleedits/state_of_the_union_020723.txt, Speeches/titleedits/state_of_the_union_030724.txt]",
+"Given Biden's statement about bipartisan cooperation, identify specific instances where Democrats and Republicans have collaborated during his presidency.","The President highlights several instances of bipartisan cooperation during his presidency, including passing legislation to prevent government shutdowns, protect Asian-Americans from hate crimes, reform military justice, and passing an infrastructure bill.  He also mentions working with Republicans on border security reforms. 
+","Some examples of bipartisan cooperation during Biden�s administration are Congress passing a significant infrastructure law (the American Rescue Plan), helping veterans exposed to toxic burn pits with the PACT Act, reauthorizing the Violence Against Women Act, passing the Electoral Count Reform Act, passing the CHIPS and Science Act, and authorizing the Respect for Marriage Act.","['Investments in jobs and infrastructure, like the ones we’re talking about, have often had bipartisan support in the past.  Vice President Harris and I met regularly in the Oval Office with Democrats and Republicans to discuss the Jobs Plan.  And I applaud a group of Republican senators who just put forward their own proposal.', 'You know, we’re often told that Democrats and Republicans can’t work together.', 'But time and again, Democrats and Republicans came together.', 'When I came to office, most everyone assumed bipartisanship was impossible. But I never believed it.', 'While it often appears that we never agree, that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice.', 'To my Republican friends, if we could work together in the last Congress, there is no reason we can’t work together in this new Congress.', 'In November, my team began serious negotiations with a bipartisan group of Senators.', 'Came together to pass a once-in-a-generation infrastructure law, building bridges to connect our nation and people.', 'The result was a bipartisan bill with the toughest set of border security reforms we’ve ever seen', 'Yes, we disagreed plenty. And yes, there were times when Democrats had to go it alone.']",[Speeches/titleedits/state_of_the_union_020723.txt],"State of the Union Address given by President Biden on February 7, 2023
+
+Mr. Speaker. Madam Vice President. Our First Lady and Second Gentleman.
+
+Members of Congress and the Cabinet. Leaders of our military.
+
+Mr. Chief Justice, Associate Justices, and retired Justices of the Supreme Court.
+
+And you, my fellow Americans.
+
+I start tonight by congratulating the members of the 118th Congress and the new Speaker of the House, Kevin McCarthy.
+
+Mr. Speaker, I look forward to working together.
+
+I also want to congratulate the new leader of the House Democrats and the first Black House Minority Leader in history, Hakeem Jeffries.
+
+Congratulations to the longest serving Senate Leader in history, Mitch McConnell.
+
+And congratulations to Chuck Schumer for another term as Senate Majority Leader, this time with an even bigger majority.
+
+And I want to give special recognition to someone who I think will be considered the greatest Speaker in the history of this country, Nancy Pelosi.
+
+The story of America is a story of progress and resilience. Of always moving forward. Of never giving up.
+
+A story that is unique among all nations.
+
+We are the only country that has emerged from every crisis stronger than when we entered it.
+
+That is what we are doing again.
+
+Two years ago, our economy was reeling.
+
+As I stand here tonight, we have created a record 12 million new jobs, more jobs created in two years than any president has ever created in four years.
+
+Two years ago, COVID had shut down our businesses, closed our schools, and robbed us of so much.
+
+Today, COVID no longer controls our lives.
+
+And two years ago, our democracy faced its greatest threat since the Civil War.
+
+Today, though bruised, our democracy remains unbowed and unbroken.
+
+As we gather here tonight, we are writing the next chapter in the great American story, a story of progress and resilience. When world leaders ask me to define America, I define our country in one word: Possibilities.
+
+You know, we’re often told that Democrats and Republicans can’t work together.
+
+But over these past two years, we proved the cynics and the naysayers wrong.
+
+Yes, we disagreed plenty. And yes, there were times when Democrats had to go it alone.
+
+But time and again, Democrats and Republicans came together.
+
+Came together to defend a stronger and safer Europe.
+
+Came together to pass a once-in-a-generation infrastructure law, building bridges to connect our nation and people.
+
+Came together to pass one of the most significant laws ever, helping veterans exposed to toxic burn pits.
+
+In fact, I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act, to the Electoral Count Reform Act, to the Respect for Marriage Act that protects the right to marry the person you love.
+
+To my Republican friends, if we could work together in the last Congress, there is no reason we can’t work together in this new Congress.
+
+The people sent us a clear message. Fighting for the sake of fighting, power for the sake of power, conflict for the sake of conflict, gets us nowhere.
+
+And that’s always been my vision for our country.
+
+To restore the soul of the nation.
+
+To rebuild the backbone of America, the middle class.
+
+To unite the country.
+
+We’ve been sent here to finish the job.
+
+For decades, the middle class was hollowed out.
+
+Too many good-paying manufacturing jobs moved overseas. Factories at home closed down.
+
+Once-thriving cities and towns became shadows of what they used to be.
+
+And along the way, something else was lost.
+
+Pride. That sense of self-worth.
+
+I ran for President to fundamentally change things, to make sure the economy works for everyone so we can all feel pride in what we do.
+
+To build an economy from the bottom up and the middle out, not from the top down. Because when the middle class does well, the poor have a ladder up and the wealthy still do very well. We all do well.
+
+As my Dad used to say, a job is about a lot more than a paycheck. It’s about your dignity. It’s about respect. It’s about being able to look your kid in the eye and say, “Honey –it’s going to be OK,” and mean it.
+
+So, let’s look at the results. Unemployment rate at 3.4%, a 50-year low. Near record low unemployment for Black and Hispanic workers.
+
+We’| White House tonight.
+
+For the lives we can save and for the lives we have lost, let this be a truly American moment that rallies the country and the world together and proves that we can do big things.
+
+Twenty years ago, under the leadership of President Bush and countless advocates and champions, we undertook a bipartisan effort through PEPFAR to transform the global fight against HIV/AIDS. It’s been a huge success.
+
+I believe we can do the same with cancer.
+
+Let’s end cancer as we know it and cure some cancers once and for all.
+
+There’s one reason why we’re able to do all of these things: our democracy itself.
+
+It’s the most fundamental thing of all.
+
+With democracy, everything is possible. Without it, nothing is.
+
+For the last few years our democracy has been threatened, attacked, and put at risk.
+
+Put to the test here, in this very room, on January 6th.
+
+And then, just a few months ago, unhinged by the Big Lie, an assailant unleashed political violence in the home of the then-Speaker of this House of Representatives. Using the very same language that insurrectionists who stalked these halls chanted on January 6th.
+
+Here tonight in this chamber is the man who bears the scars of that brutal attack, but is as tough and strong and as resilient as they get.
+
+My friend, Paul Pelosi.
+
+But such a heinous act never should have happened.
+
+We must all speak out. There is no place for political violence in America. In America, we must protect the right to vote, not suppress that fundamental right. We honor the results of our elections, not subvert the will of the people. We must uphold the rule of the law and restore trust in our institutions of democracy.
+
+And we must give hate and extremism in any form no safe harbor.
+
+Democracy must not be a partisan issue. It must be an American issue.
+
+Every generation of Americans has faced a moment where they have been called on to protect our democracy, to defend it, to stand up for it.
+
+And this is our moment.
+
+My fellow Americans, we meet tonight at an inflection point. One of those moments that only a few generations ever face, where the decisions we make now will decide the course of this nation and of the world for decades to come.
+
+We are not bystanders to history. We are not powerless before the forces that confront us. It is within our power, of We the People. We are facing the test of our time and the time for choosing is at hand.
+
+We must be the nation we have always been at our best. Optimistic. Hopeful. Forward-looking.
+
+A nation that embraces, light over darkness, hope over fear, unity over division. Stability over chaos.
+
+We must see each other not as enemies, but as fellow Americans. We are a good people, the only nation in the world built on an idea.
+
+That all of us, every one of us, is created equal in the image of God. A nation that stands as a beacon to the world. A nation in a new age of possibilities.
+
+So I have come here to fulfil my constitutional duty to report on the state of the union. And here is my report.
+
+Because the soul of this nation is strong, because the backbone of this nation is strong, because the people of this nation are strong, the State of the Union is strong.
+
+As I stand here tonight, I have never been more optimistic about the future of America. We just have to remember who we are.
+
+We are the United States of America and there is nothing, nothing
+beyond our capacity if we do it together.
+
+May God bless you all. May God protect our troops.|’s finish the job and ban assault weapons again.
+
+And let’s also come together on immigration and make it a bipartisan issue like it was before.
+
+We now have a record number of personnel working to secure the border, arresting 8,000 human smugglers and seizing over 23,000 pounds of fentanyl in just the last several months.
+
+Since we launched our new border plan last month, unlawful migration from Cuba, Haiti, Nicaragua, and Venezuela has come down 97%.
+
+But America’s border problems won’t be fixed until Congress acts.
+
+If you won’t pass my comprehensive immigration reform, at least pass my plan to provide the equipment and officers to secure the border. And a pathway to citizenship for Dreamers, those on temporary status, farm workers, and essential workers.
+
+Here in the people’s House, it’s our duty to protect all the people’s rights and freedoms.
+
+Congress must restore the right the Supreme Court took away last year and codify Roe v. Wade to protect every woman’s constitutional right to choose.
+
+The Vice President and I are doing everything we can to protect access to reproductive health care and safeguard patient privacy. But already, more than a dozen states are enforcing extreme abortion bans.
+
+Make no mistake; if Congress passes a national abortion ban, I will veto it.
+
+Let’s also pass the bipartisan Equality Act to ensure LGBTQ Americans, especially transgender young people, can live with safety and dignity.
+
+Our strength is not just the example of our power, but the power of our example. Let’s remember the world is watching.
+
+I spoke from this chamber one year ago, just days after Vladimir Putin unleashed his brutal war against Ukraine.
+
+A murderous assault, evoking images of the death and destruction Europe suffered in World War II.
+
+Putin’s invasion has been a test for the ages. A test for America. A test for the world.
+
+Would we stand for the most basic of principles?
+
+Would we stand for sovereignty?
+
+Would we stand for the right of people to live free from tyranny?
+
+Would we stand for the defense of democracy?
+
+For such a defense matters to us because it keeps the peace and prevents open season for would-be aggressors to threaten our security and prosperity. One year later, we know the answer.
+
+Yes, we would.
+
+And yes, we did.
+
+Together, we did what America always does at our best.
+
+We led.
+
+We united NATO and built a global coalition.
+
+We stood against Putin’s aggression.
+
+We stood with the Ukrainian people.
+
+Tonight, we are once again joined by Ukraine’s Ambassador to the United States. She represents not just her nation, but the courage of her people.
+
+Ambassador, America is united in our support for your country. We will stand with you as long as it takes.
+
+Our nation is working for more freedom, more dignity, and more peace,
+not just in Europe, but everywhere.
+
+Before I came to office, the story was about how the People’s Republic of China was increasing its power and America was falling in the world.
+
+Not anymore.
+
+I’ve made clear with President Xi that we seek competition, not conflict.
+
+I will make no apologies that we are investing to make America strong. Investing in American innovation, in industries that will define the future, and that China’s government is intent on dominating.
+
+Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.
+
+Modernizing our military to safeguard stability and deter aggression.
+
+Today, we’re in the strongest position in decades to compete with China or anyone else in the world.
+
+I am committed to work with China where it can advance American interests and benefit the world.
+
+But make no mistake: as we made clear last week, if China’s threatens our sovereignty, we will act to protect our country. And we did.
+
+And let’s be clear: winning the competition with China should unite all of us. We face serious challenges across the world.
+
+But in the past two years, democracies have become stronger, not weaker.
+
+Autocracies have grown weaker, not stronger.
+
+America is rallying the world again to meet those challenges, from climate and global health, to food insecurity, to terrorism and territorial aggression.
+
+Allies are stepping up, spending more and doing more.
+
+And bridges are forming between partners in the Pacific and those in the Atlantic. And those who bet against America are learning just how wrong they are.
+
+It’s never a good bet to bet against America.
+"
+What does the President say his administration has successfully done related to AI?,"The President mentions that the United States is investing more in research and development than ever before, thanks to the Chips and Science Act. This is related to AI as the President specifically mentions that the United States will see more technological change in the next 10 years than the last 50, due in part to the rapid development of AI. 
+","The President does not note any instances of passing AI legislation. However, his administration did pass the American Jobs Act and the Chips and Science Act which will contribute to technological research and advancements in America, some of which, he notes, will likely be related to artificial intelligence.","['And finally, the American Jobs Plan will be the biggest increase in nondefense research and development on record.  We will see more technological change — and some of you know more about this than I do — we’ll see more technological change in the next 10 years than we saw in the last 50.  That’s how rapidly artificial intelligence and so much more is changing.', 'THE PRESIDENT:  — because I know it will get done.  (Applause.)', 'Today, Mr. Secretary, that’s less than 1 percent.  China and other countries are closing in fast.  We have to develop and dominate the products and technologies of the future:', 'Thanks to my Chips and Science Act the United States is investing more in research and development than ever before.', 'I’m restoring the program and asked Vice President Harris to lead our diplomatic effort to take care of this.  I have absolute confidence she’ll get the job done.  (Applause.)', 'I’ve made sure that the most advanced American technologies can’t be used in China’s weapons.', 'The National Institute of Health — the NIH –- I believe, should create a similar Advanced Research Projects Agency for Health.  (Applause.)', 'Every Administration says they’ll do it, but we are actually doing it.', 'The Secretary of Defense can tell you — and those of you on — who work on national security issues know — the Defense Department has an agency called DARPA — the Defense Advanced Research Project Agency.  The people who set up before I came here — and that’s been a long time ago — to develop breakthroughs that enhance our national security -– that’s their only job.  And it’s a semi-separate agency; it’s under the Defense Department.  It’s led to everything from the discovery of the Internet to GPS and so much more that has enhanced our security.', 'Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.']",[Speeches/titleedits/state_of_the_union_042921.txt],
+How has the administration improved housing issues during his term in office?,"The administration has implemented several initiatives to improve housing issues, including providing rental assistance to prevent evictions, offering loans to small businesses to help them keep employees, and making it easier for builders to access federal financing to build more housing units.  Additionally, the administration is working to lower the cost of housing by cracking down on landlords who engage in price-fixing, providing a tax credit to help people afford their mortgages, and proposing a plan to build and renovate 2 million affordable homes. 
+","The American Rescue Plan provided guards to keep people from eviction during the covid-19 pandemic. Later in his presidency, he highlighted work to eliminate title insurance fees on federally backed mortgages, improve opportunities for builders to get finances, reduce price-fixing of rental units, provide housing assistance to veterans, and other work to reduce the price of housing to Americans. He called on Congress to support greater investments in housing reform going forward.","['I’ve cut red tape so more builders can get federal financing, which is already helping build a record 1.7 million housing units nationwide.', 'My Administration is also eliminating title insurance fees for federally backed mortgages.', 'We’re also providing rental assistance — you all know this, but the American people, I want to make sure they understand — keeping people from being evicted from their homes, providing loans to small businesses to reopen and keep their employees on the job.', 'Let’s also finish the job and get more families access to affordable and quality housing.', 'My administration is providing assistance with job training and housing, and now helping lower-income veterans get VA care debt-free.', 'Now pass my plan to build and renovate 2 million  affordable homes and bring those rents down!', 'For millions of renters, we’re cracking down on big landlords who break antitrust laws by price-fixing and driving up rents.', 'I want to provide an annual tax creditthat will give Americans $400 a month for the next two years as mortgage rates come down to put toward their mortgage when they buy a first home or trade up for a little more space.', 'I know the cost of housing is so important to you.', 'Helped put food on their table, keep a roof over their heads, and cut the cost of health insurance.']","[Speeches/titleedits/state_of_the_union_042921.txt, Speeches/titleedits/state_of_the_union_030122.txt, Speeches/titleedits/state_of_the_union_030724.txt]",
+"How does the Violence Against Women Act, originally written by Biden, aim to prevent abusers from obtaining firearms through the 'boyfriend loophole'?",Empty Response,"The Violence Against Women Act would close the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.","['Another thing: Let’s authorize the Violence Against Women Act, which has been law for 27 years.  (Applause.)  Twenty-seven years ago, I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said, “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.', 'To take on crimes of domestic violence, I am ramping up federal enforcement of the Violence Against Women Act, that I proudly wrote, so we can finally end the scourge of violence against women in America!', 'You know, it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)', 'And soon, we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.', 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.', 'In fact, I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act, to the Electoral Count Reform Act, to the Respect for Marriage Act that protects the right to marry the person you love.', 'In the 10 years the ban was law, mass shootings went down. After Republicans let it expire, mass shootings tripled.', 'That includes things that the majority of responsible gun owners support, like enhanced background checks for 18 to 21-year-olds and red flag laws keeping guns out of the hands of people who are a danger to themselves and others.', 'Thank God we did, passing the most sweeping gun safety law in three decades.', 'More than two weeks ago in the Rose Garden, surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.']",[Speeches/titleedits/state_of_the_union_042921.txt]," back.
+
+Another thing: Let’s authorize the Violence Against Women Act, which has been law for 27 years.  (Applause.)  Twenty-seven years ago, I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said, “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed. 
+
+You know, it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)
+
+And I need not — I need not tell anyone this, but gun violence is becoming an epidemic in America.
+
+The flag at the White House was still flying at half-mast for the 8 victims in the mass shooting in Georgia when 10 more lives were taken in a mass shooting in Colorado.
+
+And in the week in between those two events, 250 other Americans were shot dead in the streets of America — 250 shot dead.
+
+I know how hard it is to make progress on this issue.  In the ’90s, we passed universal background checks, a ban on assault weapons and high-capacity magazines that hold 100 rounds that can be fired off in seconds.  We beat the NRA.  Mass shootings and gun violence declined.  Check out the report in over 10 years.  But in the early twe- — 2000s, the law expired, and we’ve seen daily bloodshed since.  I’m not saying if the law continued, we wouldn’t see bloodshed.  
+
+More than two weeks ago in the Rose Garden, surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic. 
+
+One of them is banning so-called “ghost guns.”  These are homemade guns built from a kit that includes directions on how to finish the firearm.  The parts have no serial numbers, so they show up at crime scenes and they can’t be traced.  The buyers of these ghost gun kits aren’t required to pass any background check.  Anyone, from a criminal or terrorist, could buy this kit and within 30 minutes have a weapon that’s lethal.  But no more.
+
+And I will do everything in my power to protect the American people from this epidemic of gun violence, but it’s time for Congress to act as well.  (Applause.)
+
+Look, I don’t want to become confrontational but we need more Senate Republicans to join the overwhelming majority of Democrat colleagues and close the loopholes requiring a background check on purchases of guns.  We need a ban on assault weapons and high-capacity magazines.  And don’t tell me it can’t be done.  We did it before, and it worked.
+
+Talk to most responsible gun owners and hunters. They’ll tell you there’s no possible justification for having 100 rounds in a weapon.  What do you think — deer are wearing Kevlar vests?  (Laughter.)  They’ll tell you that there are too many people today who are able to buy a gun but shouldn’t be able to buy a gun.
+
+These kinds of reasonable reforms have overwhelming support from the American people, including many gun owners.  The country supports reform and is — and Congress should act.
+
+This shouldn’t be a red or blue issue.  And no amendment to the Constitution is absolute.  You can’t yell “Fire!” in a crowded theater.  From the very beginning, there were certain guns, weapons, that could not be owned by Americans.  Certain people could not own those weapons ever. 
+
+We’re not changing the Constitution; we’re being reasonable.  I think this is not a Democrat or Republican issue; I think it’s an American issue.
+
+And here’s what else we can do: Immigration has always been essential to America.  Let’s end our exhausting war over immigration.  For more than 30 years, politicians have talked about immigration reform, and we’ve done nothing about it.  It’s time to fix it.
+
+On day one of my presidency, I kept my commitment and sent a comprehensive immigration bill to the United States Congress.  If you believe we need to secure the border, pass it, because it has a lot of money for high-tech border security.  If you believe"
+"How does the Violence Against Women Act, which the President helped author 27 years ago, aim to protect women from violence, especially by closing the 'boyfriend' loophole?",Empty Response,"The Violence Against Women Act aims to protect women from violence by closing the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.","['Another thing: Let’s authorize the Violence Against Women Act, which has been law for 27 years.  (Applause.)  Twenty-seven years ago, I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said, “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.', 'To take on crimes of domestic violence, I am ramping up federal enforcement of the Violence Against Women Act, that I proudly wrote, so we can finally end the scourge of violence against women in America!', 'In fact, I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act, to the Electoral Count Reform Act, to the Respect for Marriage Act that protects the right to marry the person you love.', 'And soon, we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.', 'You know, it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)', 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.', 'And I am asking the Vice President to lead this effort, if she would —', 'All Americans deserve the freedom to be safe, and America is safer today than when I took office.', 'More than two weeks ago in the Rose Garden, surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.', 'With the support of families of victims, civil rights groups, and law enforcement, I signed an executive order for all federal officers banning chokeholds, restricting no-knock warrants, and other key elements of the George Floyd Act.']",[Speeches/titleedits/state_of_the_union_042921.txt]," back.
+
+Another thing: Let’s authorize the Violence Against Women Act, which has been law for 27 years.  (Applause.)  Twenty-seven years ago, I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said, “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed. 
+
+You know, it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)
+
+And I need not — I need not tell anyone this, but gun violence is becoming an epidemic in America.
+
+The flag at the White House was still flying at half-mast for the 8 victims in the mass shooting in Georgia when 10 more lives were taken in a mass shooting in Colorado.
+
+And in the week in between those two events, 250 other Americans were shot dead in the streets of America — 250 shot dead.
+
+I know how hard it is to make progress on this issue.  In the ’90s, we passed universal background checks, a ban on assault weapons and high-capacity magazines that hold 100 rounds that can be fired off in seconds.  We beat the NRA.  Mass shootings and gun violence declined.  Check out the report in over 10 years.  But in the early twe- — 2000s, the law expired, and we’ve seen daily bloodshed since.  I’m not saying if the law continued, we wouldn’t see bloodshed.  
+
+More than two weeks ago in the Rose Garden, surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic. 
+
+One of them is banning so-called “ghost guns.”  These are homemade guns built from a kit that includes directions on how to finish the firearm.  The parts have no serial numbers, so they show up at crime scenes and they can’t be traced.  The buyers of these ghost gun kits aren’t required to pass any background check.  Anyone, from a criminal or terrorist, could buy this kit and within 30 minutes have a weapon that’s lethal.  But no more.
+
+And I will do everything in my power to protect the American people from this epidemic of gun violence, but it’s time for Congress to act as well.  (Applause.)
+
+Look, I don’t want to become confrontational but we need more Senate Republicans to join the overwhelming majority of Democrat colleagues and close the loopholes requiring a background check on purchases of guns.  We need a ban on assault weapons and high-capacity magazines.  And don’t tell me it can’t be done.  We did it before, and it worked.
+
+Talk to most responsible gun owners and hunters. They’ll tell you there’s no possible justification for having 100 rounds in a weapon.  What do you think — deer are wearing Kevlar vests?  (Laughter.)  They’ll tell you that there are too many people today who are able to buy a gun but shouldn’t be able to buy a gun.
+
+These kinds of reasonable reforms have overwhelming support from the American people, including many gun owners.  The country supports reform and is — and Congress should act.
+
+This shouldn’t be a red or blue issue.  And no amendment to the Constitution is absolute.  You can’t yell “Fire!” in a crowded theater.  From the very beginning, there were certain guns, weapons, that could not be owned by Americans.  Certain people could not own those weapons ever. 
+
+We’re not changing the Constitution; we’re being reasonable.  I think this is not a Democrat or Republican issue; I think it’s an American issue.
+
+And here’s what else we can do: Immigration has always been essential to America.  Let’s end our exhausting war over immigration.  For more than 30 years, politicians have talked about immigration reform, and we’ve done nothing about it.  It’s time to fix it.
+
+On day one of my presidency, I kept my commitment and sent a comprehensive immigration bill to the United States Congress.  If you believe we need to secure the border, pass it, because it has a lot of money for high-tech border security.  If you believe"
+"Considering the economic policies implemented by the current administration, and the stated goals to increase economic growth and job creation, explain how these initiatives contribute to the observed economic expansion.","The administration's economic policies aim to increase productivity and economic growth by investing in infrastructure, education, and workforce development. These investments are intended to create jobs, boost economic activity, and ultimately lead to a stronger and more resilient economy. The administration's focus on ""building the economy from the bottom up"" suggests a belief that these investments will benefit all Americans, not just the wealthy. 
+","The current administration created and passed the American Rescue Plan, which was partially responsible for  the creation of over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three yearsin America. America’s economy increased at a rate of 5.7% the first year of the administration. American companies also invested in increasing manufacturing capabilities in America that helps reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America’s GDP also increased over the course of the administration.","['And by the way, when we do all of these things, we increase productivity. We increase economic growth.', 'In fact—our economy created over 6.5 Million new jobs just last year, more jobs created in one year', 'You know, there’s a broad consensus of economists — left, right, center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.', 'Our economy grew at a rate of 5.7% last year, the strongest growth in nearly 40 years, the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.', 'Economists call it “increasing the productive capacity of our economy.”', 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.', 'Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up', 'The last administration enacted a $2 Trillion tax cut that overwhelmingly benefits the very wealthy and the biggest corporations and exploded the federal deficit.', 'Independent experts estimate the American Jobs Plan will add millions of jobs and trillions of dollars to economic growth in the years to come.  It is a — it is an eight-year program.  These are good-paying jobs that can’t be outsourced.', 'Look, our economy roared back faster than most predicted, but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.']",[Speeches/titleedits/state_of_the_union_030122.txt]," behind. 
+
+And it worked. It created jobs. Lots of jobs. 
+
+In fact—our economy created over 6.5 Million new jobs just last year, more jobs created in one year  
+than ever before in the history of America. 
+
+Our economy grew at a rate of 5.7% last year, the strongest growth in nearly 40 years, the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.  
+
+For the past 40 years we were told that if we gave tax breaks to those at the very top, the benefits would trickle down to everyone else. 
+
+But that trickle-down theory led to weaker economic growth, lower wages, bigger deficits, and the widest gap between those at the top and everyone else in nearly a century. 
+
+Vice President Harris and I ran for office with a new economic vision for America. 
+
+Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up  
+and the middle out, not from the top down.  
+
+Because we know that when the middle class grows, the poor have a ladder up and the wealthy do very well. 
+
+America used to have the best roads, bridges, and airports on Earth. 
+
+Now our infrastructure is ranked 13th in the world. 
+
+We won’t be able to compete for the jobs of the 21st Century if we don’t fix that. 
+
+That’s why it was so important to pass the Bipartisan Infrastructure Law—the most sweeping investment to rebuild America in history. 
+
+This was a bipartisan effort, and I want to thank the members of both parties who worked to make it happen. 
+
+We’re done talking about infrastructure weeks. 
+
+We’re going to have an infrastructure decade. 
+
+It is going to transform America and put us on a path to win the economic competition of the 21st Century that we face with the rest of the world—particularly with China.  
+
+As I’ve told Xi Jinping, it is never a good bet to bet against the American people. 
+
+We’ll create good jobs for millions of Americans, modernizing roads, airports, ports, and waterways all across America. 
+
+And we’ll do it all to withstand the devastating effects of the climate crisis and promote environmental justice. 
+
+We’ll build a national network of 500,000 electric vehicle charging stations, begin to replace poisonous lead pipes—so every child—and every American—has clean water to drink at home and at school, provide affordable high-speed internet for every American—urban, suburban, rural, and tribal communities. 
+
+4,000 projects have already been announced. 
+
+And tonight, I’m announcing that this year we will start fixing over 65,000 miles of highway and 1,500 bridges in disrepair. 
+
+When we use taxpayer dollars to rebuild America – we are going to Buy American: buy American products to support American jobs. 
+
+The federal government spends about $600 Billion a year to keep the country safe and secure. 
+
+There’s been a law on the books for almost a century 
+to make sure taxpayers’ dollars support American jobs and businesses. 
+
+Every Administration says they’ll do it, but we are actually doing it. 
+
+We will buy American to make sure everything from the deck of an aircraft carrier to the steel on highway guardrails are made in America. 
+
+But to compete for the best jobs of the future, we also need to level the playing field with China and other competitors. 
+
+That’s why it is so important to pass the Bipartisan Innovation Act sitting in Congress that will make record investments in emerging technologies and American manufacturing. 
+
+Let me give you one example of why it’s so important to pass it. 
+
+If you travel 20 miles east of Columbus, Ohio, you’ll find 1,000 empty acres of land. 
+
+It won’t look like much, but if you stop and look closely, you’ll see a “Field of dreams,” the ground on which America’s future will be built. 
+
+This is where Intel, the American company that helped build Silicon Valley, is going to build its $20 billion semiconductor “mega site”. 
+
+Up to eight state-of-the-art factories in one place. 10,000 new good-paying jobs. 
+
+Some of the most sophisticated manufacturing in the world to make computer chips the size of a fingertip that power the world and our everyday lives. 
+
+Smartphones.| The Internet. Technology we have yet to invent. 
+
+But that’s just the beginning. 
+
+Intel’s CEO, Pat Gelsinger, who is here tonight, told me they are ready to increase their investment from  
+$20 billion to $100 billion. 
+
+That would be one of the biggest investments in manufacturing in American history. 
+
+And all they’re waiting for is for you to pass this bill. 
+
+So let’s not wait any longer. Send it to my desk. I’ll sign it.  
+
+And we will really take off. 
+
+And Intel is not alone. 
+
+There’s something happening in America. 
+
+Just look around and you’ll see an amazing story. 
+
+The rebirth of the pride that comes from stamping products “Made In America.” The revitalization of American manufacturing.   
+
+Companies are choosing to build new factories here, when just a few years ago, they would have built them overseas. 
+
+That’s what is happening. Ford is investing $11 billion to build electric vehicles, creating 11,000 jobs across the country. 
+
+GM is making the largest investment in its history—$7 billion to build electric vehicles, creating 4,000 jobs in Michigan. 
+
+All told, we created 369,000 new manufacturing jobs in America just last year. 
+
+Powered by people I’ve met like JoJo Burgess, from generations of union steelworkers from Pittsburgh, who’s here with us tonight. 
+
+As Ohio Senator Sherrod Brown says, “It’s time to bury the label “Rust Belt.” 
+
+It’s time. 
+
+But with all the bright spots in our economy, record job growth and higher wages, too many families are struggling to keep up with the bills.  
+
+Inflation is robbing them of the gains they might otherwise feel. 
+
+I get it. That’s why my top priority is getting prices under control. 
+
+Look, our economy roared back faster than most predicted, but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories. 
+
+The pandemic also disrupted global supply chains. 
+
+When factories close, it takes longer to make goods and get them from the warehouse to the store, and prices go up. 
+
+Look at cars. 
+
+Last year, there weren’t enough semiconductors to make all the cars that people wanted to buy. 
+
+And guess what, prices of automobiles went up. 
+
+So—we have a choice. 
+
+One way to fight inflation is to drive down wages and make Americans poorer.  
+
+I have a better plan to fight inflation. 
+
+Lower your costs, not your wages. 
+
+Make more cars and semiconductors in America. 
+
+More infrastructure and innovation in America. 
+
+More goods moving faster and cheaper in America. 
+
+More jobs where you can earn a good living in America. 
+
+And instead of relying on foreign supply chains, let’s make it in America. 
+
+Economists call it “increasing the productive capacity of our economy.” 
+
+I call it building a better America. 
+
+My plan to fight inflation will lower your costs and lower the deficit. 
+
+17 Nobel laureates in economics say my plan will ease long-term inflationary pressures. Top business leaders and most Americans support my plan. And here’s the plan: 
+
+First – cut the cost of prescription drugs. Just look at insulin. One in ten Americans has diabetes. In Virginia, I met a 13-year-old boy named Joshua Davis.  
+
+He and his Dad both have Type 1 diabetes, which means they need insulin every day. Insulin costs about $10 a vial to make.  
+
+But drug companies charge families like Joshua and his Dad up to 30 times more. I spoke with Joshua’s mom. 
+
+Imagine what it’s like to look at your child who needs insulin and have no idea how you’re going to pay for it.  
+
+What it does to your dignity, your ability to look your child in the eye, to be the parent you expect to be. 
+
+Joshua is here with us tonight. Yesterday was his birthday. Happy birthday, buddy.  
+
+For Joshua, and for the 200,000 other young people with Type 1 diabetes, let’s cap the cost of insulin at $35 a month so everyone can afford it.  
+
+Drug companies will still do very well. And while"
+"In President Biden’s 2022 State of the Union speech, given that supply chain disruptions and labor shortages have impacted production, what are the factors contributing to elevated inflation in the US?","The pandemic and the war in Ukraine have disrupted supply chains and energy and food supplies, leading to higher prices for goods and services. Factory closures have slowed production and delivery times, resulting in increased costs. The shortage of semiconductor chips has also driven up prices for various products.  The rapid economic recovery following the pandemic has created labor shortages, making it difficult for businesses to keep up with production demands.  These factors have contributed to a rise in inflation, affecting the cost of essential items such as food, gas, housing, and consumer goods. 
+","Some of the factors contributing to increased inflation in the US, as shared in the 2022 address, are a direct result of the covid-19 pandemic. During the pandemic, businesses could not hire enough factory workers, and global supply chains were disrupted, leading to fewer goods being produced as quickly and higher prices for those goods.","['Inflation has been a global problem because of the pandemic that disrupted supply chains and Putin’s war that disrupted energy and food supplies.', 'When factories close, it takes longer to make goods and get them from the warehouse to the store, and prices go up.', 'During the pandemic a shortage of semiconductor chips drove up prices for everything from cell phones to automobiles.', 'The pandemic also disrupted global supply chains.', 'Look, our economy roared back faster than most predicted, but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.', 'And so many families are living paycheck to paycheck, struggling to keep up with the rising cost of food, gas, housing, and so much more.', 'Car prices went up. So did everything from refrigerators to cellphones.', 'Wages keep going up and inflation keeps coming down!', 'Inflation is robbing them of the gains they might otherwise feel.', 'One way to fight inflation is to drive down wages and make Americans poorer.']",[Speeches/titleedits/state_of_the_union_030122.txt]," behind. 
+
+And it worked. It created jobs. Lots of jobs. 
+
+In fact—our economy created over 6.5 Million new jobs just last year, more jobs created in one year  
+than ever before in the history of America. 
+
+Our economy grew at a rate of 5.7% last year, the strongest growth in nearly 40 years, the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.  
+
+For the past 40 years we were told that if we gave tax breaks to those at the very top, the benefits would trickle down to everyone else. 
+
+But that trickle-down theory led to weaker economic growth, lower wages, bigger deficits, and the widest gap between those at the top and everyone else in nearly a century. 
+
+Vice President Harris and I ran for office with a new economic vision for America. 
+
+Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up  
+and the middle out, not from the top down.  
+
+Because we know that when the middle class grows, the poor have a ladder up and the wealthy do very well. 
+
+America used to have the best roads, bridges, and airports on Earth. 
+
+Now our infrastructure is ranked 13th in the world. 
+
+We won’t be able to compete for the jobs of the 21st Century if we don’t fix that. 
+
+That’s why it was so important to pass the Bipartisan Infrastructure Law—the most sweeping investment to rebuild America in history. 
+
+This was a bipartisan effort, and I want to thank the members of both parties who worked to make it happen. 
+
+We’re done talking about infrastructure weeks. 
+
+We’re going to have an infrastructure decade. 
+
+It is going to transform America and put us on a path to win the economic competition of the 21st Century that we face with the rest of the world—particularly with China.  
+
+As I’ve told Xi Jinping, it is never a good bet to bet against the American people. 
+
+We’ll create good jobs for millions of Americans, modernizing roads, airports, ports, and waterways all across America. 
+
+And we’ll do it all to withstand the devastating effects of the climate crisis and promote environmental justice. 
+
+We’ll build a national network of 500,000 electric vehicle charging stations, begin to replace poisonous lead pipes—so every child—and every American—has clean water to drink at home and at school, provide affordable high-speed internet for every American—urban, suburban, rural, and tribal communities. 
+
+4,000 projects have already been announced. 
+
+And tonight, I’m announcing that this year we will start fixing over 65,000 miles of highway and 1,500 bridges in disrepair. 
+
+When we use taxpayer dollars to rebuild America – we are going to Buy American: buy American products to support American jobs. 
+
+The federal government spends about $600 Billion a year to keep the country safe and secure. 
+
+There’s been a law on the books for almost a century 
+to make sure taxpayers’ dollars support American jobs and businesses. 
+
+Every Administration says they’ll do it, but we are actually doing it. 
+
+We will buy American to make sure everything from the deck of an aircraft carrier to the steel on highway guardrails are made in America. 
+
+But to compete for the best jobs of the future, we also need to level the playing field with China and other competitors. 
+
+That’s why it is so important to pass the Bipartisan Innovation Act sitting in Congress that will make record investments in emerging technologies and American manufacturing. 
+
+Let me give you one example of why it’s so important to pass it. 
+
+If you travel 20 miles east of Columbus, Ohio, you’ll find 1,000 empty acres of land. 
+
+It won’t look like much, but if you stop and look closely, you’ll see a “Field of dreams,” the ground on which America’s future will be built. 
+
+This is where Intel, the American company that helped build Silicon Valley, is going to build its $20 billion semiconductor “mega site”. 
+
+Up to eight state-of-the-art factories in one place. 10,000 new good-paying jobs. 
+
+Some of the most sophisticated manufacturing in the world to make computer chips the size of a fingertip that power the world and our everyday lives. 
+
+Smartphones.| The Internet. Technology we have yet to invent. 
+
+But that’s just the beginning. 
+
+Intel’s CEO, Pat Gelsinger, who is here tonight, told me they are ready to increase their investment from  
+$20 billion to $100 billion. 
+
+That would be one of the biggest investments in manufacturing in American history. 
+
+And all they’re waiting for is for you to pass this bill. 
+
+So let’s not wait any longer. Send it to my desk. I’ll sign it.  
+
+And we will really take off. 
+
+And Intel is not alone. 
+
+There’s something happening in America. 
+
+Just look around and you’ll see an amazing story. 
+
+The rebirth of the pride that comes from stamping products “Made In America.” The revitalization of American manufacturing.   
+
+Companies are choosing to build new factories here, when just a few years ago, they would have built them overseas. 
+
+That’s what is happening. Ford is investing $11 billion to build electric vehicles, creating 11,000 jobs across the country. 
+
+GM is making the largest investment in its history—$7 billion to build electric vehicles, creating 4,000 jobs in Michigan. 
+
+All told, we created 369,000 new manufacturing jobs in America just last year. 
+
+Powered by people I’ve met like JoJo Burgess, from generations of union steelworkers from Pittsburgh, who’s here with us tonight. 
+
+As Ohio Senator Sherrod Brown says, “It’s time to bury the label “Rust Belt.” 
+
+It’s time. 
+
+But with all the bright spots in our economy, record job growth and higher wages, too many families are struggling to keep up with the bills.  
+
+Inflation is robbing them of the gains they might otherwise feel. 
+
+I get it. That’s why my top priority is getting prices under control. 
+
+Look, our economy roared back faster than most predicted, but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories. 
+
+The pandemic also disrupted global supply chains. 
+
+When factories close, it takes longer to make goods and get them from the warehouse to the store, and prices go up. 
+
+Look at cars. 
+
+Last year, there weren’t enough semiconductors to make all the cars that people wanted to buy. 
+
+And guess what, prices of automobiles went up. 
+
+So—we have a choice. 
+
+One way to fight inflation is to drive down wages and make Americans poorer.  
+
+I have a better plan to fight inflation. 
+
+Lower your costs, not your wages. 
+
+Make more cars and semiconductors in America. 
+
+More infrastructure and innovation in America. 
+
+More goods moving faster and cheaper in America. 
+
+More jobs where you can earn a good living in America. 
+
+And instead of relying on foreign supply chains, let’s make it in America. 
+
+Economists call it “increasing the productive capacity of our economy.” 
+
+I call it building a better America. 
+
+My plan to fight inflation will lower your costs and lower the deficit. 
+
+17 Nobel laureates in economics say my plan will ease long-term inflationary pressures. Top business leaders and most Americans support my plan. And here’s the plan: 
+
+First – cut the cost of prescription drugs. Just look at insulin. One in ten Americans has diabetes. In Virginia, I met a 13-year-old boy named Joshua Davis.  
+
+He and his Dad both have Type 1 diabetes, which means they need insulin every day. Insulin costs about $10 a vial to make.  
+
+But drug companies charge families like Joshua and his Dad up to 30 times more. I spoke with Joshua’s mom. 
+
+Imagine what it’s like to look at your child who needs insulin and have no idea how you’re going to pay for it.  
+
+What it does to your dignity, your ability to look your child in the eye, to be the parent you expect to be. 
+
+Joshua is here with us tonight. Yesterday was his birthday. Happy birthday, buddy.  
+
+For Joshua, and for the 200,000 other young people with Type 1 diabetes, let’s cap the cost of insulin at $35 a month so everyone can afford it.  
+
+Drug companies will still do very well. And while"
+"Analyze President Biden's 2023 State of the Union speech, identifying its central theme and the key messages he conveyed regarding America's domestic and foreign policy priorities.","President Biden's speech emphasizes the strength and resilience of the American people, both domestically and internationally. He highlights the nation's ability to overcome challenges and emerge stronger, positioning itself to win the competition of the 21st century. The speech underscores the importance of unity and collaboration, both within the nation and with global allies, to address critical issues like climate change, global health, food insecurity, terrorism, and territorial aggression. 
+","In his third State of the Union address, President Biden focuses on rebuilding America, highlighting the economic progress of the country over the last two years of his Presidency and asking Congress to continue supporting legislation to help the economy improve. He also reinforces America’s support to Ukraine in their war against Russia and welcomes competition instead of conflict with China.","['State of the Union Address given by President Biden on February 7, 2023', 'State of the Union Address given by President Biden on March 1, 2022', 'State of the Union Address given by President Biden on March 7, 2024', 'State of the Union Address given by President Biden on April 29, 2021', 'And my report is this: the State of the Union is strong—because you, the American people, are strong.', 'Because the soul of this nation is strong, because the backbone of this nation is strong, because the people of this nation are strong, the State of the Union is strong.', 'My fellow Americans, we have to show not just that we’re back, but that we’re back to stay and that we aren’t going to go it alone.  (Applause.)  We’re going to do it by leading with our allies.  (Applause.)', 'So on this night, in our 245th year as a nation, I have come to report on the State of the Union.', 'With light and hope, we summoned a new strength, new resolve to position us to win the competition of the 21st century, on our way to a union more perfect, more prosperous, and more just, as one people, one nation, and one America.', 'America is rallying the world again to meet those challenges, from climate and global health, to food insecurity, to terrorism and territorial aggression.']",[Speeches/titleedits/state_of_the_union_020723.txt],"State of the Union Address given by President Biden on February 7, 2023
+
+Mr. Speaker. Madam Vice President. Our First Lady and Second Gentleman.
+
+Members of Congress and the Cabinet. Leaders of our military.
+
+Mr. Chief Justice, Associate Justices, and retired Justices of the Supreme Court.
+
+And you, my fellow Americans.
+
+I start tonight by congratulating the members of the 118th Congress and the new Speaker of the House, Kevin McCarthy.
+
+Mr. Speaker, I look forward to working together.
+
+I also want to congratulate the new leader of the House Democrats and the first Black House Minority Leader in history, Hakeem Jeffries.
+
+Congratulations to the longest serving Senate Leader in history, Mitch McConnell.
+
+And congratulations to Chuck Schumer for another term as Senate Majority Leader, this time with an even bigger majority.
+
+And I want to give special recognition to someone who I think will be considered the greatest Speaker in the history of this country, Nancy Pelosi.
+
+The story of America is a story of progress and resilience. Of always moving forward. Of never giving up.
+
+A story that is unique among all nations.
+
+We are the only country that has emerged from every crisis stronger than when we entered it.
+
+That is what we are doing again.
+
+Two years ago, our economy was reeling.
+
+As I stand here tonight, we have created a record 12 million new jobs, more jobs created in two years than any president has ever created in four years.
+
+Two years ago, COVID had shut down our businesses, closed our schools, and robbed us of so much.
+
+Today, COVID no longer controls our lives.
+
+And two years ago, our democracy faced its greatest threat since the Civil War.
+
+Today, though bruised, our democracy remains unbowed and unbroken.
+
+As we gather here tonight, we are writing the next chapter in the great American story, a story of progress and resilience. When world leaders ask me to define America, I define our country in one word: Possibilities.
+
+You know, we’re often told that Democrats and Republicans can’t work together.
+
+But over these past two years, we proved the cynics and the naysayers wrong.
+
+Yes, we disagreed plenty. And yes, there were times when Democrats had to go it alone.
+
+But time and again, Democrats and Republicans came together.
+
+Came together to defend a stronger and safer Europe.
+
+Came together to pass a once-in-a-generation infrastructure law, building bridges to connect our nation and people.
+
+Came together to pass one of the most significant laws ever, helping veterans exposed to toxic burn pits.
+
+In fact, I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act, to the Electoral Count Reform Act, to the Respect for Marriage Act that protects the right to marry the person you love.
+
+To my Republican friends, if we could work together in the last Congress, there is no reason we can’t work together in this new Congress.
+
+The people sent us a clear message. Fighting for the sake of fighting, power for the sake of power, conflict for the sake of conflict, gets us nowhere.
+
+And that’s always been my vision for our country.
+
+To restore the soul of the nation.
+
+To rebuild the backbone of America, the middle class.
+
+To unite the country.
+
+We’ve been sent here to finish the job.
+
+For decades, the middle class was hollowed out.
+
+Too many good-paying manufacturing jobs moved overseas. Factories at home closed down.
+
+Once-thriving cities and towns became shadows of what they used to be.
+
+And along the way, something else was lost.
+
+Pride. That sense of self-worth.
+
+I ran for President to fundamentally change things, to make sure the economy works for everyone so we can all feel pride in what we do.
+
+To build an economy from the bottom up and the middle out, not from the top down. Because when the middle class does well, the poor have a ladder up and the wealthy still do very well. We all do well.
+
+As my Dad used to say, a job is about a lot more than a paycheck. It’s about your dignity. It’s about respect. It’s about being able to look your kid in the eye and say, “Honey –it’s going to be OK,” and mean it.
+
+So, let’s look at the results. Unemployment rate at 3.4%, a 50-year low. Near record low unemployment for Black and Hispanic workers.
+
+We’| White House tonight.
+
+For the lives we can save and for the lives we have lost, let this be a truly American moment that rallies the country and the world together and proves that we can do big things.
+
+Twenty years ago, under the leadership of President Bush and countless advocates and champions, we undertook a bipartisan effort through PEPFAR to transform the global fight against HIV/AIDS. It’s been a huge success.
+
+I believe we can do the same with cancer.
+
+Let’s end cancer as we know it and cure some cancers once and for all.
+
+There’s one reason why we’re able to do all of these things: our democracy itself.
+
+It’s the most fundamental thing of all.
+
+With democracy, everything is possible. Without it, nothing is.
+
+For the last few years our democracy has been threatened, attacked, and put at risk.
+
+Put to the test here, in this very room, on January 6th.
+
+And then, just a few months ago, unhinged by the Big Lie, an assailant unleashed political violence in the home of the then-Speaker of this House of Representatives. Using the very same language that insurrectionists who stalked these halls chanted on January 6th.
+
+Here tonight in this chamber is the man who bears the scars of that brutal attack, but is as tough and strong and as resilient as they get.
+
+My friend, Paul Pelosi.
+
+But such a heinous act never should have happened.
+
+We must all speak out. There is no place for political violence in America. In America, we must protect the right to vote, not suppress that fundamental right. We honor the results of our elections, not subvert the will of the people. We must uphold the rule of the law and restore trust in our institutions of democracy.
+
+And we must give hate and extremism in any form no safe harbor.
+
+Democracy must not be a partisan issue. It must be an American issue.
+
+Every generation of Americans has faced a moment where they have been called on to protect our democracy, to defend it, to stand up for it.
+
+And this is our moment.
+
+My fellow Americans, we meet tonight at an inflection point. One of those moments that only a few generations ever face, where the decisions we make now will decide the course of this nation and of the world for decades to come.
+
+We are not bystanders to history. We are not powerless before the forces that confront us. It is within our power, of We the People. We are facing the test of our time and the time for choosing is at hand.
+
+We must be the nation we have always been at our best. Optimistic. Hopeful. Forward-looking.
+
+A nation that embraces, light over darkness, hope over fear, unity over division. Stability over chaos.
+
+We must see each other not as enemies, but as fellow Americans. We are a good people, the only nation in the world built on an idea.
+
+That all of us, every one of us, is created equal in the image of God. A nation that stands as a beacon to the world. A nation in a new age of possibilities.
+
+So I have come here to fulfil my constitutional duty to report on the state of the union. And here is my report.
+
+Because the soul of this nation is strong, because the backbone of this nation is strong, because the people of this nation are strong, the State of the Union is strong.
+
+As I stand here tonight, I have never been more optimistic about the future of America. We just have to remember who we are.
+
+We are the United States of America and there is nothing, nothing
+beyond our capacity if we do it together.
+
+May God bless you all. May God protect our troops.|’s finish the job and ban assault weapons again.
+
+And let’s also come together on immigration and make it a bipartisan issue like it was before.
+
+We now have a record number of personnel working to secure the border, arresting 8,000 human smugglers and seizing over 23,000 pounds of fentanyl in just the last several months.
+
+Since we launched our new border plan last month, unlawful migration from Cuba, Haiti, Nicaragua, and Venezuela has come down 97%.
+
+But America’s border problems won’t be fixed until Congress acts.
+
+If you won’t pass my comprehensive immigration reform, at least pass my plan to provide the equipment and officers to secure the border. And a pathway to citizenship for Dreamers, those on temporary status, farm workers, and essential workers.
+
+Here in the people’s House, it’s our duty to protect all the people’s rights and freedoms.
+
+Congress must restore the right the Supreme Court took away last year and codify Roe v. Wade to protect every woman’s constitutional right to choose.
+
+The Vice President and I are doing everything we can to protect access to reproductive health care and safeguard patient privacy. But already, more than a dozen states are enforcing extreme abortion bans.
+
+Make no mistake; if Congress passes a national abortion ban, I will veto it.
+
+Let’s also pass the bipartisan Equality Act to ensure LGBTQ Americans, especially transgender young people, can live with safety and dignity.
+
+Our strength is not just the example of our power, but the power of our example. Let’s remember the world is watching.
+
+I spoke from this chamber one year ago, just days after Vladimir Putin unleashed his brutal war against Ukraine.
+
+A murderous assault, evoking images of the death and destruction Europe suffered in World War II.
+
+Putin’s invasion has been a test for the ages. A test for America. A test for the world.
+
+Would we stand for the most basic of principles?
+
+Would we stand for sovereignty?
+
+Would we stand for the right of people to live free from tyranny?
+
+Would we stand for the defense of democracy?
+
+For such a defense matters to us because it keeps the peace and prevents open season for would-be aggressors to threaten our security and prosperity. One year later, we know the answer.
+
+Yes, we would.
+
+And yes, we did.
+
+Together, we did what America always does at our best.
+
+We led.
+
+We united NATO and built a global coalition.
+
+We stood against Putin’s aggression.
+
+We stood with the Ukrainian people.
+
+Tonight, we are once again joined by Ukraine’s Ambassador to the United States. She represents not just her nation, but the courage of her people.
+
+Ambassador, America is united in our support for your country. We will stand with you as long as it takes.
+
+Our nation is working for more freedom, more dignity, and more peace,
+not just in Europe, but everywhere.
+
+Before I came to office, the story was about how the People’s Republic of China was increasing its power and America was falling in the world.
+
+Not anymore.
+
+I’ve made clear with President Xi that we seek competition, not conflict.
+
+I will make no apologies that we are investing to make America strong. Investing in American innovation, in industries that will define the future, and that China’s government is intent on dominating.
+
+Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.
+
+Modernizing our military to safeguard stability and deter aggression.
+
+Today, we’re in the strongest position in decades to compete with China or anyone else in the world.
+
+I am committed to work with China where it can advance American interests and benefit the world.
+
+But make no mistake: as we made clear last week, if China’s threatens our sovereignty, we will act to protect our country. And we did.
+
+And let’s be clear: winning the competition with China should unite all of us. We face serious challenges across the world.
+
+But in the past two years, democracies have become stronger, not weaker.
+
+Autocracies have grown weaker, not stronger.
+
+America is rallying the world again to meet those challenges, from climate and global health, to food insecurity, to terrorism and territorial aggression.
+
+Allies are stepping up, spending more and doing more.
+
+And bridges are forming between partners in the Pacific and those in the Atlantic. And those who bet against America are learning just how wrong they are.
+
+It’s never a good bet to bet against America.
+"
+"Who is the retiring Justice of the United States Supreme Court mentioned in the text, and what is his contribution to the country?","The retiring Justice of the United States Supreme Court mentioned in the text is an Army veteran, Constitutional scholar, and has dedicated his life to serving the country. 
+","Justice Stephen Breyer is the retiring Supreme Court justice mentioned by President Biden in his speech. Justice Bryer is an Army veteran, a “Constitutional scholar”, and served as a Justice on the United States Supreme Court.","['Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service.', 'And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.', 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.', 'Mr. Chief Justice, Associate Justices, and retired Justices of the Supreme Court.', 'Equal protection under the law; that’s the covenant we have with each other in America.', 'With a duty to one another to the American people to the Constitution.', 'In its decision to overturn Roe v. Wade the Supreme Court majority wrote, “Women are not without –', 'Opening doors of opportunity, guaranteeing some more fairness and justice — that’s the essence of America.  That’s democracy in action.', 'We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours.', 'The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before.']",[Speeches/titleedits/state_of_the_union_030122.txt]," someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
+
+One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
+
+And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence. 
+
+A former top litigator in private practice. A former federal public defender. And from a family of public school educators and police officers. A consensus builder. Since she’s been nominated, she’s received a broad range of support—from the Fraternal Order of Police to former judges appointed by Democrats and Republicans. 
+
+And if we are to advance liberty and justice, we need to secure the Border and fix the immigration system. 
+
+We can do both. At our border, we’ve installed new technology like cutting-edge scanners to better detect drug smuggling.  
+
+We’ve set up joint patrols with Mexico and Guatemala to catch more human traffickers.  
+
+We’re putting in place dedicated immigration judges so families fleeing persecution and violence can have their cases heard faster. 
+
+We’re securing commitments and supporting partners in South and Central America to host more refugees and secure their own borders. 
+
+We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours. 
+
+Provide a pathway to citizenship for Dreamers, those on temporary status, farm workers, and essential workers. 
+
+Revise our laws so businesses have the workers they need and families don’t wait decades to reunite. 
+
+It’s not only the right thing to do—it’s the economically smart thing to do. 
+
+That’s why immigration reform is supported by everyone from labor unions to religious leaders to the U.S. Chamber of Commerce. 
+
+Let’s get it done once and for all. 
+
+Advancing liberty and justice also requires protecting the rights of women. 
+
+The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before. 
+
+If we want to go forward—not backward—we must protect access to health care. Preserve a woman’s right to choose. And let’s continue to advance maternal health care in America. 
+
+And for our LGBTQ+ Americans, let’s finally get the bipartisan Equality Act to my desk. The onslaught of state laws targeting transgender Americans and their families is wrong. 
+
+As I said last year, especially to our younger transgender Americans, I will always have your back as your President, so you can be yourself and reach your God-given potential. 
+
+While it often appears that we never agree, that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice. 
+
+And soon, we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things. 
+
+So tonight I’m offering a Unity Agenda for the Nation. Four big things we can do together.  
+
+First, beat the opioid epidemic. 
+
+There is so much we can do. Increase funding for prevention, treatment, harm reduction, and recovery.  
+
+Get rid of outdated rules that stop doctors from prescribing treatments. And stop the flow of illicit drugs by working with state and local law enforcement to go after traffickers. 
+
+If you’re suffering from addiction, know you are not alone. I believe in recovery, and I celebrate the 23 million Americans in recovery. 
+
+Second, let’s take on mental health. Especially among our children, whose lives and education have been turned upside down.  
+
+The American Rescue Plan gave schools money to hire teachers and help students make up for lost learning.  
+
+I urge every parent to make sure your school does just that. And we can all play a part—sign up to be a tutor or a mentor. 
+
+Children were also struggling before the pandemic. Bullying, violence, trauma, and the harms of social media. 
+
+As Frances Haugen, who is here with us tonight, has shown, we must hold social media platforms accountable for the national experiment they’re conducting on our children for profit. 
+
+It’s| People working from home can feel safe to begin to return to the office.   
+
+We’re doing that here in the federal government. The vast majority of federal workers will once again work in person. 
+
+Our schools are open. Let’s keep it that way. Our kids need to be in school. 
+
+And with 75% of adult Americans fully vaccinated and hospitalizations down by 77%, most Americans can remove their masks, return to work, stay in the classroom, and move forward safely. 
+
+We achieved this because we provided free vaccines, treatments, tests, and masks. 
+
+Of course, continuing this costs money. 
+
+I will soon send Congress a request. 
+
+The vast majority of Americans have used these tools and may want to again, so I expect Congress to pass it quickly.   
+
+Fourth, we will continue vaccinating the world.     
+
+We’ve sent 475 Million vaccine doses to 112 countries, more than any other nation. 
+
+And we won’t stop. 
+
+We have lost so much to COVID-19. Time with one another. And worst of all, so much loss of life. 
+
+Let’s use this moment to reset. Let’s stop looking at COVID-19 as a partisan dividing line and see it for what it is: A God-awful disease.  
+
+Let’s stop seeing each other as enemies, and start seeing each other for who we really are: Fellow Americans.  
+
+We can’t change how divided we’ve been. But we can change how we move forward—on COVID-19 and other issues we must face together. 
+
+I recently visited the New York City Police Department days after the funerals of Officer Wilbert Mora and his partner, Officer Jason Rivera. 
+
+They were responding to a 9-1-1 call when a man shot and killed them with a stolen gun. 
+
+Officer Mora was 27 years old. 
+
+Officer Rivera was 22. 
+
+Both Dominican Americans who’d grown up on the same streets they later chose to patrol as police officers. 
+
+I spoke with their families and told them that we are forever in debt for their sacrifice, and we will carry on their mission to restore the trust and safety every community deserves. 
+
+I’ve worked on these issues a long time. 
+
+I know what works: Investing in crime preventionand community police officers who’ll walk the beat, who’ll know the neighborhood, and who can restore trust and safety. 
+
+So let’s not abandon our streets. Or choose between safety and equal justice. 
+
+Let’s come together to protect our communities, restore trust, and hold law enforcement accountable. 
+
+That’s why the Justice Department required body cameras, banned chokeholds, and restricted no-knock warrants for its officers. 
+
+That’s why the American Rescue Plan provided $350 Billion that cities, states, and counties can use to hire more police and invest in proven strategies like community violence interruption—trusted messengers breaking the cycle of violence and trauma and giving young people hope.  
+
+We should all agree: The answer is not to Defund the police. The answer is to FUND the police with the resources and training they need to protect our communities. 
+
+I ask Democrats and Republicans alike: Pass my budget and keep our neighborhoods safe.  
+
+And I will keep doing everything in my power to crack down on gun trafficking and ghost guns you can buy online and make at home—they have no serial numbers and can’t be traced. 
+
+And I ask Congress to pass proven measures to reduce gun violence. Pass universal background checks. Why should anyone on a terrorist list be able to purchase a weapon? 
+
+Ban assault weapons and high-capacity magazines. 
+
+Repeal the liability shield that makes gun manufacturers the only industry in America that can’t be sued. 
+
+These laws don’t infringe on the Second Amendment. They save lives. 
+
+The most fundamental right in America is the right to vote – and to have it counted. And it’s under assault. 
+
+In state after state, new laws have been passed, not only to suppress the vote, but to subvert entire elections. 
+
+We cannot let this happen. 
+
+Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
+
+Tonight, I’d like to honor"
+"Considering the President's statement, who was nominated to fill the Supreme Court seat vacated by Justice Breyer?","The President nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to fill the Supreme Court seat vacated by Justice Breyer. 
+",Circuit Court of Appeals Judge Ketanji Brown Jackson was nominated by President Biden to fill the Supreme Court seat vacated by Justice Breyer.,"['And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.', 'Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service.', 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.', 'Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.', 'I promised to be the president for all Americans.', 'Madam Speaker, Madam Vice President — (applause) — no President has ever said those words from this podium.  No President has ever said those words, and it’s about time.  (Applause.)', 'THE PRESIDENT:  — because I know it will get done.  (Applause.)', 'So what are we waiting for? Let’s get this done. And while you’re at it, confirm my nominees to the Federal Reserve, which plays a critical role in fighting inflation.', 'Mr. Chief Justice, Associate Justices, and retired Justices of the Supreme Court.', 'THE PRESIDENT:  Thank you.  (Applause.)  Thank you.  Thank you.  Good to be back.  And Mitch and Chuck will understand it’s good to be almost home, down the hall.  Anyway, thank you all.']",[Speeches/titleedits/state_of_the_union_030122.txt]," someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
+
+One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
+
+And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence. 
+
+A former top litigator in private practice. A former federal public defender. And from a family of public school educators and police officers. A consensus builder. Since she’s been nominated, she’s received a broad range of support—from the Fraternal Order of Police to former judges appointed by Democrats and Republicans. 
+
+And if we are to advance liberty and justice, we need to secure the Border and fix the immigration system. 
+
+We can do both. At our border, we’ve installed new technology like cutting-edge scanners to better detect drug smuggling.  
+
+We’ve set up joint patrols with Mexico and Guatemala to catch more human traffickers.  
+
+We’re putting in place dedicated immigration judges so families fleeing persecution and violence can have their cases heard faster. 
+
+We’re securing commitments and supporting partners in South and Central America to host more refugees and secure their own borders. 
+
+We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours. 
+
+Provide a pathway to citizenship for Dreamers, those on temporary status, farm workers, and essential workers. 
+
+Revise our laws so businesses have the workers they need and families don’t wait decades to reunite. 
+
+It’s not only the right thing to do—it’s the economically smart thing to do. 
+
+That’s why immigration reform is supported by everyone from labor unions to religious leaders to the U.S. Chamber of Commerce. 
+
+Let’s get it done once and for all. 
+
+Advancing liberty and justice also requires protecting the rights of women. 
+
+The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before. 
+
+If we want to go forward—not backward—we must protect access to health care. Preserve a woman’s right to choose. And let’s continue to advance maternal health care in America. 
+
+And for our LGBTQ+ Americans, let’s finally get the bipartisan Equality Act to my desk. The onslaught of state laws targeting transgender Americans and their families is wrong. 
+
+As I said last year, especially to our younger transgender Americans, I will always have your back as your President, so you can be yourself and reach your God-given potential. 
+
+While it often appears that we never agree, that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice. 
+
+And soon, we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things. 
+
+So tonight I’m offering a Unity Agenda for the Nation. Four big things we can do together.  
+
+First, beat the opioid epidemic. 
+
+There is so much we can do. Increase funding for prevention, treatment, harm reduction, and recovery.  
+
+Get rid of outdated rules that stop doctors from prescribing treatments. And stop the flow of illicit drugs by working with state and local law enforcement to go after traffickers. 
+
+If you’re suffering from addiction, know you are not alone. I believe in recovery, and I celebrate the 23 million Americans in recovery. 
+
+Second, let’s take on mental health. Especially among our children, whose lives and education have been turned upside down.  
+
+The American Rescue Plan gave schools money to hire teachers and help students make up for lost learning.  
+
+I urge every parent to make sure your school does just that. And we can all play a part—sign up to be a tutor or a mentor. 
+
+Children were also struggling before the pandemic. Bullying, violence, trauma, and the harms of social media. 
+
+As Frances Haugen, who is here with us tonight, has shown, we must hold social media platforms accountable for the national experiment they’re conducting on our children for profit. 
+
+It’s| People working from home can feel safe to begin to return to the office.   
+
+We’re doing that here in the federal government. The vast majority of federal workers will once again work in person. 
+
+Our schools are open. Let’s keep it that way. Our kids need to be in school. 
+
+And with 75% of adult Americans fully vaccinated and hospitalizations down by 77%, most Americans can remove their masks, return to work, stay in the classroom, and move forward safely. 
+
+We achieved this because we provided free vaccines, treatments, tests, and masks. 
+
+Of course, continuing this costs money. 
+
+I will soon send Congress a request. 
+
+The vast majority of Americans have used these tools and may want to again, so I expect Congress to pass it quickly.   
+
+Fourth, we will continue vaccinating the world.     
+
+We’ve sent 475 Million vaccine doses to 112 countries, more than any other nation. 
+
+And we won’t stop. 
+
+We have lost so much to COVID-19. Time with one another. And worst of all, so much loss of life. 
+
+Let’s use this moment to reset. Let’s stop looking at COVID-19 as a partisan dividing line and see it for what it is: A God-awful disease.  
+
+Let’s stop seeing each other as enemies, and start seeing each other for who we really are: Fellow Americans.  
+
+We can’t change how divided we’ve been. But we can change how we move forward—on COVID-19 and other issues we must face together. 
+
+I recently visited the New York City Police Department days after the funerals of Officer Wilbert Mora and his partner, Officer Jason Rivera. 
+
+They were responding to a 9-1-1 call when a man shot and killed them with a stolen gun. 
+
+Officer Mora was 27 years old. 
+
+Officer Rivera was 22. 
+
+Both Dominican Americans who’d grown up on the same streets they later chose to patrol as police officers. 
+
+I spoke with their families and told them that we are forever in debt for their sacrifice, and we will carry on their mission to restore the trust and safety every community deserves. 
+
+I’ve worked on these issues a long time. 
+
+I know what works: Investing in crime preventionand community police officers who’ll walk the beat, who’ll know the neighborhood, and who can restore trust and safety. 
+
+So let’s not abandon our streets. Or choose between safety and equal justice. 
+
+Let’s come together to protect our communities, restore trust, and hold law enforcement accountable. 
+
+That’s why the Justice Department required body cameras, banned chokeholds, and restricted no-knock warrants for its officers. 
+
+That’s why the American Rescue Plan provided $350 Billion that cities, states, and counties can use to hire more police and invest in proven strategies like community violence interruption—trusted messengers breaking the cycle of violence and trauma and giving young people hope.  
+
+We should all agree: The answer is not to Defund the police. The answer is to FUND the police with the resources and training they need to protect our communities. 
+
+I ask Democrats and Republicans alike: Pass my budget and keep our neighborhoods safe.  
+
+And I will keep doing everything in my power to crack down on gun trafficking and ghost guns you can buy online and make at home—they have no serial numbers and can’t be traced. 
+
+And I ask Congress to pass proven measures to reduce gun violence. Pass universal background checks. Why should anyone on a terrorist list be able to purchase a weapon? 
+
+Ban assault weapons and high-capacity magazines. 
+
+Repeal the liability shield that makes gun manufacturers the only industry in America that can’t be sued. 
+
+These laws don’t infringe on the Second Amendment. They save lives. 
+
+The most fundamental right in America is the right to vote – and to have it counted. And it’s under assault. 
+
+In state after state, new laws have been passed, not only to suppress the vote, but to subvert entire elections. 
+
+We cannot let this happen. 
+
+Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
+
+Tonight, I’d like to honor"
