@@ -1,0 +1,882 @@
+Individual metric results from ragas:
+{'context_precision': 0.6944, 'faithfulness': 1.0000, 'answer_relevancy': 0.6770, 'context_recall': 0.6455}
+
+Summary results from deepeval:
+context_precision: 90.91% pass rate, faithfulness: 81.82% pass rate, answer_relevancy: 81.82% pass rate, context_recall: 81.82% pass rate, RAGAS: 54.55% pass rate
+
+Overall: Similar but not the same scores between deepeval's ragas (which calls ragas) and ragas. 
+I think the variance is probably fairly normal, given that I got different results each time I ran ragas as well.
+
+Average scores from deep eval ragas:
+context precision: 0.493268741183316
+faithfulness: 0.984126984126984
+answer_relevancy: 0.577747493385347
+context_recall: 0.627272727272727
+
+Notes from manual review of results: 
+- Faithfulness scoring seemed fairly reliable. 
+- Answer relevancy also seemed fairly accurate. Some of the scoring for answer relevancy was difficult to determine why one received a better score than another, but for those in question, the score was only off by 0.1 from what I expected based off of the other scoring.
+- Some of the context_recall results seemed inaccurate. For example, one returned a score of 0 but in close examination, the context did contain parts of the ground truth result. For two very similar examples, scores varied from 0 to 0.5, which seemed like a dramatic variance.
+- Contextual precision seemed a bit off, as some of the 1st and 2nd context nodes contained the exact answer, yet the score was 0.6 or 0.5.
+
+
+Output from RAGAS metric (average of all 4 RAGAS individual metrics above):
+- Output seemed inconsistent, as RAGAS metric could not be generated for 3 examples that we had results from the other 4 metrics on. Also unexpectedly, it was generated for one example that we didn't get all 4 individual results for.
+- For those examples that the metric was generated on, the RAGAS metric was within .12 of the manually calculated averages. 
+- This metric (when it gives output) seems like a general approximation for a given test case of how well the RAG pipeline answered it.
+- The overall pass rate seems useful, but given that we got 7/11 results (including 1 questionable one) on such a small test set, I don't think I would use this metric.
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the President plan to grow the economy in his first speech, and what are examples of his successes in this area as shared in his next three speeches?
+  - actual output: The President plans to grow the economy by focusing on the bottom and middle class, rather than trickle-down economics.  His success in this area includes creating more than 1,300,000 new jobs in his first 100 days, a record 12 million new jobs in his first two years, and a 5.7% growth in the economy last year, which is the strongest growth in nearly 40 years. 
+
+  - expected output: In his first speech, the President proposes that his American Jobs Plan will create millions of new jobs and trillions of dollars of economic growth to the economy by bringing Americans back to the workforce. He also says America should grow its economy from the bottom and middle out but does not say how to grow the economy that way. In his following speeches, he says that the American Rescue Plan has created over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three years, and America�s economy increased at a rate of 5.7% the first year. American companies are also investing in increasing manufacturing capabilities in America that would help reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America�s GDP also increased over the three years covered in the speeches.
+  - context: []
+  - retrieval context: ["['And in the process", ' while this was all going on', ' the economy created more than 1', '300', "000 new jobs in 100 days — more jobs in the first — (applause) — more jobs in the first 100 days than any President on record.'", " 'My fellow Americans", " trickle-down — trickle-down economics has never worked and it’s time to grow the economy from the bottom and the middle out. (Applause.)'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'I inherited an economy that was on the brink. Now our economy is the envy of the world!'", " 'As I stand here tonight", ' we have created a record 12 million new jobs', " more jobs created in two years than any president has ever created in four years.'", " 'And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'Since I’ve come to office", " our GDP is up.'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Throughout our history", ' Presidents have come to this chamber to speak to Congress', ' to the nation', ' and to the world to declare war', ' to celebrate peace', " to announce new plans and possibilities.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Given Biden's statement about bipartisan cooperation, identify specific instances where Democrats and Republicans have collaborated during his presidency.
+  - actual output: The President highlights several instances of bipartisan cooperation during his presidency, including passing legislation to prevent government shutdowns, protect Asian-Americans from hate crimes, reform military justice, and passing an infrastructure bill.  He also mentions working with Republicans on border security reforms. 
+
+  - expected output: Some examples of bipartisan cooperation during Biden�s administration are Congress passing a significant infrastructure law (the American Rescue Plan), helping veterans exposed to toxic burn pits with the PACT Act, reauthorizing the Violence Against Women Act, passing the Electoral Count Reform Act, passing the CHIPS and Science Act, and authorizing the Respect for Marriage Act.
+  - context: []
+  - retrieval context: ["['Investments in jobs and infrastructure", ' like the ones we’re talking about', " have often had bipartisan support in the past.  Vice President Harris and I met regularly in the Oval Office with Democrats and Republicans to discuss the Jobs Plan.  And I applaud a group of Republican senators who just put forward their own proposal.'", " 'You know", " we’re often told that Democrats and Republicans can’t work together.'", " 'But time and again", " Democrats and Republicans came together.'", " 'When I came to office", " most everyone assumed bipartisanship was impossible. But I never believed it.'", " 'While it often appears that we never agree", " that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice.'", " 'To my Republican friends", ' if we could work together in the last Congress', " there is no reason we can’t work together in this new Congress.'", " 'In November", " my team began serious negotiations with a bipartisan group of Senators.'", " 'Came together to pass a once-in-a-generation infrastructure law", " building bridges to connect our nation and people.'", " 'The result was a bipartisan bill with the toughest set of border security reforms we’ve ever seen'", " 'Yes", ' we disagreed plenty. And yes', " there were times when Democrats had to go it alone.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: What does the President say his administration has successfully done related to AI?
+  - actual output: The President mentions that the United States is investing more in research and development than ever before, thanks to the Chips and Science Act. This is related to AI as the President specifically mentions that the United States will see more technological change in the next 10 years than the last 50, due in part to the rapid development of AI. 
+
+  - expected output: The President does not note any instances of passing AI legislation. However, his administration did pass the American Jobs Act and the Chips and Science Act which will contribute to technological research and advancements in America, some of which, he notes, will likely be related to artificial intelligence.
+  - context: []
+  - retrieval context: ["['And finally", " the American Jobs Plan will be the biggest increase in nondefense research and development on record.  We will see more technological change — and some of you know more about this than I do — we’ll see more technological change in the next 10 years than we saw in the last 50.  That’s how rapidly artificial intelligence and so much more is changing.'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'Today", ' Mr. Secretary', " that’s less than 1 percent.  China and other countries are closing in fast.  We have to develop and dominate the products and technologies of the future:'", " 'Thanks to my Chips and Science Act the United States is investing more in research and development than ever before.'", " 'I’m restoring the program and asked Vice President Harris to lead our diplomatic effort to take care of this.  I have absolute confidence she’ll get the job done.  (Applause.)'", " 'I’ve made sure that the most advanced American technologies can’t be used in China’s weapons.'", " 'The National Institute of Health — the NIH –- I believe", " should create a similar Advanced Research Projects Agency for Health.  (Applause.)'", " 'Every Administration says they’ll do it", " but we are actually doing it.'", " 'The Secretary of Defense can tell you — and those of you on — who work on national security issues know — the Defense Department has an agency called DARPA — the Defense Advanced Research Project Agency.  The people who set up before I came here — and that’s been a long time ago — to develop breakthroughs that enhance our national security -– that’s their only job.  And it’s a semi-separate agency; it’s under the Defense Department.  It’s led to everything from the discovery of the Internet to GPS and so much more that has enhanced our security.'", " 'Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How has the administration improved housing issues during his term in office?
+  - actual output: The administration has implemented several initiatives to improve housing issues, including providing rental assistance to prevent evictions, offering loans to small businesses to help them keep employees, and making it easier for builders to access federal financing to build more housing units.  Additionally, the administration is working to lower the cost of housing by cracking down on landlords who engage in price-fixing, providing a tax credit to help people afford their mortgages, and proposing a plan to build and renovate 2 million affordable homes. 
+
+  - expected output: The American Rescue Plan provided guards to keep people from eviction during the covid-19 pandemic. Later in his presidency, he highlighted work to eliminate title insurance fees on federally backed mortgages, improve opportunities for builders to get finances, reduce price-fixing of rental units, provide housing assistance to veterans, and other work to reduce the price of housing to Americans. He called on Congress to support greater investments in housing reform going forward.
+  - context: []
+  - retrieval context: ["['I’ve cut red tape so more builders can get federal financing", " which is already helping build a record 1.7 million housing units nationwide.'", " 'My Administration is also eliminating title insurance fees for federally backed mortgages.'", " 'We’re also providing rental assistance — you all know this", ' but the American people', ' I want to make sure they understand — keeping people from being evicted from their homes', " providing loans to small businesses to reopen and keep their employees on the job.'", " 'Let’s also finish the job and get more families access to affordable and quality housing.'", " 'My administration is providing assistance with job training and housing", " and now helping lower-income veterans get VA care debt-free.'", " 'Now pass my plan to build and renovate 2 million  affordable homes and bring those rents down!'", " 'For millions of renters", " we’re cracking down on big landlords who break antitrust laws by price-fixing and driving up rents.'", " 'I want to provide an annual tax creditthat will give Americans $400 a month for the next two years as mortgage rates come down to put toward their mortgage when they buy a first home or trade up for a little more space.'", " 'I know the cost of housing is so important to you.'", " 'Helped put food on their table", ' keep a roof over their heads', " and cut the cost of health insurance.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ Faithfulness (ragas) (score: nan, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, originally written by Biden, aim to prevent abusers from obtaining firearms through the 'boyfriend loophole'?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act would close the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'In the 10 years the ban was law", ' mass shootings went down. After Republicans let it expire', " mass shootings tripled.'", " 'That includes things that the majority of responsible gun owners support", " like enhanced background checks for 18 to 21-year-olds and red flag laws keeping guns out of the hands of people who are a danger to themselves and others.'", " 'Thank God we did", " passing the most sweeping gun safety law in three decades.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ Faithfulness (ragas) (score: nan, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, which the President helped author 27 years ago, aim to protect women from violence, especially by closing the 'boyfriend' loophole?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act aims to protect women from violence by closing the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'And I am asking the Vice President to lead this effort", " if she would —'", " 'All Americans deserve the freedom to be safe", " and America is safer today than when I took office.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.'", " 'With the support of families of victims", ' civil rights groups', ' and law enforcement', ' I signed an executive order for all federal officers banning chokeholds', ' restricting no-knock warrants', " and other key elements of the George Floyd Act.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the economic policies implemented by the current administration, and the stated goals to increase economic growth and job creation, explain how these initiatives contribute to the observed economic expansion.
+  - actual output: The administration's economic policies aim to increase productivity and economic growth by investing in infrastructure, education, and workforce development. These investments are intended to create jobs, boost economic activity, and ultimately lead to a stronger and more resilient economy. The administration's focus on "building the economy from the bottom up" suggests a belief that these investments will benefit all Americans, not just the wealthy. 
+
+  - expected output: The current administration created and passed the American Rescue Plan, which was partially responsible for  the creation of over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three yearsin America. America’s economy increased at a rate of 5.7% the first year of the administration. American companies also invested in increasing manufacturing capabilities in America that helps reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America’s GDP also increased over the course of the administration.
+  - context: []
+  - retrieval context: ["['And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'In fact—our economy created over 6.5 Million new jobs just last year", " more jobs created in one year'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'Economists call it “increasing the productive capacity of our economy.”'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up'", " 'The last administration enacted a $2 Trillion tax cut that overwhelmingly benefits the very wealthy and the biggest corporations and exploded the federal deficit.'", " 'Independent experts estimate the American Jobs Plan will add millions of jobs and trillions of dollars to economic growth in the years to come.  It is a — it is an eight-year program.  These are good-paying jobs that can’t be outsourced.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: In President Biden’s 2022 State of the Union speech, given that supply chain disruptions and labor shortages have impacted production, what are the factors contributing to elevated inflation in the US?
+  - actual output: The pandemic and the war in Ukraine have disrupted supply chains and energy and food supplies, leading to higher prices for goods and services. Factory closures have slowed production and delivery times, resulting in increased costs. The shortage of semiconductor chips has also driven up prices for various products.  The rapid economic recovery following the pandemic has created labor shortages, making it difficult for businesses to keep up with production demands.  These factors have contributed to a rise in inflation, affecting the cost of essential items such as food, gas, housing, and consumer goods. 
+
+  - expected output: Some of the factors contributing to increased inflation in the US, as shared in the 2022 address, are a direct result of the covid-19 pandemic. During the pandemic, businesses could not hire enough factory workers, and global supply chains were disrupted, leading to fewer goods being produced as quickly and higher prices for those goods.
+  - context: []
+  - retrieval context: ["['Inflation has been a global problem because of the pandemic that disrupted supply chains and Putin’s war that disrupted energy and food supplies.'", " 'When factories close", ' it takes longer to make goods and get them from the warehouse to the store', " and prices go up.'", " 'During the pandemic a shortage of semiconductor chips drove up prices for everything from cell phones to automobiles.'", " 'The pandemic also disrupted global supply chains.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.'", " 'And so many families are living paycheck to paycheck", ' struggling to keep up with the rising cost of food', ' gas', ' housing', " and so much more.'", " 'Car prices went up. So did everything from refrigerators to cellphones.'", " 'Wages keep going up and inflation keeps coming down!'", " 'Inflation is robbing them of the gains they might otherwise feel.'", " 'One way to fight inflation is to drive down wages and make Americans poorer.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 0.8571428571428571, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Analyze President Biden's 2023 State of the Union speech, identifying its central theme and the key messages he conveyed regarding America's domestic and foreign policy priorities.
+  - actual output: President Biden's speech emphasizes the strength and resilience of the American people, both domestically and internationally. He highlights the nation's ability to overcome challenges and emerge stronger, positioning itself to win the competition of the 21st century. The speech underscores the importance of unity and collaboration, both within the nation and with global allies, to address critical issues like climate change, global health, food insecurity, terrorism, and territorial aggression. 
+
+  - expected output: In his third State of the Union address, President Biden focuses on rebuilding America, highlighting the economic progress of the country over the last two years of his Presidency and asking Congress to continue supporting legislation to help the economy improve. He also reinforces America’s support to Ukraine in their war against Russia and welcomes competition instead of conflict with China.
+  - context: []
+  - retrieval context: ["['State of the Union Address given by President Biden on February 7", " 2023'", " 'State of the Union Address given by President Biden on March 1", " 2022'", " 'State of the Union Address given by President Biden on March 7", " 2024'", " 'State of the Union Address given by President Biden on April 29", " 2021'", " 'And my report is this: the State of the Union is strong—because you", ' the American people', " are strong.'", " 'Because the soul of this nation is strong", ' because the backbone of this nation is strong', ' because the people of this nation are strong', " the State of the Union is strong.'", " 'My fellow Americans", ' we have to show not just that we’re back', " but that we’re back to stay and that we aren’t going to go it alone.  (Applause.)  We’re going to do it by leading with our allies.  (Applause.)'", " 'So on this night", ' in our 245th year as a nation', " I have come to report on the State of the Union.'", " 'With light and hope", ' we summoned a new strength', ' new resolve to position us to win the competition of the 21st century', ' on our way to a union more perfect', ' more prosperous', ' and more just', ' as one people', ' one nation', " and one America.'", " 'America is rallying the world again to meet those challenges", ' from climate and global health', ' to food insecurity', " to terrorism and territorial aggression.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Who is the retiring Justice of the United States Supreme Court mentioned in the text, and what is his contribution to the country?
+  - actual output: The retiring Justice of the United States Supreme Court mentioned in the text is an Army veteran, Constitutional scholar, and has dedicated his life to serving the country. 
+
+  - expected output: Justice Stephen Breyer is the retiring Supreme Court justice mentioned by President Biden in his speech. Justice Bryer is an Army veteran, a “Constitutional scholar”, and served as a Justice on the United States Supreme Court.
+  - context: []
+  - retrieval context: ["['Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'Equal protection under the law; that’s the covenant we have with each other in America.'", " 'With a duty to one another to the American people to the Constitution.'", " 'In its decision to overturn Roe v. Wade the Supreme Court majority wrote", " “Women are not without –'", " 'Opening doors of opportunity", " guaranteeing some more fairness and justice — that’s the essence of America.  That’s democracy in action.'", " 'We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours.'", " 'The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Faithfulness (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the President's statement, who was nominated to fill the Supreme Court seat vacated by Justice Breyer?
+  - actual output: The President nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to fill the Supreme Court seat vacated by Justice Breyer. 
+
+  - expected output: Circuit Court of Appeals Judge Ketanji Brown Jackson was nominated by President Biden to fill the Supreme Court seat vacated by Justice Breyer.
+  - context: []
+  - retrieval context: ["['And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Madam Speaker", ' Madam Vice President', " our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.'", " 'I promised to be the president for all Americans.'", " 'Madam Speaker", ' Madam Vice President — (applause) — no President has ever said those words from this podium.  No President has ever said those words', " and it’s about time.  (Applause.)'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'So what are we waiting for? Let’s get this done. And while you’re at it", ' confirm my nominees to the Federal Reserve', " which plays a critical role in fighting inflation.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'THE PRESIDENT:  Thank you.  (Applause.)  Thank you.  Thank you.  Good to be back.  And Mitch and Chuck will understand it’s good to be almost home", ' down the hall.  Anyway', " thank you all.']"]
+
+======================================================================
+
+Overall Metric Pass Rates
+
+Faithfulness (ragas): 81.82% pass rate
+
+======================================================================
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.6803695907269081, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the President plan to grow the economy in his first speech, and what are examples of his successes in this area as shared in his next three speeches?
+  - actual output: The President plans to grow the economy by focusing on the bottom and middle class, rather than trickle-down economics.  His success in this area includes creating more than 1,300,000 new jobs in his first 100 days, a record 12 million new jobs in his first two years, and a 5.7% growth in the economy last year, which is the strongest growth in nearly 40 years. 
+
+  - expected output: In his first speech, the President proposes that his American Jobs Plan will create millions of new jobs and trillions of dollars of economic growth to the economy by bringing Americans back to the workforce. He also says America should grow its economy from the bottom and middle out but does not say how to grow the economy that way. In his following speeches, he says that the American Rescue Plan has created over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three years, and America�s economy increased at a rate of 5.7% the first year. American companies are also investing in increasing manufacturing capabilities in America that would help reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America�s GDP also increased over the three years covered in the speeches.
+  - context: []
+  - retrieval context: ["['And in the process", ' while this was all going on', ' the economy created more than 1', '300', "000 new jobs in 100 days — more jobs in the first — (applause) — more jobs in the first 100 days than any President on record.'", " 'My fellow Americans", " trickle-down — trickle-down economics has never worked and it’s time to grow the economy from the bottom and the middle out. (Applause.)'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'I inherited an economy that was on the brink. Now our economy is the envy of the world!'", " 'As I stand here tonight", ' we have created a record 12 million new jobs', " more jobs created in two years than any president has ever created in four years.'", " 'And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'Since I’ve come to office", " our GDP is up.'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Throughout our history", ' Presidents have come to this chamber to speak to Congress', ' to the nation', ' and to the world to declare war', ' to celebrate peace', " to announce new plans and possibilities.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.7646098022967149, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Given Biden's statement about bipartisan cooperation, identify specific instances where Democrats and Republicans have collaborated during his presidency.
+  - actual output: The President highlights several instances of bipartisan cooperation during his presidency, including passing legislation to prevent government shutdowns, protect Asian-Americans from hate crimes, reform military justice, and passing an infrastructure bill.  He also mentions working with Republicans on border security reforms. 
+
+  - expected output: Some examples of bipartisan cooperation during Biden�s administration are Congress passing a significant infrastructure law (the American Rescue Plan), helping veterans exposed to toxic burn pits with the PACT Act, reauthorizing the Violence Against Women Act, passing the Electoral Count Reform Act, passing the CHIPS and Science Act, and authorizing the Respect for Marriage Act.
+  - context: []
+  - retrieval context: ["['Investments in jobs and infrastructure", ' like the ones we’re talking about', " have often had bipartisan support in the past.  Vice President Harris and I met regularly in the Oval Office with Democrats and Republicans to discuss the Jobs Plan.  And I applaud a group of Republican senators who just put forward their own proposal.'", " 'You know", " we’re often told that Democrats and Republicans can’t work together.'", " 'But time and again", " Democrats and Republicans came together.'", " 'When I came to office", " most everyone assumed bipartisanship was impossible. But I never believed it.'", " 'While it often appears that we never agree", " that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice.'", " 'To my Republican friends", ' if we could work together in the last Congress', " there is no reason we can’t work together in this new Congress.'", " 'In November", " my team began serious negotiations with a bipartisan group of Senators.'", " 'Came together to pass a once-in-a-generation infrastructure law", " building bridges to connect our nation and people.'", " 'The result was a bipartisan bill with the toughest set of border security reforms we’ve ever seen'", " 'Yes", ' we disagreed plenty. And yes', " there were times when Democrats had to go it alone.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.6533305376696764, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: What does the President say his administration has successfully done related to AI?
+  - actual output: The President mentions that the United States is investing more in research and development than ever before, thanks to the Chips and Science Act. This is related to AI as the President specifically mentions that the United States will see more technological change in the next 10 years than the last 50, due in part to the rapid development of AI. 
+
+  - expected output: The President does not note any instances of passing AI legislation. However, his administration did pass the American Jobs Act and the Chips and Science Act which will contribute to technological research and advancements in America, some of which, he notes, will likely be related to artificial intelligence.
+  - context: []
+  - retrieval context: ["['And finally", " the American Jobs Plan will be the biggest increase in nondefense research and development on record.  We will see more technological change — and some of you know more about this than I do — we’ll see more technological change in the next 10 years than we saw in the last 50.  That’s how rapidly artificial intelligence and so much more is changing.'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'Today", ' Mr. Secretary', " that’s less than 1 percent.  China and other countries are closing in fast.  We have to develop and dominate the products and technologies of the future:'", " 'Thanks to my Chips and Science Act the United States is investing more in research and development than ever before.'", " 'I’m restoring the program and asked Vice President Harris to lead our diplomatic effort to take care of this.  I have absolute confidence she’ll get the job done.  (Applause.)'", " 'I’ve made sure that the most advanced American technologies can’t be used in China’s weapons.'", " 'The National Institute of Health — the NIH –- I believe", " should create a similar Advanced Research Projects Agency for Health.  (Applause.)'", " 'Every Administration says they’ll do it", " but we are actually doing it.'", " 'The Secretary of Defense can tell you — and those of you on — who work on national security issues know — the Defense Department has an agency called DARPA — the Defense Advanced Research Project Agency.  The people who set up before I came here — and that’s been a long time ago — to develop breakthroughs that enhance our national security -– that’s their only job.  And it’s a semi-separate agency; it’s under the Defense Department.  It’s led to everything from the discovery of the Internet to GPS and so much more that has enhanced our security.'", " 'Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.7561276321749117, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How has the administration improved housing issues during his term in office?
+  - actual output: The administration has implemented several initiatives to improve housing issues, including providing rental assistance to prevent evictions, offering loans to small businesses to help them keep employees, and making it easier for builders to access federal financing to build more housing units.  Additionally, the administration is working to lower the cost of housing by cracking down on landlords who engage in price-fixing, providing a tax credit to help people afford their mortgages, and proposing a plan to build and renovate 2 million affordable homes. 
+
+  - expected output: The American Rescue Plan provided guards to keep people from eviction during the covid-19 pandemic. Later in his presidency, he highlighted work to eliminate title insurance fees on federally backed mortgages, improve opportunities for builders to get finances, reduce price-fixing of rental units, provide housing assistance to veterans, and other work to reduce the price of housing to Americans. He called on Congress to support greater investments in housing reform going forward.
+  - context: []
+  - retrieval context: ["['I’ve cut red tape so more builders can get federal financing", " which is already helping build a record 1.7 million housing units nationwide.'", " 'My Administration is also eliminating title insurance fees for federally backed mortgages.'", " 'We’re also providing rental assistance — you all know this", ' but the American people', ' I want to make sure they understand — keeping people from being evicted from their homes', " providing loans to small businesses to reopen and keep their employees on the job.'", " 'Let’s also finish the job and get more families access to affordable and quality housing.'", " 'My administration is providing assistance with job training and housing", " and now helping lower-income veterans get VA care debt-free.'", " 'Now pass my plan to build and renovate 2 million  affordable homes and bring those rents down!'", " 'For millions of renters", " we’re cracking down on big landlords who break antitrust laws by price-fixing and driving up rents.'", " 'I want to provide an annual tax creditthat will give Americans $400 a month for the next two years as mortgage rates come down to put toward their mortgage when they buy a first home or trade up for a little more space.'", " 'I know the cost of housing is so important to you.'", " 'Helped put food on their table", ' keep a roof over their heads', " and cut the cost of health insurance.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ Answer Relevancy (ragas) (score: 0.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, originally written by Biden, aim to prevent abusers from obtaining firearms through the 'boyfriend loophole'?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act would close the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'In the 10 years the ban was law", ' mass shootings went down. After Republicans let it expire', " mass shootings tripled.'", " 'That includes things that the majority of responsible gun owners support", " like enhanced background checks for 18 to 21-year-olds and red flag laws keeping guns out of the hands of people who are a danger to themselves and others.'", " 'Thank God we did", " passing the most sweeping gun safety law in three decades.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ Answer Relevancy (ragas) (score: 0.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, which the President helped author 27 years ago, aim to protect women from violence, especially by closing the 'boyfriend' loophole?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act aims to protect women from violence by closing the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'And I am asking the Vice President to lead this effort", " if she would —'", " 'All Americans deserve the freedom to be safe", " and America is safer today than when I took office.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.'", " 'With the support of families of victims", ' civil rights groups', ' and law enforcement', ' I signed an executive order for all federal officers banning chokeholds', ' restricting no-knock warrants', " and other key elements of the George Floyd Act.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.6771447698702285, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the economic policies implemented by the current administration, and the stated goals to increase economic growth and job creation, explain how these initiatives contribute to the observed economic expansion.
+  - actual output: The administration's economic policies aim to increase productivity and economic growth by investing in infrastructure, education, and workforce development. These investments are intended to create jobs, boost economic activity, and ultimately lead to a stronger and more resilient economy. The administration's focus on "building the economy from the bottom up" suggests a belief that these investments will benefit all Americans, not just the wealthy. 
+
+  - expected output: The current administration created and passed the American Rescue Plan, which was partially responsible for  the creation of over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three yearsin America. America’s economy increased at a rate of 5.7% the first year of the administration. American companies also invested in increasing manufacturing capabilities in America that helps reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America’s GDP also increased over the course of the administration.
+  - context: []
+  - retrieval context: ["['And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'In fact—our economy created over 6.5 Million new jobs just last year", " more jobs created in one year'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'Economists call it “increasing the productive capacity of our economy.”'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up'", " 'The last administration enacted a $2 Trillion tax cut that overwhelmingly benefits the very wealthy and the biggest corporations and exploded the federal deficit.'", " 'Independent experts estimate the American Jobs Plan will add millions of jobs and trillions of dollars to economic growth in the years to come.  It is a — it is an eight-year program.  These are good-paying jobs that can’t be outsourced.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.615561180091195, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: In President Biden’s 2022 State of the Union speech, given that supply chain disruptions and labor shortages have impacted production, what are the factors contributing to elevated inflation in the US?
+  - actual output: The pandemic and the war in Ukraine have disrupted supply chains and energy and food supplies, leading to higher prices for goods and services. Factory closures have slowed production and delivery times, resulting in increased costs. The shortage of semiconductor chips has also driven up prices for various products.  The rapid economic recovery following the pandemic has created labor shortages, making it difficult for businesses to keep up with production demands.  These factors have contributed to a rise in inflation, affecting the cost of essential items such as food, gas, housing, and consumer goods. 
+
+  - expected output: Some of the factors contributing to increased inflation in the US, as shared in the 2022 address, are a direct result of the covid-19 pandemic. During the pandemic, businesses could not hire enough factory workers, and global supply chains were disrupted, leading to fewer goods being produced as quickly and higher prices for those goods.
+  - context: []
+  - retrieval context: ["['Inflation has been a global problem because of the pandemic that disrupted supply chains and Putin’s war that disrupted energy and food supplies.'", " 'When factories close", ' it takes longer to make goods and get them from the warehouse to the store', " and prices go up.'", " 'During the pandemic a shortage of semiconductor chips drove up prices for everything from cell phones to automobiles.'", " 'The pandemic also disrupted global supply chains.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.'", " 'And so many families are living paycheck to paycheck", ' struggling to keep up with the rising cost of food', ' gas', ' housing', " and so much more.'", " 'Car prices went up. So did everything from refrigerators to cellphones.'", " 'Wages keep going up and inflation keeps coming down!'", " 'Inflation is robbing them of the gains they might otherwise feel.'", " 'One way to fight inflation is to drive down wages and make Americans poorer.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.7254767146920168, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Analyze President Biden's 2023 State of the Union speech, identifying its central theme and the key messages he conveyed regarding America's domestic and foreign policy priorities.
+  - actual output: President Biden's speech emphasizes the strength and resilience of the American people, both domestically and internationally. He highlights the nation's ability to overcome challenges and emerge stronger, positioning itself to win the competition of the 21st century. The speech underscores the importance of unity and collaboration, both within the nation and with global allies, to address critical issues like climate change, global health, food insecurity, terrorism, and territorial aggression. 
+
+  - expected output: In his third State of the Union address, President Biden focuses on rebuilding America, highlighting the economic progress of the country over the last two years of his Presidency and asking Congress to continue supporting legislation to help the economy improve. He also reinforces America’s support to Ukraine in their war against Russia and welcomes competition instead of conflict with China.
+  - context: []
+  - retrieval context: ["['State of the Union Address given by President Biden on February 7", " 2023'", " 'State of the Union Address given by President Biden on March 1", " 2022'", " 'State of the Union Address given by President Biden on March 7", " 2024'", " 'State of the Union Address given by President Biden on April 29", " 2021'", " 'And my report is this: the State of the Union is strong—because you", ' the American people', " are strong.'", " 'Because the soul of this nation is strong", ' because the backbone of this nation is strong', ' because the people of this nation are strong', " the State of the Union is strong.'", " 'My fellow Americans", ' we have to show not just that we’re back', " but that we’re back to stay and that we aren’t going to go it alone.  (Applause.)  We’re going to do it by leading with our allies.  (Applause.)'", " 'So on this night", ' in our 245th year as a nation', " I have come to report on the State of the Union.'", " 'With light and hope", ' we summoned a new strength', ' new resolve to position us to win the competition of the 21st century', ' on our way to a union more perfect', ' more prosperous', ' and more just', ' as one people', ' one nation', " and one America.'", " 'America is rallying the world again to meet those challenges", ' from climate and global health', ' to food insecurity', " to terrorism and territorial aggression.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.7660095432722538, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Who is the retiring Justice of the United States Supreme Court mentioned in the text, and what is his contribution to the country?
+  - actual output: The retiring Justice of the United States Supreme Court mentioned in the text is an Army veteran, Constitutional scholar, and has dedicated his life to serving the country. 
+
+  - expected output: Justice Stephen Breyer is the retiring Supreme Court justice mentioned by President Biden in his speech. Justice Bryer is an Army veteran, a “Constitutional scholar”, and served as a Justice on the United States Supreme Court.
+  - context: []
+  - retrieval context: ["['Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'Equal protection under the law; that’s the covenant we have with each other in America.'", " 'With a duty to one another to the American people to the Constitution.'", " 'In its decision to overturn Roe v. Wade the Supreme Court majority wrote", " “Women are not without –'", " 'Opening doors of opportunity", " guaranteeing some more fairness and justice — that’s the essence of America.  That’s democracy in action.'", " 'We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours.'", " 'The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Answer Relevancy (ragas) (score: 0.7165926564449164, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the President's statement, who was nominated to fill the Supreme Court seat vacated by Justice Breyer?
+  - actual output: The President nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to fill the Supreme Court seat vacated by Justice Breyer. 
+
+  - expected output: Circuit Court of Appeals Judge Ketanji Brown Jackson was nominated by President Biden to fill the Supreme Court seat vacated by Justice Breyer.
+  - context: []
+  - retrieval context: ["['And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Madam Speaker", ' Madam Vice President', " our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.'", " 'I promised to be the president for all Americans.'", " 'Madam Speaker", ' Madam Vice President — (applause) — no President has ever said those words from this podium.  No President has ever said those words', " and it’s about time.  (Applause.)'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'So what are we waiting for? Let’s get this done. And while you’re at it", ' confirm my nominees to the Federal Reserve', " which plays a critical role in fighting inflation.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'THE PRESIDENT:  Thank you.  (Applause.)  Thank you.  Thank you.  Good to be back.  And Mitch and Chuck will understand it’s good to be almost home", ' down the hall.  Anyway', " thank you all.']"]
+
+======================================================================
+
+Overall Metric Pass Rates
+
+Answer Relevancy (ragas): 81.82% pass rate
+
+======================================================================
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 0.4, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the President plan to grow the economy in his first speech, and what are examples of his successes in this area as shared in his next three speeches?
+  - actual output: The President plans to grow the economy by focusing on the bottom and middle class, rather than trickle-down economics.  His success in this area includes creating more than 1,300,000 new jobs in his first 100 days, a record 12 million new jobs in his first two years, and a 5.7% growth in the economy last year, which is the strongest growth in nearly 40 years. 
+
+  - expected output: In his first speech, the President proposes that his American Jobs Plan will create millions of new jobs and trillions of dollars of economic growth to the economy by bringing Americans back to the workforce. He also says America should grow its economy from the bottom and middle out but does not say how to grow the economy that way. In his following speeches, he says that the American Rescue Plan has created over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three years, and America�s economy increased at a rate of 5.7% the first year. American companies are also investing in increasing manufacturing capabilities in America that would help reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America�s GDP also increased over the three years covered in the speeches.
+  - context: []
+  - retrieval context: ["['And in the process", ' while this was all going on', ' the economy created more than 1', '300', "000 new jobs in 100 days — more jobs in the first — (applause) — more jobs in the first 100 days than any President on record.'", " 'My fellow Americans", " trickle-down — trickle-down economics has never worked and it’s time to grow the economy from the bottom and the middle out. (Applause.)'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'I inherited an economy that was on the brink. Now our economy is the envy of the world!'", " 'As I stand here tonight", ' we have created a record 12 million new jobs', " more jobs created in two years than any president has ever created in four years.'", " 'And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'Since I’ve come to office", " our GDP is up.'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Throughout our history", ' Presidents have come to this chamber to speak to Congress', ' to the nation', ' and to the world to declare war', ' to celebrate peace', " to announce new plans and possibilities.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ Contextual Recall (ragas) (score: 0.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Given Biden's statement about bipartisan cooperation, identify specific instances where Democrats and Republicans have collaborated during his presidency.
+  - actual output: The President highlights several instances of bipartisan cooperation during his presidency, including passing legislation to prevent government shutdowns, protect Asian-Americans from hate crimes, reform military justice, and passing an infrastructure bill.  He also mentions working with Republicans on border security reforms. 
+
+  - expected output: Some examples of bipartisan cooperation during Biden�s administration are Congress passing a significant infrastructure law (the American Rescue Plan), helping veterans exposed to toxic burn pits with the PACT Act, reauthorizing the Violence Against Women Act, passing the Electoral Count Reform Act, passing the CHIPS and Science Act, and authorizing the Respect for Marriage Act.
+  - context: []
+  - retrieval context: ["['Investments in jobs and infrastructure", ' like the ones we’re talking about', " have often had bipartisan support in the past.  Vice President Harris and I met regularly in the Oval Office with Democrats and Republicans to discuss the Jobs Plan.  And I applaud a group of Republican senators who just put forward their own proposal.'", " 'You know", " we’re often told that Democrats and Republicans can’t work together.'", " 'But time and again", " Democrats and Republicans came together.'", " 'When I came to office", " most everyone assumed bipartisanship was impossible. But I never believed it.'", " 'While it often appears that we never agree", " that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice.'", " 'To my Republican friends", ' if we could work together in the last Congress', " there is no reason we can’t work together in this new Congress.'", " 'In November", " my team began serious negotiations with a bipartisan group of Senators.'", " 'Came together to pass a once-in-a-generation infrastructure law", " building bridges to connect our nation and people.'", " 'The result was a bipartisan bill with the toughest set of border security reforms we’ve ever seen'", " 'Yes", ' we disagreed plenty. And yes', " there were times when Democrats had to go it alone.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: What does the President say his administration has successfully done related to AI?
+  - actual output: The President mentions that the United States is investing more in research and development than ever before, thanks to the Chips and Science Act. This is related to AI as the President specifically mentions that the United States will see more technological change in the next 10 years than the last 50, due in part to the rapid development of AI. 
+
+  - expected output: The President does not note any instances of passing AI legislation. However, his administration did pass the American Jobs Act and the Chips and Science Act which will contribute to technological research and advancements in America, some of which, he notes, will likely be related to artificial intelligence.
+  - context: []
+  - retrieval context: ["['And finally", " the American Jobs Plan will be the biggest increase in nondefense research and development on record.  We will see more technological change — and some of you know more about this than I do — we’ll see more technological change in the next 10 years than we saw in the last 50.  That’s how rapidly artificial intelligence and so much more is changing.'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'Today", ' Mr. Secretary', " that’s less than 1 percent.  China and other countries are closing in fast.  We have to develop and dominate the products and technologies of the future:'", " 'Thanks to my Chips and Science Act the United States is investing more in research and development than ever before.'", " 'I’m restoring the program and asked Vice President Harris to lead our diplomatic effort to take care of this.  I have absolute confidence she’ll get the job done.  (Applause.)'", " 'I’ve made sure that the most advanced American technologies can’t be used in China’s weapons.'", " 'The National Institute of Health — the NIH –- I believe", " should create a similar Advanced Research Projects Agency for Health.  (Applause.)'", " 'Every Administration says they’ll do it", " but we are actually doing it.'", " 'The Secretary of Defense can tell you — and those of you on — who work on national security issues know — the Defense Department has an agency called DARPA — the Defense Advanced Research Project Agency.  The people who set up before I came here — and that’s been a long time ago — to develop breakthroughs that enhance our national security -– that’s their only job.  And it’s a semi-separate agency; it’s under the Defense Department.  It’s led to everything from the discovery of the Internet to GPS and so much more that has enhanced our security.'", " 'Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How has the administration improved housing issues during his term in office?
+  - actual output: The administration has implemented several initiatives to improve housing issues, including providing rental assistance to prevent evictions, offering loans to small businesses to help them keep employees, and making it easier for builders to access federal financing to build more housing units.  Additionally, the administration is working to lower the cost of housing by cracking down on landlords who engage in price-fixing, providing a tax credit to help people afford their mortgages, and proposing a plan to build and renovate 2 million affordable homes. 
+
+  - expected output: The American Rescue Plan provided guards to keep people from eviction during the covid-19 pandemic. Later in his presidency, he highlighted work to eliminate title insurance fees on federally backed mortgages, improve opportunities for builders to get finances, reduce price-fixing of rental units, provide housing assistance to veterans, and other work to reduce the price of housing to Americans. He called on Congress to support greater investments in housing reform going forward.
+  - context: []
+  - retrieval context: ["['I’ve cut red tape so more builders can get federal financing", " which is already helping build a record 1.7 million housing units nationwide.'", " 'My Administration is also eliminating title insurance fees for federally backed mortgages.'", " 'We’re also providing rental assistance — you all know this", ' but the American people', ' I want to make sure they understand — keeping people from being evicted from their homes', " providing loans to small businesses to reopen and keep their employees on the job.'", " 'Let’s also finish the job and get more families access to affordable and quality housing.'", " 'My administration is providing assistance with job training and housing", " and now helping lower-income veterans get VA care debt-free.'", " 'Now pass my plan to build and renovate 2 million  affordable homes and bring those rents down!'", " 'For millions of renters", " we’re cracking down on big landlords who break antitrust laws by price-fixing and driving up rents.'", " 'I want to provide an annual tax creditthat will give Americans $400 a month for the next two years as mortgage rates come down to put toward their mortgage when they buy a first home or trade up for a little more space.'", " 'I know the cost of housing is so important to you.'", " 'Helped put food on their table", ' keep a roof over their heads', " and cut the cost of health insurance.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 0.5, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, originally written by Biden, aim to prevent abusers from obtaining firearms through the 'boyfriend loophole'?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act would close the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'In the 10 years the ban was law", ' mass shootings went down. After Republicans let it expire', " mass shootings tripled.'", " 'That includes things that the majority of responsible gun owners support", " like enhanced background checks for 18 to 21-year-olds and red flag laws keeping guns out of the hands of people who are a danger to themselves and others.'", " 'Thank God we did", " passing the most sweeping gun safety law in three decades.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ Contextual Recall (ragas) (score: 0.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, which the President helped author 27 years ago, aim to protect women from violence, especially by closing the 'boyfriend' loophole?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act aims to protect women from violence by closing the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'And I am asking the Vice President to lead this effort", " if she would —'", " 'All Americans deserve the freedom to be safe", " and America is safer today than when I took office.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.'", " 'With the support of families of victims", ' civil rights groups', ' and law enforcement', ' I signed an executive order for all federal officers banning chokeholds', ' restricting no-knock warrants', " and other key elements of the George Floyd Act.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 0.5, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the economic policies implemented by the current administration, and the stated goals to increase economic growth and job creation, explain how these initiatives contribute to the observed economic expansion.
+  - actual output: The administration's economic policies aim to increase productivity and economic growth by investing in infrastructure, education, and workforce development. These investments are intended to create jobs, boost economic activity, and ultimately lead to a stronger and more resilient economy. The administration's focus on "building the economy from the bottom up" suggests a belief that these investments will benefit all Americans, not just the wealthy. 
+
+  - expected output: The current administration created and passed the American Rescue Plan, which was partially responsible for  the creation of over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three yearsin America. America’s economy increased at a rate of 5.7% the first year of the administration. American companies also invested in increasing manufacturing capabilities in America that helps reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America’s GDP also increased over the course of the administration.
+  - context: []
+  - retrieval context: ["['And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'In fact—our economy created over 6.5 Million new jobs just last year", " more jobs created in one year'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'Economists call it “increasing the productive capacity of our economy.”'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up'", " 'The last administration enacted a $2 Trillion tax cut that overwhelmingly benefits the very wealthy and the biggest corporations and exploded the federal deficit.'", " 'Independent experts estimate the American Jobs Plan will add millions of jobs and trillions of dollars to economic growth in the years to come.  It is a — it is an eight-year program.  These are good-paying jobs that can’t be outsourced.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: In President Biden’s 2022 State of the Union speech, given that supply chain disruptions and labor shortages have impacted production, what are the factors contributing to elevated inflation in the US?
+  - actual output: The pandemic and the war in Ukraine have disrupted supply chains and energy and food supplies, leading to higher prices for goods and services. Factory closures have slowed production and delivery times, resulting in increased costs. The shortage of semiconductor chips has also driven up prices for various products.  The rapid economic recovery following the pandemic has created labor shortages, making it difficult for businesses to keep up with production demands.  These factors have contributed to a rise in inflation, affecting the cost of essential items such as food, gas, housing, and consumer goods. 
+
+  - expected output: Some of the factors contributing to increased inflation in the US, as shared in the 2022 address, are a direct result of the covid-19 pandemic. During the pandemic, businesses could not hire enough factory workers, and global supply chains were disrupted, leading to fewer goods being produced as quickly and higher prices for those goods.
+  - context: []
+  - retrieval context: ["['Inflation has been a global problem because of the pandemic that disrupted supply chains and Putin’s war that disrupted energy and food supplies.'", " 'When factories close", ' it takes longer to make goods and get them from the warehouse to the store', " and prices go up.'", " 'During the pandemic a shortage of semiconductor chips drove up prices for everything from cell phones to automobiles.'", " 'The pandemic also disrupted global supply chains.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.'", " 'And so many families are living paycheck to paycheck", ' struggling to keep up with the rising cost of food', ' gas', ' housing', " and so much more.'", " 'Car prices went up. So did everything from refrigerators to cellphones.'", " 'Wages keep going up and inflation keeps coming down!'", " 'Inflation is robbing them of the gains they might otherwise feel.'", " 'One way to fight inflation is to drive down wages and make Americans poorer.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 0.5, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Analyze President Biden's 2023 State of the Union speech, identifying its central theme and the key messages he conveyed regarding America's domestic and foreign policy priorities.
+  - actual output: President Biden's speech emphasizes the strength and resilience of the American people, both domestically and internationally. He highlights the nation's ability to overcome challenges and emerge stronger, positioning itself to win the competition of the 21st century. The speech underscores the importance of unity and collaboration, both within the nation and with global allies, to address critical issues like climate change, global health, food insecurity, terrorism, and territorial aggression. 
+
+  - expected output: In his third State of the Union address, President Biden focuses on rebuilding America, highlighting the economic progress of the country over the last two years of his Presidency and asking Congress to continue supporting legislation to help the economy improve. He also reinforces America’s support to Ukraine in their war against Russia and welcomes competition instead of conflict with China.
+  - context: []
+  - retrieval context: ["['State of the Union Address given by President Biden on February 7", " 2023'", " 'State of the Union Address given by President Biden on March 1", " 2022'", " 'State of the Union Address given by President Biden on March 7", " 2024'", " 'State of the Union Address given by President Biden on April 29", " 2021'", " 'And my report is this: the State of the Union is strong—because you", ' the American people', " are strong.'", " 'Because the soul of this nation is strong", ' because the backbone of this nation is strong', ' because the people of this nation are strong', " the State of the Union is strong.'", " 'My fellow Americans", ' we have to show not just that we’re back', " but that we’re back to stay and that we aren’t going to go it alone.  (Applause.)  We’re going to do it by leading with our allies.  (Applause.)'", " 'So on this night", ' in our 245th year as a nation', " I have come to report on the State of the Union.'", " 'With light and hope", ' we summoned a new strength', ' new resolve to position us to win the competition of the 21st century', ' on our way to a union more perfect', ' more prosperous', ' and more just', ' as one people', ' one nation', " and one America.'", " 'America is rallying the world again to meet those challenges", ' from climate and global health', ' to food insecurity', " to terrorism and territorial aggression.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Who is the retiring Justice of the United States Supreme Court mentioned in the text, and what is his contribution to the country?
+  - actual output: The retiring Justice of the United States Supreme Court mentioned in the text is an Army veteran, Constitutional scholar, and has dedicated his life to serving the country. 
+
+  - expected output: Justice Stephen Breyer is the retiring Supreme Court justice mentioned by President Biden in his speech. Justice Bryer is an Army veteran, a “Constitutional scholar”, and served as a Justice on the United States Supreme Court.
+  - context: []
+  - retrieval context: ["['Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'Equal protection under the law; that’s the covenant we have with each other in America.'", " 'With a duty to one another to the American people to the Constitution.'", " 'In its decision to overturn Roe v. Wade the Supreme Court majority wrote", " “Women are not without –'", " 'Opening doors of opportunity", " guaranteeing some more fairness and justice — that’s the essence of America.  That’s democracy in action.'", " 'We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours.'", " 'The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Recall (ragas) (score: 1.0, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the President's statement, who was nominated to fill the Supreme Court seat vacated by Justice Breyer?
+  - actual output: The President nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to fill the Supreme Court seat vacated by Justice Breyer. 
+
+  - expected output: Circuit Court of Appeals Judge Ketanji Brown Jackson was nominated by President Biden to fill the Supreme Court seat vacated by Justice Breyer.
+  - context: []
+  - retrieval context: ["['And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Madam Speaker", ' Madam Vice President', " our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.'", " 'I promised to be the president for all Americans.'", " 'Madam Speaker", ' Madam Vice President — (applause) — no President has ever said those words from this podium.  No President has ever said those words', " and it’s about time.  (Applause.)'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'So what are we waiting for? Let’s get this done. And while you’re at it", ' confirm my nominees to the Federal Reserve', " which plays a critical role in fighting inflation.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'THE PRESIDENT:  Thank you.  (Applause.)  Thank you.  Thank you.  Good to be back.  And Mitch and Chuck will understand it’s good to be almost home", ' down the hall.  Anyway', " thank you all.']"]
+
+======================================================================
+
+Overall Metric Pass Rates
+
+Contextual Recall (ragas): 81.82% pass rate
+
+======================================================================
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.61493247104463, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the President plan to grow the economy in his first speech, and what are examples of his successes in this area as shared in his next three speeches?
+  - actual output: The President plans to grow the economy by focusing on the bottom and middle class, rather than trickle-down economics.  His success in this area includes creating more than 1,300,000 new jobs in his first 100 days, a record 12 million new jobs in his first two years, and a 5.7% growth in the economy last year, which is the strongest growth in nearly 40 years. 
+
+  - expected output: In his first speech, the President proposes that his American Jobs Plan will create millions of new jobs and trillions of dollars of economic growth to the economy by bringing Americans back to the workforce. He also says America should grow its economy from the bottom and middle out but does not say how to grow the economy that way. In his following speeches, he says that the American Rescue Plan has created over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three years, and America�s economy increased at a rate of 5.7% the first year. American companies are also investing in increasing manufacturing capabilities in America that would help reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America�s GDP also increased over the three years covered in the speeches.
+  - context: []
+  - retrieval context: ["['And in the process", ' while this was all going on', ' the economy created more than 1', '300', "000 new jobs in 100 days — more jobs in the first — (applause) — more jobs in the first 100 days than any President on record.'", " 'My fellow Americans", " trickle-down — trickle-down economics has never worked and it’s time to grow the economy from the bottom and the middle out. (Applause.)'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'I inherited an economy that was on the brink. Now our economy is the envy of the world!'", " 'As I stand here tonight", ' we have created a record 12 million new jobs', " more jobs created in two years than any president has ever created in four years.'", " 'And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'Since I’ve come to office", " our GDP is up.'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Throughout our history", ' Presidents have come to this chamber to speak to Congress', ' to the nation', ' and to the world to declare war', ' to celebrate peace', " to announce new plans and possibilities.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.5588235293838235, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Given Biden's statement about bipartisan cooperation, identify specific instances where Democrats and Republicans have collaborated during his presidency.
+  - actual output: The President highlights several instances of bipartisan cooperation during his presidency, including passing legislation to prevent government shutdowns, protect Asian-Americans from hate crimes, reform military justice, and passing an infrastructure bill.  He also mentions working with Republicans on border security reforms. 
+
+  - expected output: Some examples of bipartisan cooperation during Biden�s administration are Congress passing a significant infrastructure law (the American Rescue Plan), helping veterans exposed to toxic burn pits with the PACT Act, reauthorizing the Violence Against Women Act, passing the Electoral Count Reform Act, passing the CHIPS and Science Act, and authorizing the Respect for Marriage Act.
+  - context: []
+  - retrieval context: ["['Investments in jobs and infrastructure", ' like the ones we’re talking about', " have often had bipartisan support in the past.  Vice President Harris and I met regularly in the Oval Office with Democrats and Republicans to discuss the Jobs Plan.  And I applaud a group of Republican senators who just put forward their own proposal.'", " 'You know", " we’re often told that Democrats and Republicans can’t work together.'", " 'But time and again", " Democrats and Republicans came together.'", " 'When I came to office", " most everyone assumed bipartisanship was impossible. But I never believed it.'", " 'While it often appears that we never agree", " that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice.'", " 'To my Republican friends", ' if we could work together in the last Congress', " there is no reason we can’t work together in this new Congress.'", " 'In November", " my team began serious negotiations with a bipartisan group of Senators.'", " 'Came together to pass a once-in-a-generation infrastructure law", " building bridges to connect our nation and people.'", " 'The result was a bipartisan bill with the toughest set of border security reforms we’ve ever seen'", " 'Yes", ' we disagreed plenty. And yes', " there were times when Democrats had to go it alone.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.3928571428375, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: What does the President say his administration has successfully done related to AI?
+  - actual output: The President mentions that the United States is investing more in research and development than ever before, thanks to the Chips and Science Act. This is related to AI as the President specifically mentions that the United States will see more technological change in the next 10 years than the last 50, due in part to the rapid development of AI. 
+
+  - expected output: The President does not note any instances of passing AI legislation. However, his administration did pass the American Jobs Act and the Chips and Science Act which will contribute to technological research and advancements in America, some of which, he notes, will likely be related to artificial intelligence.
+  - context: []
+  - retrieval context: ["['And finally", " the American Jobs Plan will be the biggest increase in nondefense research and development on record.  We will see more technological change — and some of you know more about this than I do — we’ll see more technological change in the next 10 years than we saw in the last 50.  That’s how rapidly artificial intelligence and so much more is changing.'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'Today", ' Mr. Secretary', " that’s less than 1 percent.  China and other countries are closing in fast.  We have to develop and dominate the products and technologies of the future:'", " 'Thanks to my Chips and Science Act the United States is investing more in research and development than ever before.'", " 'I’m restoring the program and asked Vice President Harris to lead our diplomatic effort to take care of this.  I have absolute confidence she’ll get the job done.  (Applause.)'", " 'I’ve made sure that the most advanced American technologies can’t be used in China’s weapons.'", " 'The National Institute of Health — the NIH –- I believe", " should create a similar Advanced Research Projects Agency for Health.  (Applause.)'", " 'Every Administration says they’ll do it", " but we are actually doing it.'", " 'The Secretary of Defense can tell you — and those of you on — who work on national security issues know — the Defense Department has an agency called DARPA — the Defense Advanced Research Project Agency.  The people who set up before I came here — and that’s been a long time ago — to develop breakthroughs that enhance our national security -– that’s their only job.  And it’s a semi-separate agency; it’s under the Defense Department.  It’s led to everything from the discovery of the Internet to GPS and so much more that has enhanced our security.'", " 'Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.4313131313059428, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How has the administration improved housing issues during his term in office?
+  - actual output: The administration has implemented several initiatives to improve housing issues, including providing rental assistance to prevent evictions, offering loans to small businesses to help them keep employees, and making it easier for builders to access federal financing to build more housing units.  Additionally, the administration is working to lower the cost of housing by cracking down on landlords who engage in price-fixing, providing a tax credit to help people afford their mortgages, and proposing a plan to build and renovate 2 million affordable homes. 
+
+  - expected output: The American Rescue Plan provided guards to keep people from eviction during the covid-19 pandemic. Later in his presidency, he highlighted work to eliminate title insurance fees on federally backed mortgages, improve opportunities for builders to get finances, reduce price-fixing of rental units, provide housing assistance to veterans, and other work to reduce the price of housing to Americans. He called on Congress to support greater investments in housing reform going forward.
+  - context: []
+  - retrieval context: ["['I’ve cut red tape so more builders can get federal financing", " which is already helping build a record 1.7 million housing units nationwide.'", " 'My Administration is also eliminating title insurance fees for federally backed mortgages.'", " 'We’re also providing rental assistance — you all know this", ' but the American people', ' I want to make sure they understand — keeping people from being evicted from their homes', " providing loans to small businesses to reopen and keep their employees on the job.'", " 'Let’s also finish the job and get more families access to affordable and quality housing.'", " 'My administration is providing assistance with job training and housing", " and now helping lower-income veterans get VA care debt-free.'", " 'Now pass my plan to build and renovate 2 million  affordable homes and bring those rents down!'", " 'For millions of renters", " we’re cracking down on big landlords who break antitrust laws by price-fixing and driving up rents.'", " 'I want to provide an annual tax creditthat will give Americans $400 a month for the next two years as mortgage rates come down to put toward their mortgage when they buy a first home or trade up for a little more space.'", " 'I know the cost of housing is so important to you.'", " 'Helped put food on their table", ' keep a roof over their heads', " and cut the cost of health insurance.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.3333333333, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, originally written by Biden, aim to prevent abusers from obtaining firearms through the 'boyfriend loophole'?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act would close the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'In the 10 years the ban was law", ' mass shootings went down. After Republicans let it expire', " mass shootings tripled.'", " 'That includes things that the majority of responsible gun owners support", " like enhanced background checks for 18 to 21-year-olds and red flag laws keeping guns out of the hands of people who are a danger to themselves and others.'", " 'Thank God we did", " passing the most sweeping gun safety law in three decades.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.3333333333, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, which the President helped author 27 years ago, aim to protect women from violence, especially by closing the 'boyfriend' loophole?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act aims to protect women from violence by closing the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'And I am asking the Vice President to lead this effort", " if she would —'", " 'All Americans deserve the freedom to be safe", " and America is safer today than when I took office.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.'", " 'With the support of families of victims", ' civil rights groups', ' and law enforcement', ' I signed an executive order for all federal officers banning chokeholds', ' restricting no-knock warrants', " and other key elements of the George Floyd Act.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.6533333333202667, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the economic policies implemented by the current administration, and the stated goals to increase economic growth and job creation, explain how these initiatives contribute to the observed economic expansion.
+  - actual output: The administration's economic policies aim to increase productivity and economic growth by investing in infrastructure, education, and workforce development. These investments are intended to create jobs, boost economic activity, and ultimately lead to a stronger and more resilient economy. The administration's focus on "building the economy from the bottom up" suggests a belief that these investments will benefit all Americans, not just the wealthy. 
+
+  - expected output: The current administration created and passed the American Rescue Plan, which was partially responsible for  the creation of over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three yearsin America. America’s economy increased at a rate of 5.7% the first year of the administration. American companies also invested in increasing manufacturing capabilities in America that helps reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America’s GDP also increased over the course of the administration.
+  - context: []
+  - retrieval context: ["['And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'In fact—our economy created over 6.5 Million new jobs just last year", " more jobs created in one year'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'Economists call it “increasing the productive capacity of our economy.”'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up'", " 'The last administration enacted a $2 Trillion tax cut that overwhelmingly benefits the very wealthy and the biggest corporations and exploded the federal deficit.'", " 'Independent experts estimate the American Jobs Plan will add millions of jobs and trillions of dollars to economic growth in the years to come.  It is a — it is an eight-year program.  These are good-paying jobs that can’t be outsourced.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.8159663865429652, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: In President Biden’s 2022 State of the Union speech, given that supply chain disruptions and labor shortages have impacted production, what are the factors contributing to elevated inflation in the US?
+  - actual output: The pandemic and the war in Ukraine have disrupted supply chains and energy and food supplies, leading to higher prices for goods and services. Factory closures have slowed production and delivery times, resulting in increased costs. The shortage of semiconductor chips has also driven up prices for various products.  The rapid economic recovery following the pandemic has created labor shortages, making it difficult for businesses to keep up with production demands.  These factors have contributed to a rise in inflation, affecting the cost of essential items such as food, gas, housing, and consumer goods. 
+
+  - expected output: Some of the factors contributing to increased inflation in the US, as shared in the 2022 address, are a direct result of the covid-19 pandemic. During the pandemic, businesses could not hire enough factory workers, and global supply chains were disrupted, leading to fewer goods being produced as quickly and higher prices for those goods.
+  - context: []
+  - retrieval context: ["['Inflation has been a global problem because of the pandemic that disrupted supply chains and Putin’s war that disrupted energy and food supplies.'", " 'When factories close", ' it takes longer to make goods and get them from the warehouse to the store', " and prices go up.'", " 'During the pandemic a shortage of semiconductor chips drove up prices for everything from cell phones to automobiles.'", " 'The pandemic also disrupted global supply chains.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.'", " 'And so many families are living paycheck to paycheck", ' struggling to keep up with the rising cost of food', ' gas', ' housing', " and so much more.'", " 'Car prices went up. So did everything from refrigerators to cellphones.'", " 'Wages keep going up and inflation keeps coming down!'", " 'Inflation is robbing them of the gains they might otherwise feel.'", " 'One way to fight inflation is to drive down wages and make Americans poorer.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.5833333333041666, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Who is the retiring Justice of the United States Supreme Court mentioned in the text, and what is his contribution to the country?
+  - actual output: The retiring Justice of the United States Supreme Court mentioned in the text is an Army veteran, Constitutional scholar, and has dedicated his life to serving the country. 
+
+  - expected output: Justice Stephen Breyer is the retiring Supreme Court justice mentioned by President Biden in his speech. Justice Bryer is an Army veteran, a “Constitutional scholar”, and served as a Justice on the United States Supreme Court.
+  - context: []
+  - retrieval context: ["['Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'Equal protection under the law; that’s the covenant we have with each other in America.'", " 'With a duty to one another to the American people to the Constitution.'", " 'In its decision to overturn Roe v. Wade the Supreme Court majority wrote", " “Women are not without –'", " 'Opening doors of opportunity", " guaranteeing some more fairness and justice — that’s the essence of America.  That’s democracy in action.'", " 'We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours.'", " 'The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ Contextual Precision (ragas) (score: 0.2087301587271769, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Analyze President Biden's 2023 State of the Union speech, identifying its central theme and the key messages he conveyed regarding America's domestic and foreign policy priorities.
+  - actual output: President Biden's speech emphasizes the strength and resilience of the American people, both domestically and internationally. He highlights the nation's ability to overcome challenges and emerge stronger, positioning itself to win the competition of the 21st century. The speech underscores the importance of unity and collaboration, both within the nation and with global allies, to address critical issues like climate change, global health, food insecurity, terrorism, and territorial aggression. 
+
+  - expected output: In his third State of the Union address, President Biden focuses on rebuilding America, highlighting the economic progress of the country over the last two years of his Presidency and asking Congress to continue supporting legislation to help the economy improve. He also reinforces America’s support to Ukraine in their war against Russia and welcomes competition instead of conflict with China.
+  - context: []
+  - retrieval context: ["['State of the Union Address given by President Biden on February 7", " 2023'", " 'State of the Union Address given by President Biden on March 1", " 2022'", " 'State of the Union Address given by President Biden on March 7", " 2024'", " 'State of the Union Address given by President Biden on April 29", " 2021'", " 'And my report is this: the State of the Union is strong—because you", ' the American people', " are strong.'", " 'Because the soul of this nation is strong", ' because the backbone of this nation is strong', ' because the people of this nation are strong', " the State of the Union is strong.'", " 'My fellow Americans", ' we have to show not just that we’re back', " but that we’re back to stay and that we aren’t going to go it alone.  (Applause.)  We’re going to do it by leading with our allies.  (Applause.)'", " 'So on this night", ' in our 245th year as a nation', " I have come to report on the State of the Union.'", " 'With light and hope", ' we summoned a new strength', ' new resolve to position us to win the competition of the 21st century', ' on our way to a union more perfect', ' more prosperous', ' and more just', ' as one people', ' one nation', " and one America.'", " 'America is rallying the world again to meet those challenges", ' from climate and global health', ' to food insecurity', " to terrorism and territorial aggression.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ Contextual Precision (ragas) (score: 0.49999999995, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the President's statement, who was nominated to fill the Supreme Court seat vacated by Justice Breyer?
+  - actual output: The President nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to fill the Supreme Court seat vacated by Justice Breyer. 
+
+  - expected output: Circuit Court of Appeals Judge Ketanji Brown Jackson was nominated by President Biden to fill the Supreme Court seat vacated by Justice Breyer.
+  - context: []
+  - retrieval context: ["['And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Madam Speaker", ' Madam Vice President', " our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.'", " 'I promised to be the president for all Americans.'", " 'Madam Speaker", ' Madam Vice President — (applause) — no President has ever said those words from this podium.  No President has ever said those words', " and it’s about time.  (Applause.)'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'So what are we waiting for? Let’s get this done. And while you’re at it", ' confirm my nominees to the Federal Reserve', " which plays a critical role in fighting inflation.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'THE PRESIDENT:  Thank you.  (Applause.)  Thank you.  Thank you.  Good to be back.  And Mitch and Chuck will understand it’s good to be almost home", ' down the hall.  Anyway', " thank you all.']"]
+
+======================================================================
+
+Overall Metric Pass Rates
+
+Contextual Precision (ragas): 90.91% pass rate
+
+======================================================================
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ RAGAS (score: 0.7089341345211473, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: What does the President say his administration has successfully done related to AI?
+  - actual output: The President mentions that the United States is investing more in research and development than ever before, thanks to the Chips and Science Act. This is related to AI as the President specifically mentions that the United States will see more technological change in the next 10 years than the last 50, due in part to the rapid development of AI. 
+
+  - expected output: The President does not note any instances of passing AI legislation. However, his administration did pass the American Jobs Act and the Chips and Science Act which will contribute to technological research and advancements in America, some of which, he notes, will likely be related to artificial intelligence.
+  - context: []
+  - retrieval context: ["['And finally", " the American Jobs Plan will be the biggest increase in nondefense research and development on record.  We will see more technological change — and some of you know more about this than I do — we’ll see more technological change in the next 10 years than we saw in the last 50.  That’s how rapidly artificial intelligence and so much more is changing.'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'Today", ' Mr. Secretary', " that’s less than 1 percent.  China and other countries are closing in fast.  We have to develop and dominate the products and technologies of the future:'", " 'Thanks to my Chips and Science Act the United States is investing more in research and development than ever before.'", " 'I’m restoring the program and asked Vice President Harris to lead our diplomatic effort to take care of this.  I have absolute confidence she’ll get the job done.  (Applause.)'", " 'I’ve made sure that the most advanced American technologies can’t be used in China’s weapons.'", " 'The National Institute of Health — the NIH –- I believe", " should create a similar Advanced Research Projects Agency for Health.  (Applause.)'", " 'Every Administration says they’ll do it", " but we are actually doing it.'", " 'The Secretary of Defense can tell you — and those of you on — who work on national security issues know — the Defense Department has an agency called DARPA — the Defense Advanced Research Project Agency.  The people who set up before I came here — and that’s been a long time ago — to develop breakthroughs that enhance our national security -– that’s their only job.  And it’s a semi-separate agency; it’s under the Defense Department.  It’s led to everything from the discovery of the Internet to GPS and so much more that has enhanced our security.'", " 'Investing in our alliances and working with our allies to protect our advanced technologies so they’re not used against us.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ RAGAS (score: nan, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, originally written by Biden, aim to prevent abusers from obtaining firearms through the 'boyfriend loophole'?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act would close the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'In the 10 years the ban was law", ' mass shootings went down. After Republicans let it expire', " mass shootings tripled.'", " 'That includes things that the majority of responsible gun owners support", " like enhanced background checks for 18 to 21-year-olds and red flag laws keeping guns out of the hands of people who are a danger to themselves and others.'", " 'Thank God we did", " passing the most sweeping gun safety law in three decades.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ RAGAS (score: 0.8707406389726244, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: In President Biden’s 2022 State of the Union speech, given that supply chain disruptions and labor shortages have impacted production, what are the factors contributing to elevated inflation in the US?
+  - actual output: The pandemic and the war in Ukraine have disrupted supply chains and energy and food supplies, leading to higher prices for goods and services. Factory closures have slowed production and delivery times, resulting in increased costs. The shortage of semiconductor chips has also driven up prices for various products.  The rapid economic recovery following the pandemic has created labor shortages, making it difficult for businesses to keep up with production demands.  These factors have contributed to a rise in inflation, affecting the cost of essential items such as food, gas, housing, and consumer goods. 
+
+  - expected output: Some of the factors contributing to increased inflation in the US, as shared in the 2022 address, are a direct result of the covid-19 pandemic. During the pandemic, businesses could not hire enough factory workers, and global supply chains were disrupted, leading to fewer goods being produced as quickly and higher prices for those goods.
+  - context: []
+  - retrieval context: ["['Inflation has been a global problem because of the pandemic that disrupted supply chains and Putin’s war that disrupted energy and food supplies.'", " 'When factories close", ' it takes longer to make goods and get them from the warehouse to the store', " and prices go up.'", " 'During the pandemic a shortage of semiconductor chips drove up prices for everything from cell phones to automobiles.'", " 'The pandemic also disrupted global supply chains.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.'", " 'And so many families are living paycheck to paycheck", ' struggling to keep up with the rising cost of food', ' gas', ' housing', " and so much more.'", " 'Car prices went up. So did everything from refrigerators to cellphones.'", " 'Wages keep going up and inflation keeps coming down!'", " 'Inflation is robbing them of the gains they might otherwise feel.'", " 'One way to fight inflation is to drive down wages and make Americans poorer.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ RAGAS (score: nan, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the economic policies implemented by the current administration, and the stated goals to increase economic growth and job creation, explain how these initiatives contribute to the observed economic expansion.
+  - actual output: The administration's economic policies aim to increase productivity and economic growth by investing in infrastructure, education, and workforce development. These investments are intended to create jobs, boost economic activity, and ultimately lead to a stronger and more resilient economy. The administration's focus on "building the economy from the bottom up" suggests a belief that these investments will benefit all Americans, not just the wealthy. 
+
+  - expected output: The current administration created and passed the American Rescue Plan, which was partially responsible for  the creation of over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three yearsin America. America’s economy increased at a rate of 5.7% the first year of the administration. American companies also invested in increasing manufacturing capabilities in America that helps reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America’s GDP also increased over the course of the administration.
+  - context: []
+  - retrieval context: ["['And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'In fact—our economy created over 6.5 Million new jobs just last year", " more jobs created in one year'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'Economists call it “increasing the productive capacity of our economy.”'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'Invest in America. Educate Americans. Grow the workforce. Build the economy from the bottom up'", " 'The last administration enacted a $2 Trillion tax cut that overwhelmingly benefits the very wealthy and the biggest corporations and exploded the federal deficit.'", " 'Independent experts estimate the American Jobs Plan will add millions of jobs and trillions of dollars to economic growth in the years to come.  It is a — it is an eight-year program.  These are good-paying jobs that can’t be outsourced.'", " 'Look", ' our economy roared back faster than most predicted', " but the pandemic meant that businesses had a hard time hiring enough workers to keep up production in their factories.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ RAGAS (score: 0.8041481640987291, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Considering the President's statement, who was nominated to fill the Supreme Court seat vacated by Justice Breyer?
+  - actual output: The President nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to fill the Supreme Court seat vacated by Justice Breyer. 
+
+  - expected output: Circuit Court of Appeals Judge Ketanji Brown Jackson was nominated by President Biden to fill the Supreme Court seat vacated by Justice Breyer.
+  - context: []
+  - retrieval context: ["['And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Madam Speaker", ' Madam Vice President', " our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.'", " 'I promised to be the president for all Americans.'", " 'Madam Speaker", ' Madam Vice President — (applause) — no President has ever said those words from this podium.  No President has ever said those words', " and it’s about time.  (Applause.)'", " 'THE PRESIDENT:  — because I know it will get done.  (Applause.)'", " 'So what are we waiting for? Let’s get this done. And while you’re at it", ' confirm my nominees to the Federal Reserve', " which plays a critical role in fighting inflation.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'THE PRESIDENT:  Thank you.  (Applause.)  Thank you.  Thank you.  Good to be back.  And Mitch and Chuck will understand it’s good to be almost home", ' down the hall.  Anyway', " thank you all.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ RAGAS (score: 	, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Who is the retiring Justice of the United States Supreme Court mentioned in the text, and what is his contribution to the country?
+  - actual output: The retiring Justice of the United States Supreme Court mentioned in the text is an Army veteran, Constitutional scholar, and has dedicated his life to serving the country. 
+
+  - expected output: Justice Stephen Breyer is the retiring Supreme Court justice mentioned by President Biden in his speech. Justice Bryer is an Army veteran, a “Constitutional scholar”, and served as a Justice on the United States Supreme Court.
+  - context: []
+  - retrieval context: ["['Tonight", ' I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran', ' Constitutional scholar', ' and retiring Justice of the United States Supreme Court. Justice Breyer', " thank you for your service.'", " 'And I did that 4 days ago", ' when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds', " who will continue Justice Breyer’s legacy of excellence.'", " 'One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.'", " 'Mr. Chief Justice", ' Associate Justices', " and retired Justices of the Supreme Court.'", " 'Equal protection under the law; that’s the covenant we have with each other in America.'", " 'With a duty to one another to the American people to the Constitution.'", " 'In its decision to overturn Roe v. Wade the Supreme Court majority wrote", " “Women are not without –'", " 'Opening doors of opportunity", " guaranteeing some more fairness and justice — that’s the essence of America.  That’s democracy in action.'", " 'We can do all this while keeping lit the torch of liberty that has led generations of immigrants to this land—my forefathers and so many of yours.'", " 'The constitutional right affirmed in Roe v. Wade—standing precedent for half a century—is under attack as never before.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ RAGAS (score: nan, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Analyze President Biden's 2023 State of the Union speech, identifying its central theme and the key messages he conveyed regarding America's domestic and foreign policy priorities.
+  - actual output: President Biden's speech emphasizes the strength and resilience of the American people, both domestically and internationally. He highlights the nation's ability to overcome challenges and emerge stronger, positioning itself to win the competition of the 21st century. The speech underscores the importance of unity and collaboration, both within the nation and with global allies, to address critical issues like climate change, global health, food insecurity, terrorism, and territorial aggression. 
+
+  - expected output: In his third State of the Union address, President Biden focuses on rebuilding America, highlighting the economic progress of the country over the last two years of his Presidency and asking Congress to continue supporting legislation to help the economy improve. He also reinforces America’s support to Ukraine in their war against Russia and welcomes competition instead of conflict with China.
+  - context: []
+  - retrieval context: ["['State of the Union Address given by President Biden on February 7", " 2023'", " 'State of the Union Address given by President Biden on March 1", " 2022'", " 'State of the Union Address given by President Biden on March 7", " 2024'", " 'State of the Union Address given by President Biden on April 29", " 2021'", " 'And my report is this: the State of the Union is strong—because you", ' the American people', " are strong.'", " 'Because the soul of this nation is strong", ' because the backbone of this nation is strong', ' because the people of this nation are strong', " the State of the Union is strong.'", " 'My fellow Americans", ' we have to show not just that we’re back', " but that we’re back to stay and that we aren’t going to go it alone.  (Applause.)  We’re going to do it by leading with our allies.  (Applause.)'", " 'So on this night", ' in our 245th year as a nation', " I have come to report on the State of the Union.'", " 'With light and hope", ' we summoned a new strength', ' new resolve to position us to win the competition of the 21st century', ' on our way to a union more perfect', ' more prosperous', ' and more just', ' as one people', ' one nation', " and one America.'", " 'America is rallying the world again to meet those challenges", ' from climate and global health', ' to food insecurity', " to terrorism and territorial aggression.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ RAGAS (score: nan, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the Violence Against Women Act, which the President helped author 27 years ago, aim to protect women from violence, especially by closing the 'boyfriend' loophole?
+  - actual output: Empty Response
+  - expected output: The Violence Against Women Act aims to protect women from violence by closing the boyfriend loophole and other loopholes by requiring background checks before purchasing a gun. However, the speaker does not add additional information as to how this would be done or more details about when background checks would be required.
+  - context: []
+  - retrieval context: ["['Another thing: Let’s authorize the Violence Against Women Act", ' which has been law for 27 years.  (Applause.)  Twenty-seven years ago', ' I wrote it.  It’ll close the — the act that has to be authorized now will close the “boyfriend” loophole to keep guns out of the hands of abusers.  The court order said', " “This is an abuser.  You can’t own a gun.”  It’s to close that loophole that existed.'", " 'To take on crimes of domestic violence", ' I am ramping up federal enforcement of the Violence Against Women Act', ' that I proudly wrote', " so we can finally end the scourge of violence against women in America!'", " 'In fact", ' I signed over 300 bipartisan laws since becoming President. From reauthorizing the Violence Against Women Act', ' to the Electoral Count Reform Act', " to the Respect for Marriage Act that protects the right to marry the person you love.'", " 'And soon", " we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things.'", " 'You know", " it’s estimated that 50 women are shot and killed by an intimate partner every month in America — 50 a month.  Let’s pass it and save some lives.  (Applause.)'", " 'I did do something by establishing the first-ever Office of Gun Violence Prevention in the White House that Vice President Harris is leading.'", " 'And I am asking the Vice President to lead this effort", " if she would —'", " 'All Americans deserve the freedom to be safe", " and America is safer today than when I took office.'", " 'More than two weeks ago in the Rose Garden", " surrounded by some of the bravest people I know — the survivors and families who lost loved ones to gun violence — I laid out several of the Department of Justice a- — actions that are being taken to — impact on this epidemic.'", " 'With the support of families of victims", ' civil rights groups', ' and law enforcement', ' I signed an executive order for all federal officers banning chokeholds', ' restricting no-knock warrants', " and other key elements of the George Floyd Act.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ❌ RAGAS (score: nan, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How has the administration improved housing issues during his term in office?
+  - actual output: The administration has implemented several initiatives to improve housing issues, including providing rental assistance to prevent evictions, offering loans to small businesses to help them keep employees, and making it easier for builders to access federal financing to build more housing units.  Additionally, the administration is working to lower the cost of housing by cracking down on landlords who engage in price-fixing, providing a tax credit to help people afford their mortgages, and proposing a plan to build and renovate 2 million affordable homes. 
+
+  - expected output: The American Rescue Plan provided guards to keep people from eviction during the covid-19 pandemic. Later in his presidency, he highlighted work to eliminate title insurance fees on federally backed mortgages, improve opportunities for builders to get finances, reduce price-fixing of rental units, provide housing assistance to veterans, and other work to reduce the price of housing to Americans. He called on Congress to support greater investments in housing reform going forward.
+  - context: []
+  - retrieval context: ["['I’ve cut red tape so more builders can get federal financing", " which is already helping build a record 1.7 million housing units nationwide.'", " 'My Administration is also eliminating title insurance fees for federally backed mortgages.'", " 'We’re also providing rental assistance — you all know this", ' but the American people', ' I want to make sure they understand — keeping people from being evicted from their homes', " providing loans to small businesses to reopen and keep their employees on the job.'", " 'Let’s also finish the job and get more families access to affordable and quality housing.'", " 'My administration is providing assistance with job training and housing", " and now helping lower-income veterans get VA care debt-free.'", " 'Now pass my plan to build and renovate 2 million  affordable homes and bring those rents down!'", " 'For millions of renters", " we’re cracking down on big landlords who break antitrust laws by price-fixing and driving up rents.'", " 'I want to provide an annual tax creditthat will give Americans $400 a month for the next two years as mortgage rates come down to put toward their mortgage when they buy a first home or trade up for a little more space.'", " 'I know the cost of housing is so important to you.'", " 'Helped put food on their table", ' keep a roof over their heads', " and cut the cost of health insurance.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ RAGAS (score: 0.46520383493526185, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: Given Biden's statement about bipartisan cooperation, identify specific instances where Democrats and Republicans have collaborated during his presidency.
+  - actual output: The President highlights several instances of bipartisan cooperation during his presidency, including passing legislation to prevent government shutdowns, protect Asian-Americans from hate crimes, reform military justice, and passing an infrastructure bill.  He also mentions working with Republicans on border security reforms. 
+
+  - expected output: Some examples of bipartisan cooperation during Biden�s administration are Congress passing a significant infrastructure law (the American Rescue Plan), helping veterans exposed to toxic burn pits with the PACT Act, reauthorizing the Violence Against Women Act, passing the Electoral Count Reform Act, passing the CHIPS and Science Act, and authorizing the Respect for Marriage Act.
+  - context: []
+  - retrieval context: ["['Investments in jobs and infrastructure", ' like the ones we’re talking about', " have often had bipartisan support in the past.  Vice President Harris and I met regularly in the Oval Office with Democrats and Republicans to discuss the Jobs Plan.  And I applaud a group of Republican senators who just put forward their own proposal.'", " 'You know", " we’re often told that Democrats and Republicans can’t work together.'", " 'But time and again", " Democrats and Republicans came together.'", " 'When I came to office", " most everyone assumed bipartisanship was impossible. But I never believed it.'", " 'While it often appears that we never agree", " that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice.'", " 'To my Republican friends", ' if we could work together in the last Congress', " there is no reason we can’t work together in this new Congress.'", " 'In November", " my team began serious negotiations with a bipartisan group of Senators.'", " 'Came together to pass a once-in-a-generation infrastructure law", " building bridges to connect our nation and people.'", " 'The result was a bipartisan bill with the toughest set of border security reforms we’ve ever seen'", " 'Yes", ' we disagreed plenty. And yes', " there were times when Democrats had to go it alone.']"]
+
+======================================================================
+
+Metrics Summary
+
+  - ✅ RAGAS (score: 0.6970325325806255, threshold: 0.3, strict: False, evaluation model: None, reason: None, error: None)
+
+For test case:
+
+  - input: How does the President plan to grow the economy in his first speech, and what are examples of his successes in this area as shared in his next three speeches?
+  - actual output: The President plans to grow the economy by focusing on the bottom and middle class, rather than trickle-down economics.  His success in this area includes creating more than 1,300,000 new jobs in his first 100 days, a record 12 million new jobs in his first two years, and a 5.7% growth in the economy last year, which is the strongest growth in nearly 40 years. 
+
+  - expected output: In his first speech, the President proposes that his American Jobs Plan will create millions of new jobs and trillions of dollars of economic growth to the economy by bringing Americans back to the workforce. He also says America should grow its economy from the bottom and middle out but does not say how to grow the economy that way. In his following speeches, he says that the American Rescue Plan has created over 6.5 million jobs in one year and 12 million jobs in two years and 15 million jobs in three years, and America�s economy increased at a rate of 5.7% the first year. American companies are also investing in increasing manufacturing capabilities in America that would help reduce costs to Americans and created 800,000 manufacturing jobs in 2 years. America�s GDP also increased over the three years covered in the speeches.
+  - context: []
+  - retrieval context: ["['And in the process", ' while this was all going on', ' the economy created more than 1', '300', "000 new jobs in 100 days — more jobs in the first — (applause) — more jobs in the first 100 days than any President on record.'", " 'My fellow Americans", " trickle-down — trickle-down economics has never worked and it’s time to grow the economy from the bottom and the middle out. (Applause.)'", " 'Our economy grew at a rate of 5.7% last year", ' the strongest growth in nearly 40 years', " the first step in bringing fundamental change to an economy that hasn’t worked for the working people of this nation for too long.'", " 'The International Monetary Fund — (applause) — the International Monetary Fund is now estimating our economy will grow at a rate of more than 6 percent this year.  That will be the fastest pace of economic growth in this country in nearly four decades.'", " 'I inherited an economy that was on the brink. Now our economy is the envy of the world!'", " 'As I stand here tonight", ' we have created a record 12 million new jobs', " more jobs created in two years than any president has ever created in four years.'", " 'And by the way", ' when we do all of these things', " we increase productivity. We increase economic growth.'", " 'Since I’ve come to office", " our GDP is up.'", " 'You know", ' there’s a broad consensus of economists — left', ' right', " center — and they agree what I’m proposing will help create millions of jobs and generate historic economic growth.  These are among the highest-value investments we can make as a nation.'", " 'Throughout our history", ' Presidents have come to this chamber to speak to Congress', ' to the nation', ' and to the world to declare war', ' to celebrate peace', " to announce new plans and possibilities.']"]
+
+======================================================================
+
+Overall Metric Pass Rates
+
+RAGAS: 54.55% pass rate
+
+======================================================================
