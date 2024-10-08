@@ -213,7 +213,7 @@ def few_shot_context_relevance_scoring_gemini(
 
             messages = {
                         "Content": {
-                              "parts": [
+                              "Part": [
                                 {
                                   "text": user_prompt
                                 }
@@ -222,9 +222,11 @@ def few_shot_context_relevance_scoring_gemini(
                             }
                        }
 
+
             # typically model should be 'models/gemini-1.5-flash'
             response = genai.GenerativeModel(model_name=model_choice, system_instruction=system_prompt).generate_content(
-                messages
+                #messages
+                user_prompt
             )
             #openai.chat.completions.create(
             #                    model=model_choice,
@@ -233,6 +235,9 @@ def few_shot_context_relevance_scoring_gemini(
             final_response = response.text # respones.choices[0].message.content
             print("Testing response.text")
             print(final_response)
+            print("Testing candidates")
+            for candidate in response.candidates:
+                print([part.text for part in candidate.content.parts])
             
             if debug_mode: 
                 print(final_response)
@@ -542,7 +547,8 @@ def few_shot_answer_faithfulness_scoring_gemini(
 
             # typically model should be 'models/gemini-1.5-flash'
             response = genai.GenerativeModel(model_name=model_choice, system_instruction=system_prompt).generate_content(
-                messages
+                #messages
+                user_prompt
             )  
             final_response = response.text 
 
@@ -649,7 +655,8 @@ def few_shot_answer_relevance_scoring_gemini(
 
             # typically model should be 'models/gemini-1.5-flash'
             response = genai.GenerativeModel(model_name=model_choice, system_instruction=system_prompt).generate_content(
-                messages
+                #messages
+                user_prompt
             )
             final_response = response.text
 
