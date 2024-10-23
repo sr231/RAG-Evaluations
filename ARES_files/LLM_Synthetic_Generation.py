@@ -82,6 +82,7 @@ def generate_synthetic_query_api_approach(document: str, synthetic_query_prompt:
                             break
                         except Exception as e:
                             print(f"Error generating synthetic queries: {e}")
+                            time.sleep(60)  # Sleep for 60 seconds before retrying
         
                     if not success:
                         print(f"Failed to generate synthetic queries after 5 attempts for percentile {percentile}")
@@ -302,4 +303,5 @@ def generate_synthetic_contradictory_answers_api_approach(document: str, questio
                 return final_response
             except Exception as e:
                 print(f"Error generating synthetic contradictory answer: {e}")
+                time.sleep(60)  # Sleep for 60 seconds before retrying
                 continue
