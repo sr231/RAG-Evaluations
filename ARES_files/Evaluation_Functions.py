@@ -233,12 +233,7 @@ def few_shot_context_relevance_scoring_gemini(
             #                    messages=messages
             #                )    
             final_response = response.text # respones.choices[0].message.content
-            print("Testing response.text")
-            print(final_response)
-            print("Testing candidates")
-            for candidate in response.candidates:
-                print([part.text for part in candidate.content.parts])
-            
+
             if debug_mode: 
                 print(final_response)
 
@@ -555,9 +550,6 @@ def few_shot_answer_faithfulness_scoring_gemini(
             if debug_mode: 
                 print(final_response)
                 
-            print("Testing response.text")
-            print(final_response)
-
             
             yes = r"\[\s*\[?\s*Yes\s*\]?\s*\]"
             no = r"\[\s*\[?\s*No\s*\]?\s*\]"
@@ -662,9 +654,6 @@ def few_shot_answer_relevance_scoring_gemini(
 
             if debug_mode: 
                 print(final_response)
-                
-            print("Testing response.text")
-            print(final_response)
 
             yes = r"\[\s*\[?\s*Yes\s*\]?\s*\]"
             no = r"\[\s*\[?\s*No\s*\]?\s*\]"
