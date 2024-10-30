@@ -1,0 +1,50 @@
+ARES:
+
+PPI RAG Evaluation Results:
+
+Testing on smaller 100 example version of nq_unlabeled_output.tsv (ARES_files/nq_unlabeled_output_100examples.tsv)
+
+--------------------------------------------------
+Context_Relevance_Label Scoring
+ARES Ranking
+Evaluation_Set:ARES_files/nq_unlabeled_output_100examples.tsv
+Checkpoint:None
+ARES Prediction: [0.6395238095238103]
+ARES Confidence Interval: [[0.513, 0.766]]
+Number of Examples in Evaluation Set: [70]
+Ground Truth Performance: [0.686]
+ARES LLM Judge Accuracy on Ground Truth Labels: [0.857]
+Annotated Examples used for PPI: 300
+--------------------------------------------------
+
+[[{'Label_Column': 'Context_Relevance_Label', 'Evaluation_Set': 'ARES_files/nq_unlabeled_output_100examples.tsv', 'ARES_Prediction': 0.6395238095238103, 'ARES_Confidence_Interval': [0.513, 0.766], 'Number_of_Examples_in_Evaluation_Set': 70, 'Ground_Truth_Performance': 0.686, 'ARES_LLM_Judge_Accuracy_on_Ground_Truth_Labels': 0.857, 'Annotated_Examples_used_for_PPI': 300}]]
+
+Re-run to check:
+Context_Relevance_Label Scoring
+ARES Ranking
+Evaluation_Set:ARES_files/nq_unlabeled_output_100examples.tsv
+Checkpoint:None
+ARES Prediction: [0.6328571428571429]
+ARES Confidence Interval: [[0.506, 0.76]]
+Number of Examples in Evaluation Set: [70]
+Ground Truth Performance: [0.686]
+ARES LLM Judge Accuracy on Ground Truth Labels: [0.857]
+Annotated Examples used for PPI: 300
+--------------------------------------------------
+
+[[{'Label_Column': 'Context_Relevance_Label', 'Evaluation_Set': 'ARES_files/nq_unlabeled_output_100examples.tsv', 'ARES_Prediction': 0.6328571428571429, 'ARES_Confidence_Interval': [0.506, 0.76], 'Number_of_Examples_in_Evaluation_Set': 70, 'Ground_Truth_Performance': 0.686, 'ARES_LLM_Judge_Accuracy_on_Ground_Truth_Labels': 0.857, 'Annotated_Examples_used_for_PPI': 300}]]
+
+In comparison, these are the results ARES posted for the entire dataset:
+
+https://ares-ai.vercel.app/tutorial_01.html
+
+The following are ARES's evaluation accuracies on the NQ (60% ground truth accuracy) dataset:
+
+Context_Relevance_Label Scoring
+ARES Ranking
+ARES Prediction: [0.6116376385433233]
+ARES Confidence Interval: [[0.554, 0.669]]
+Number of Examples in Evaluation Set: [4421]
+Ground Truth Performance: [0.6]
+ARES LLM Judge Accuracy on Ground Truth Labels: [0.775]
+Annotated Examples used for PPI: 300
