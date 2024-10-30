@@ -746,7 +746,7 @@ def evaluate_model(params: dict) -> tuple:
         total_references = test_set[label_column].to_numpy()
     
     
-    if total_references.nelement() > 0: 
+    if total_references.size > 0: #edited due to error with nelement -   #if total_references.nelement() > 0: 
         results = metric.compute(references=total_references, predictions=total_predictions)
     else:
         results = None
@@ -1160,7 +1160,7 @@ def evaluate_and_scoring_data(params: dict):
         if llm_judge == "None":
             sys.exit("Error: No llm_judge provided")
         
-        elif "gpt" in llm_judge or "claude" in llm_judge:
+        elif "gpt" in llm_judge or "claude" in llm_judge or "gemini" in llm_judge:
             Y_labeled_predictions = []
 
             query_id = "Query" if 'Query' in few_shot_examples.columns else "Question"
@@ -1177,6 +1177,8 @@ def evaluate_and_scoring_data(params: dict):
                             score = few_shot_context_relevance_scoring_vllm(context_relevance_system_prompt, query, document, model_choice, query_id, debug_mode, host_url, request_delay, failed_extraction_count, few_shot_examples)
                         elif "gpt" in llm_judge:
                             score = few_shot_context_relevance_scoring(context_relevance_system_prompt, clean_query(query), document, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
+                        elif "gemini" in llm_judge: 
+                            score = few_shot_context_relevance_scoring_gemini(context_relevance_system_prompt, clean_query(query), document, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
                         elif "claude" in llm_judge:
                             score = few_shot_context_relevance_scoring_claude(context_relevance_system_prompt, clean_query(query), document, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
                         else:
@@ -1187,6 +1189,8 @@ def evaluate_and_scoring_data(params: dict):
                             score = few_shot_answer_faithfulness_scoring_vllm(answer_faithfulness_system_prompt, query, document, answer, model_choice, query_id, debug_mode, host_url, request_delay, failed_extraction_count, few_shot_examples)
                         elif "gpt" in llm_judge:
                             score = few_shot_answer_faithfulness_scoring(answer_faithfulness_system_prompt, clean_query(query), document, answer, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
+                        elif "gemini" in llm_judge:
+                            score = few_shot_answer_faithfulness_scoring_gemini(answer_faithfulness_system_prompt, clean_query(query), document, answer, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
                         elif "claude" in llm_judge:
                             score = few_shot_answer_faithfulness_scoring_claude(answer_faithfulness_system_prompt, clean_query(query), document, answer, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
                         else:
@@ -1197,6 +1201,8 @@ def evaluate_and_scoring_data(params: dict):
                             score = few_shot_answer_relevance_scoring_vllm(answer_relevance_system_prompt, query, document, answer, model_choice, query_id, debug_mode, host_url, request_delay, failed_extraction_count, few_shot_examples)
                         elif "gpt" in llm_judge:
                             score = few_shot_answer_relevance_scoring(answer_relevance_system_prompt, clean_query(query), document, answer, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
+                        elif "gemini" in llm_judge:
+                            score = few_shot_answer_relevance_scoring_gemini(answer_relevance_system_prompt, clean_query(query), document, answer, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
                         elif "claude" in llm_judge:
                             score = few_shot_answer_relevance_scoring_claude(answer_relevance_system_prompt, clean_query(query), document, answer, model_choice, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples)
                         else:

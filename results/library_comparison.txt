@@ -63,17 +63,62 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
 
 DeepEval:
 
+- Version 1.1.6
+
 - Overview:
 
-- Metrics:
+- Metrics:  
+  - DeepEval provides a score for each metric and a reason (output by the LLM) for each metric's score
+
+  - For RAG systems, DeepEval recommends running the following metrics:
+
+  - Retrieval metrics:
+    - Contextual Precision: Average: 0.776
+      - Calculated fairly similarly (if not the same) as RAGAS's contextual precision; would need to look into code further
+      - Manual review: Decent overall, but some definitely had the single answer needed higher ranked in the nodes list, yet received a low score (0.25), likely for giving extra context that was not as relevant.
+      - Compared with RAGAS in DeepEval Contextual Precision: 0.493 (not close at all)
+      - Compared with RAGAS package Contextual Precision: 0.6944 (closer to result here, but not to the above, which should be the same)
+
+    - Contextual Recall: Average: 0.723
+      - Calculated approximately the same way as RAGAS, according to their brief algorithm description
+      - Manual review: Good overall, not great. For example, for the first test case, it said that a specific fact was not mentioned in the context when it actually was in the context. The output reasoning left a lot to be desired.
+        - Example of poor output reason: "and the JSON output is formatted correctly to match the given schema" has nothing to do with the metric scoring for this metric
+        - In another reason given for a perfect score, it gave additional context that is not found in the retrieval context; it seemed to more try to answer the prompt vs doing the evaluation of the metric.
+      - Compared with RAGAS in DeepEval Contextual Recall: 0.627
+      - Compared with RAGAS package Context Recall: 0.6455 (pretty close)
+
+    - Contextual Relevance: "Measures the quality of your RAG pipeline's retriever by evaluating the overall relevance of the information presented in your retrieval_context for a given input."
+      - Unfortunately, I could not test this metric due to 429 Resource Exhausted Errors, regardless of rate limiting
+
+  - Generation metrics:
+    - Answer Relevancy: Average: 0.989
+      - Calculated differently than RAGAS's answer relevancy
+      - Manual review: Not great. If it's working, it seems to work fine generally. However some scores/reasons were VERY off, as not-relevant reasons for the scores were given and were inconsistent with the scoring.
+        - Example 1: "The score is 1.00 because you provided an input, and asked for a JSON output. That's perfect! Let's keep going." 
+        - Example 2: "Reason: The score is 1.00 because the input asks for a specific reason and expects a JSON object with that reason. The provided JSON does not contain any object to address the request, therefore the score is 1.00, implying that the output does not address the input."
+      - Compared with RAGAS in DeepEval Answer Relevancy: 0.578 (not close at all to DeepEval, but makes sense with different algorithmic calculation)
+      - Compared with RAGAS package Answer Relevancy: 0.6770 (pretty close to above, not to DeepEval)
+
+    - Faithfulness: Average: 1.0
+      - Calculated approximately the same way as RAGAS, according to their brief algorithm description
+      - Manual review: This metric only returned perfect 1.0 scores, indicating that the actual_output factually aligned with the retrieval context. This seems mostly accurate except for the example where the actual_output definitely brought in outside knowledge. I suppose that technically doesn't factually contradict the retrieval_context, and that would fall under a "hallucination" instead. 
+      - Compared with RAGAS in DeepEval Faithfulness: 0.984
+      - Compared with RAGAS package Faithfulness': 1.0000 (close)
+  
+
 
 - Data generation:
 
 - Required datasets:
 
+- Custom/local model integration:
+  - Non Open-AI models require a custom LLM class and a custom embeddings class for using DeepEval, inheriting from DeepEvalBaseLLM and DeepEvalBaseEmbeddingModel, respectively
+
 - Performance results:
 
 - Other notes:
+  - DeepEval requires a json response. In practice, this has led to malformed json returned from the llm, even with as simple of a schema as possible (i.e., return string)
+  - There's a flag you have to set initially for DeepEval not to track your usage.
 
 ARES:
 
