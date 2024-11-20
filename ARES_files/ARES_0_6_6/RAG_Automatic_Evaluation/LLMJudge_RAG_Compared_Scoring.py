@@ -672,7 +672,7 @@ def evaluate_model(params: dict) -> tuple:
     request_delay = params["request_delay"]
     debug_mode = params["debug_mode"]
     azure_openai_config = params["azure_openai_config"]
-
+    
     metric = evaluate.load("accuracy")
 
     if checkpoint:
@@ -791,6 +791,7 @@ def evaluate_model(params: dict) -> tuple:
                     context_relevance_system_prompt, clean_query(x[query_id]), x["Document"], llm_judge, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples), axis=1)
             # edit for Google Gemini
             elif "gemini" in llm_judge:
+                print("context_relevance_label and gemini working") # EDIT Debugging
                 test_set["Context_Relevance_Prediction"] = test_set.progress_apply(lambda x: few_shot_context_relevance_scoring_gemini(
                     context_relevance_system_prompt, clean_query(x[query_id]), x["Document"], llm_judge, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples), axis=1)
             else:
@@ -836,14 +837,17 @@ def evaluate_model(params: dict) -> tuple:
                 test_set["Answer_Relevance_Prediction"] = test_set.progress_apply(lambda x: few_shot_answer_relevance_scoring_togetherai(
                     answer_relevance_system_prompt, clean_query(x[query_id]), x["Document"], x["Answer"], llm_judge, query_id, debug_mode, request_delay, failed_extraction_count, few_shot_examples), axis=1)
 
+
         total_predictions = test_set[label_column.replace("_Label", "_Prediction")].to_numpy()
-        total_references = test_set[label_column].to_numpy()
-    
-    
-    if total_references.size > 0: #edited due to error with nelement -   #if total_references.nelement() > 0:  
-        results = metric.compute(references=total_references, predictions=total_predictions)
-    else:
-        results = None
+        # EDIT to add column check because test_set shouldn't need references to the desired metric label
+        if label_column in test_set.columns:
+            total_references = test_set[label_column].to_numpy()
+        else:
+            total_references = np.array([]) # just make it a blank np.array
+        if total_references.size > 0: #edited due to error with nelement -   #if total_references.nelement() > 0:  
+            results = metric.compute(references=total_references, predictions=total_predictions)
+        else:
+            results = None
 
     return total_predictions, total_references, results, metric
 
@@ -1242,11 +1246,13 @@ def evaluate_and_scoring_data(params: dict):
 
     from sentence_transformers import SentenceTransformer
     from transformers import AutoTokenizer
-    from ares.LLM_as_a_Judge_Adaptation.Late_Chunking_Classifier import CustomClassifier, get_late_chunked_embeddings, get_query_embedding
+    # EDIT : see below - from ares.LLM_as_a_Judge_Adaptation.Late_Chunking_Classifier import CustomClassifier, get_late_chunked_embeddings, get_query_embedding
 
     if checkpoint:
         model.eval()
         if use_late_chunking:
+            # EDITED to move here as opposed to an overall-function import above, should not execute - but if it tries, this code does not exist in the ARES repo 
+            from ares.LLM_as_a_Judge_Adaptation.Late_Chunking_Classifier import CustomClassifier, get_late_chunked_embeddings, get_query_embedding
             # Load embedding model and tokenizer
             embedding_model_name = "jinaai/jina-embeddings-v2-base-en"
             embedding_model = SentenceTransformer(embedding_model_name, device=device, trust_remote_code=True)
@@ -1429,7 +1435,11 @@ def evaluate_and_scoring_data(params: dict):
             Y_labeled_dataset[prediction_column] = Y_labeled_predictions_np.tolist()
 
     # Convert predictions and labels to integer type
-    Y_labeled = Y_labeled_dataset[label_column].values.astype(int)
+
+    # EDIT as earlier code expects '[[Yes]]' and '[[No]]' labels, but the below original code expects integers
+    # Comment below is original, replacement code is below it
+    # Y_labeled = Y_labeled_dataset[label_column].values.astype(int)
+    Y_labeled = np.array([1 if val == '[[Yes]]' else 0 for val in Y_labeled_dataset[label_column].values])
     Yhat_labeled = Y_labeled_dataset[prediction_column].values.astype(int)
     Yhat_unlabeled = Yhat_unlabeled_dataset[prediction_column].values.astype(int)
     
