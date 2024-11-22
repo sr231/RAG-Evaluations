@@ -10,6 +10,8 @@ RAGAS:
   - Synthetic testset generation (question/context/ground truth answer) function worked pretty well, assuming you could get it to work without being rate-limited (didn't seem to work well with traditional rate limiting libraries). Questions generated for the documents were the most "human-like" of all libraries tested.  
   - Documentation was significantly lacking when tested but has since been updated and may have been improved.
   - Internal rate limiting functions didn't work well, and RAGAS didn't work well (with limited testing) with external rate limiting libraries.
+  - Integrates with llamaindex; was able to resolve a local compatibility issue and have it work with Gemini as well
+  - Supports all LLMs and Embeddings available in Langchain
 
 - Metrics:
 
@@ -18,7 +20,7 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
 
   - Faithfulness - Measures the factual consistency of the answer to the context based on the question.
   - Context_precision - Measures how relevant the retrieved context is to the question, conveying the quality of the retrieval pipeline.
-  - Answer_relevancy - Measures how relevant	 the answer is to the question.
+  - Answer_relevancy - Measures how relevant the answer is to the question.
   - Context_recall - Measures the retriever’s ability to retrieve all necessary information required to answer the question.
   - Faithfulness with HHEM - Similar to Faithfulness but uses a HuggingFace model (Vectara's HHEM 2.1 classifier) to detect hallucinations
     - https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html#faithfullness-with-hhem-2-1-model
@@ -72,6 +74,8 @@ DeepEval:
   - Metrics are well designed and have commonalities across all 3 libraries evaluated. DeepEval offered 6 different metrics for RAG systems, the most of the three libraries.
   - Numerical results for the metrics were good overall/somewhat comparable to RAGAS, but the reasoning returned for why a particular score was given for a metric was not consistently reliable. It probably depends on the RAG system & LLM, but I wouldn't rely on the LLM's reason for a given score when using DeepEval.
   - Documentation was more prevalent than other libraries but did not always reflect the exact code.
+  - Requires the model to output valid json
+  - Integrates with llamaindex, huggingface (not tested), any llm according to documentation
 
 - Metrics:  
   - DeepEval provides a score for each metric and a reason (output by the LLM) for each metric's score
@@ -150,7 +154,7 @@ DeepEval:
 ARES:
 
 - Overview:
-
+  - Integrates with several main LLMs + vllm; I was able to get it working with Google Gemini (not currently supported by the library) with moderate effort in adapting the source code and installing locally
 
 - Metrics: 
 
@@ -207,3 +211,22 @@ Annotated Examples used for PPI: 300
   - Code version 0.6.6 references ARES code that doesn't exist in the repo, and I had to edit the library not to import it / use it.
     - LLMJudge_RAG_Compared_Scoring.py : from ares.LLM_as_a_Judge_Adaptation.Late_Chunking_Classifier import CustomClassifier, get_late_chunked_embeddings, get_query_embedding
   - Code version 0.6.6 PPI run with LLMJudge requires labels of '[[Yes]]' and '[[No]]' for metrics, yet the code in LLMJudge_RAG_Compared_Scoring.py later tries to evaluate the labels as integers. Edited locally
+
+
+
+Head to head comparison for Contextual Precision / Context Relevance:
+- RAGAS: 
+
+- DeepEval:
+In progress: average score for Contextual Precision run on unlabeled dataset is 0.867841
+
+- ARES:
+Context_Relevance_Label Scoring
+ARES Ranking
+Evaluation_Set: datasets/unlabeled_dataset/unlabeled_dataset.tsv
+Checkpoint: None
+ARES Prediction: 0.7324999999999967
+ARES Confidence Interval: [0.588, 0.877]
+Number of Examples in Evaluation Set: 800
+ARES LLM Judge Accuracy on Ground Truth Labels: 0.695
+Annotated Examples used for PPI: 59
