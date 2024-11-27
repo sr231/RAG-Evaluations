@@ -49,6 +49,9 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
   - Below results were on my manually created dataset: manual_dataset_complete.csv, n=11, using all 4 speeches
   - RAGAS metrics simply output a score for the chosen metric without an additional explanation.
   - RAGAS metrics guide does not have example ranges to compare anything to, so below is my best guess.
+  - I found out months later that calling .to_pandas() on the result after evaluation will give the dataset back along with the metric scores for each example in a pandas dataframe
+  - Note: There's an optional parameter in_ci (bool) that if set to True, then some metrics will be run to increase the reproducibility of the evaluations. This will increase the runtime and cost of evaluations. Default is False.
+    - In practice, setting in_ci = True resulted in a lot of timeouts / no score calculated / NaN results.
 
   - Faithfulness - Measures the factual consistency of the answer to the context based on the question.
   - 0.9167 - 1.0000 indicates that the LLM is staying true to the facts provided in the context for answering the question.
