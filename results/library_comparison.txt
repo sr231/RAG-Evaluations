@@ -46,17 +46,18 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
   - There is also a BaseRagasLLM and BaseRagasEmbeddings class you can inherit from, but I did not test this.
 
 - Performance results:
-  - Below results were on my manually created dataset: manual_dataset_complete.csv, n=11, using all 4 speeches
+  - Below results were on my manually created dataset (I created the questions): manual_dataset_complete.csv, n=11, using all 4 speeches
   - RAGAS metrics simply output a score for the chosen metric without an additional explanation.
   - RAGAS metrics guide does not have example ranges to compare anything to, so below is my best guess.
   - I found out months later that calling .to_pandas() on the result after evaluation will give the dataset back along with the metric scores for each example in a pandas dataframe
   - Note: There's an optional parameter in_ci (bool) that if set to True, then some metrics will be run to increase the reproducibility of the evaluations. This will increase the runtime and cost of evaluations. Default is False.
-    - In practice, setting in_ci = True resulted in a lot of timeouts / no score calculated / NaN results.
+    - In testing, setting in_ci = True resulted in a lot of timeouts / no score calculated / NaN results.
+  - Note: When running the context precision metric on a larger dataset (unlabeled_dataset.csv, 800 examples), RAGAS generated roughly 10 API requests per one example in order to get the resulting score for the metric.
 
   - Faithfulness - Measures the factual consistency of the answer to the context based on the question.
   - 0.9167 - 1.0000 indicates that the LLM is staying true to the facts provided in the context for answering the question.
   - Faithfulness with HHEM - This uses a huggingface model to help detect hallucination : https://huggingface.co/vectara/hallucination_evaluation_model
-  - 0.6319: This doesn't really agree with the RAGAS faithfulness score... may need to dive in further another time.
+  - 0.6319: This doesn't really agree with the RAGAS faithfulness score. I didn't investigate this further to see the difference. 
   - Context_precision - Measures how relevant the retrieved context is to the question, conveying the quality of the retrieval pipeline.
   - At 0.4171 - 0.5979, suggests that the context isn't particularly relevant to the question. After reviewing the results, I think this should probably be  a little higher, but the score makes sense.
   - Answer_relevancy - Measures how relevant the answer is to the question.
@@ -65,7 +66,7 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
   - 0.8 indicates that the llm context is decently good and can typically answer the question or most of it. I concur with this after manual review of the dataset.
 
 - Other notes:
-  - The RAGAS internal RunConfig settings do a decent job at limiting the 429 resource exhausted warnings when max_workers=1. Ratelimit and backoff Python libraries didn't seem to affect performance, but I didn't spend a lot of time with that.
+  - The RAGAS internal RunConfig settings do a decent job at limiting the 429 resource exhausted warnings when max_workers=1. max_workers is supposed to control the number of concurent requests allowed together, and in testing this with max_workers=1, 6-9 requests for 1 example were sent to the API concurrently. Perhaps they are defining concurrent requests differently than I expect, or else this isn't working properly in the code. The ratelimit and backoff Python libraries didn't seem to affect performance with this either, but I didn't spend a lot of time with that.
   - There's a flag you have to set initially for RAGAS not to track your usage.
 
 
@@ -119,7 +120,7 @@ DeepEval:
 
   - Retrieval metrics:
     - Contextual Precision: Average: 0.776
-      - Calculated fairly similarly (if not the same) as RAGAS's contextual precision; would need to look into code further
+      - Calculated fairly similarly (if not the same) as RAGAS's contextual precision
       - Manual review: Decent overall, but some definitely had the single answer needed higher ranked in the nodes list, yet received a low score (0.25), likely for giving extra context that was not as relevant.
       - Compared with RAGAS in DeepEval Contextual Precision: 0.493 (not close at all)
       - Compared with RAGAS package Contextual Precision: 0.6944 (closer to result here, but not to the above, which should be the same)
@@ -156,8 +157,10 @@ DeepEval:
 
 ARES:
 
+- Version 0.6.6
+
 - Overview:
-  - Integrates with several main LLMs + vllm; I was able to get it working with Google Gemini (not currently supported by the library) with moderate effort in adapting the source code and installing locally
+  - Integrates with several main LLMs + vllm; I was able to get it working with Google Gemini (not currently supported by the library) with moderate effort in adapting the source code for Gemini and installing locally
 
 - Metrics: 
 
@@ -178,8 +181,8 @@ ARES:
 - Required datasets - in tsv format:
 
   - A human preference validation set of annotated query, document, and answer triples for the evaluation criteria (e.g. context relevance, answer faithfulness, and/or answer relevance). ARES requires >50 examples but prefers several hundred. I used 58 examples for my labeled dataset. (labeled_dataset_sotu.tsv)
-  - A set of labeled few-shot examples for scoring context relevance, answer faithfulness, and/or answer relevance in your system. In my testing, I used 11 examples for this. (manual_dataset_complete_ares.tsv)	
-  - A much larger set of unlabeled query-document-answer triples outputted by your RAG system for scoring. I created this by generating a synthetic dataset of ~800 examples with my RAG system & LLM (using DeepEval, see above). (unlabeled_dataset.tsv)
+  - A set of labeled few-shot examples for scoring context relevance, answer faithfulness, and/or answer relevance in your RAG system. In my testing, I used 11 examples for this. (manual_dataset_complete_ares.tsv)	
+  - A much larger set of unlabeled query-document-answer triples output by your RAG system for scoring. I created this by generating a synthetic dataset of ~800 examples with my RAG system & LLM (using DeepEval, see above). (unlabeled_dataset.tsv)
 
 - Performance results:
 
@@ -188,6 +191,8 @@ ARES:
   - ARES offers two different RAG evaluation functions:
     1) ares.ues_idp() : After specifying the LLM, the unlabeled dataset, and the few-shot examples, ARES will return the Context Relevance, Answer Faithfulness, and Answer Relevance scores for the RAG system.
       - UES/IDP means evaluating an Unlabeled Evaluation Set in conjunction with In-Domain Prompts (UES/IDP)
+      - From examining the code, the LLM uses all nodes in context to evaluate the relevancy score per example as 0 or 1 (as opposed to a score for each node), and all of the scores for the dataset are averaged to produce an overall metric score.
+      - Note that when testing, 1 API call was produced per example/per metric.
     2) ares.evaluate_RAG() : By specifying an LLM judge, the unlabeled and labeled datasets, and the few-shot examples for the metrics of interest, ARES will use Prediction Powered Inference (PPI) to enhance the evaluation accuracy and to estimate a confidence interval for the quality of each RAG system.
       - From the paper: "PPI is a recent statistical method that provides tighter confidence intervals on a small set of annotated datapoints (i.e., our validation set) by leveraging predictions on a much larger set of non-annotated datapoints. PPI can leverage both the labeled datapoints and the ARES judge predictions on the non-annotated datapoints to construct confidence intervals for our RAG system’s performance."
       - When testing with the ARES provided testset, I got the following example results:
@@ -219,18 +224,97 @@ Annotated Examples used for PPI: 300
 
 Head to head comparison for Contextual Precision / Context Relevance:
 - RAGAS: 
+For large batch run with rate-limiting issues, the mean Contextual Precision score on the unlabeled dataset is 0.3405. That only gave 267/800 scores, with the rest as NA. Will rerun in small batches; this probably happened because of the rate limiting.
+
+For performing small batch runs to avoid rate-limiting issues, the mean Contextual Precision score on the unlabeled dataset is 0.3578320194131311. 
+
+Note: 364/800 scores were given a contextual precision score of 0. If you average the remaining 436 non-zero scores, the mean Contextual Precision score is 0.6565725126846442. 
+
+Prompt: "Given question, answer and context verify if the context was useful in arriving at the given answer. Give verdict as "1" if useful and "0" if not with json output."
+
+ examples=[
+        {
+            "question": """What can you tell me about albert Albert Einstein?""",
+            "context": """Albert Einstein (14 March 1879 – 18 April 1955) was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, he also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century. His mass–energy equivalence formula E = mc2, which arises from relativity theory, has been called "the world's most famous equation". He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect", a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science. In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time. His intellectual achievements and originality have made Einstein synonymous with genius.""",
+            "answer": """Albert Einstein born in 14 March 1879 was German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. He received the 1921 Nobel Prize in Physics for his services to theoretical physics. He published 4 papers in 1905. Einstein moved to Switzerland in 1895""",
+            "verification": ContextPrecisionVerification(
+                reason="The provided context was indeed useful in arriving at the given answer. The context includes key information about Albert Einstein's life and contributions, which are reflected in the answer.",
+                verdict=1,
+            ).dict(),
+        },
+        {
+            "question": """who won 2020 icc world cup?""",
+            "context": """The 2022 ICC Men's T20 World Cup, held from October 16 to November 13, 2022, in Australia, was the eighth edition of the tournament. Originally scheduled for 2020, it was postponed due to the COVID-19 pandemic. England emerged victorious, defeating Pakistan by five wickets in the final to clinch their second ICC Men's T20 World Cup title.""",
+            "answer": """England""",
+            "verification": ContextPrecisionVerification(
+                reason="the context was useful in clarifying the situation regarding the 2020 ICC World Cup and indicating that England was the winner of the tournament that was intended to be held in 2020 but actually took place in 2022.",
+                verdict=1,
+            ).dict(),
+        },
+        {
+            "question": """What is the tallest mountain in the world?""",
+            "context": """The Andes is the longest continental mountain range in the world, located in South America. It stretches across seven countries and features many of the highest peaks in the Western Hemisphere. The range is known for its diverse ecosystems, including the high-altitude Andean Plateau and the Amazon rainforest.""",
+            "answer": """Mount Everest.""",
+            "verification": ContextPrecisionVerification(
+                reason="the provided context discusses the Andes mountain range, which, while impressive, does not include Mount Everest or directly relate to the question about the world's tallest mountain.",
+                verdict=0,
+            ).dict(),
+        },
+
 
 - DeepEval:
 Average score for Contextual Precision run on unlabeled dataset is 0.8642868215033659
-DeepEval gives explanations for each score given to an example in the dataset. The explanations given are all generated by the LLM, and they can be quite specific and reasonable, but it's still difficult to distinguish between scores that are .1-.3 apart based off of the explanations or why exactly a given numerical value was chosen. I'm not sure if it's worth generating these explanations; it may be situation dependent for if they are wanted.				
+DeepEval gives explanations for each score given to an example in the dataset. The explanations given are all generated by the LLM, and they can be quite specific and reasonable, but it's still difficult to distinguish between scores that are .1-.3 apart based off of the explanations or why exactly a given numerical value was chosen. I'm not sure if it's worth generating these explanations; it may be situation dependent for if they are wanted.
+
+Prompt: 
+Given the input, expected output, and retrieval context, please generate a list of JSON objects to determine whether each node in the retrieval context was remotely useful in arriving at the expected output.
+
+**
+IMPORTANT: Please make sure to only return in JSON format, with the 'verdicts' key as a list of JSON. These JSON only contain the `verdict` key that outputs only 'yes' or 'no', and a `reason` key to justify the verdict. In your reason, you should aim to quote parts of the context.
+Example Retrieval Context: ["Einstein won the Nobel Prize for his discovery of the photoelectric effect", "He won the Nobel Prize in 1968.", "There was a cat."]
+Example Input: "Who won the Nobel Prize in 1968 and for what?"
+Example Expected Output: "Einstein won the Nobel Prize in 1968 for his discovery of the photoelectric effect."
+
+Example:
+{{
+    "verdicts": [
+        {{
+            "verdict": "yes",
+            "reason": "It clearly addresses the question by stating that 'Einstein won the Nobel Prize for his discovery of the photoelectric effect.'"
+        }},
+        {{
+            "verdict": "yes",
+            "reason": "The text verifies that the prize was indeed won in 1968."
+        }},
+        {{
+            "verdict": "no",
+            "reason": "'There was a cat' is not at all relevant to the topic of winning a Nobel Prize."
+        }}
+    ]  
+}}
+Since you are going to generate a verdict for each context, the number of 'verdicts' SHOULD BE STRICTLY EQUAL to that of the contexts.
+**
+
+				
 
 - ARES:
-Context_Relevance_Label Scoring
+Context_Relevance_Label Scoring with PPI:
 ARES Ranking
 Evaluation_Set: datasets/unlabeled_dataset/unlabeled_dataset.tsv
 Checkpoint: None
 ARES Prediction: 0.7324999999999967
-ARES Confidence Interval: [0.588, 0.877]
+ARES Confidence Interval: 	
 Number of Examples in Evaluation Set: 800
 ARES LLM Judge Accuracy on Ground Truth Labels: 0.695
 Annotated Examples used for PPI: 59
+
+Context_Relevance, Answer Faithfulness, and Answer Relevance scoring with ues_idp: 
+{'Context Relevance Scores': 0.879, 'Answer Faithfulness Scores': 0.84, 'Answer Relevance Scores': 0.821}
+
+
+context_relevance_system_prompt = (
+    "You are an expert dialogue agent. "
+    "Your task is to analyze the provided document and determine whether it is relevant for responding to the dialogue. "
+    "In your evaluation, you should consider the content of the document and how it relates to the provided dialogue. "
+    'Output your final verdict by strictly following this format: "[[Yes]]" if the document is relevant and "[[No]]" if the document provided is not relevant. '
+    "Do not provide any additional explanation for your decision.\n\n"
