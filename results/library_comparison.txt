@@ -66,7 +66,8 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
   - 0.8 indicates that the llm context is decently good and can typically answer the question or most of it. I concur with this after manual review of the dataset.
 
 - Other notes:
-  - The RAGAS internal RunConfig settings do a decent job at limiting the 429 resource exhausted warnings when max_workers=1. max_workers is supposed to control the number of concurent requests allowed together, and in testing this with max_workers=1, 6-9 requests for 1 example were sent to the API concurrently. Perhaps they are defining concurrent requests differently than I expect, or else this isn't working properly in the code. The ratelimit and backoff Python libraries didn't seem to affect performance with this either, but I didn't spend a lot of time with that.
+  - When evaluating for a particular metric, RAGAS sends 1 request to the LLM per context node. 10 context nodes for 1 metric evaluation for 1 example = 10 API requests.
+  - The RAGAS internal RunConfig settings do a decent job at limiting the 429 resource exhausted warnings when max_workers=1. max_workers is supposed to control the number of concurent requests allowed together, and in testing this with max_workers=1, 6-10 requests for 1 example were sent to the API concurrently. Perhaps they are defining concurrent requests differently than I expect, or else this isn't working properly in the code. The ratelimit and backoff Python libraries didn't seem to affect performance with this either, but I didn't spend a lot of time with that.
   - There's a flag you have to set initially for RAGAS not to track your usage.
 
 
@@ -223,6 +224,9 @@ Annotated Examples used for PPI: 300
 
 
 Head to head comparison for Contextual Precision / Context Relevance:
+
+Dataset: datasets/unlabeled_dataset/unlabeled_dataset_deepeval.csv
+
 - RAGAS: 
 For large batch run with rate-limiting issues, the mean Contextual Precision score on the unlabeled dataset is 0.3405. That only gave 267/800 scores, with the rest as NA. Will rerun in small batches; this probably happened because of the rate limiting.
 
@@ -318,3 +322,33 @@ context_relevance_system_prompt = (
     "In your evaluation, you should consider the content of the document and how it relates to the provided dialogue. "
     'Output your final verdict by strictly following this format: "[[Yes]]" if the document is relevant and "[[No]]" if the document provided is not relevant. '
     "Do not provide any additional explanation for your decision.\n\n"
+
+
+
+
+Head to head comparison for Contextual Precision / Context Relevance:
+
+Dataset: first 903 examples of datasets/rag_mini_wikipedia_complete_chat.csv (originally ran all 918 examples for RAGAS and DeepEval, then had to remove and label the results for the last 15 examples for the ARES run, as I had forgotten ARES requires labeled examples)
+LLM: Gemini 1.5 Flash for both RAG and metric eval
+
+RAGAS:
+
+Average Contextual Precision Score (903 examples): 0.7714837243775122
+
+DeepEval:
+
+Average Contextual Precision Score (903 examples): 0.792454
+
+ARES:
+
+Average Context Relevance Score (903 examples): 0.711
+Average Answer Faithfulness Score (903 examples): 0.692
+Average Answer Relevance Score (903 examples): 0.694 
+
+Note that probably 5 examples on the ARES run had API rate limit errors, but the end result still gave "Number of times did not extract Yes or No: 0"
+
+Things to try for comparison:
+- changing dataset from DeepEval generated dataset to a neutral created dataset (found on HuggingFace: rag_mini_wikipedia_complete_chat.csv )
+- change LLM from Gemini to using the chat LLM (used for answer generation for rag_mini_wikipedia_complete_chat.csv)
+- using different LLM for judging metrics : using models/gemini-2.0-flash-exp
+
