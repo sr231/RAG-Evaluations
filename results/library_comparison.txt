@@ -18,8 +18,8 @@ RAGAS:
   - Note: RAGAS documentation/functions were updated 10/10/24, so there are a few new variations of current metrics I haven't tried.
 RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html#ragas-metrics
 
-  - Faithfulness - Measures the factual consistency of the answer to the context based on the question.
-  - Context_precision - Measures how relevant the retrieved context is to the question, conveying the quality of the retrieval pipeline.
+  - Faithfulness - Measures the factual consistency of the answer to the context based on the question. 2 API calls per example.
+  - Context_precision - Measures how relevant the retrieved context is to the question, conveying the quality of the retrieval pipeline. 1 API call per context node per example.
   - Answer_relevancy - Measures how relevant the answer is to the question.
   - Context_recall - Measures the retriever’s ability to retrieve all necessary information required to answer the question.
   - Faithfulness with HHEM - Similar to Faithfulness but uses a HuggingFace model (Vectara's HHEM 2.1 classifier) to detect hallucinations
@@ -52,7 +52,8 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
   - I found out months later that calling .to_pandas() on the result after evaluation will give the dataset back along with the metric scores for each example in a pandas dataframe
   - Note: There's an optional parameter in_ci (bool) that if set to True, then some metrics will be run to increase the reproducibility of the evaluations. This will increase the runtime and cost of evaluations. Default is False.
     - In testing, setting in_ci = True resulted in a lot of timeouts / no score calculated / NaN results.
-  - Note: When running the context precision metric on a larger dataset (unlabeled_dataset.csv, 800 examples), RAGAS generated roughly 10 API requests per one example in order to get the resulting score for the metric.
+  - Note: When running the context precision metric, RAGAS generates 1 API request per context node in each example 10 in order to get the resulting score for the metric. That is, if you have 10 context nodes with an example query/answer, it will generate 10 API requests, as it is developing a score per context node for each example.
+  - For the faithfulness metric, RAGAS generates 2 API calls per example. The first API request breaks up the answer into simpler statements. The second request judges the faithfulness of the simpler statements based on the context, returning either a 0 or 1 as a faithfulness measure for each statement. Note that a "reason" for the score is also returned by RAGAS in the internal metric but isn't passed back to the user in this version of the library. 
 
   - Faithfulness - Measures the factual consistency of the answer to the context based on the question.
   - 0.9167 - 1.0000 indicates that the LLM is staying true to the facts provided in the context for answering the question.
@@ -66,7 +67,11 @@ RAGAS metrics guide: https://docs.ragas.io/en/latest/concepts/metrics/index.html
   - 0.8 indicates that the llm context is decently good and can typically answer the question or most of it. I concur with this after manual review of the dataset.
 
 - Other notes:
-  - When evaluating for a particular metric, RAGAS sends 1 request to the LLM per context node. 10 context nodes for 1 metric evaluation for 1 example = 10 API requests.
+  - When evaluating for the context precision metric, RAGAS sends 1 request to the LLM per context node in each example. 10 context nodes for 1 metric evaluation for 1 example = 10 API requests.
+  - When evaluating for the faithfulness metric, RAGAS sends 2 requests to the LLM per example: 
+      1) the first breaks up the answer into simpler statements
+      2) the second judges the faithfulness of the simpler statements based on the context, returning 0 or 1 as a faithfulness measure for each statement.
+
   - The RAGAS internal RunConfig settings do a decent job at limiting the 429 resource exhausted warnings when max_workers=1. max_workers is supposed to control the number of concurent requests allowed together, and in testing this with max_workers=1, 6-10 requests for 1 example were sent to the API concurrently. Perhaps they are defining concurrent requests differently than I expect, or else this isn't working properly in the code. The ratelimit and backoff Python libraries didn't seem to affect performance with this either, but I didn't spend a lot of time with that.
   - There's a flag you have to set initially for RAGAS not to track your usage.
 
@@ -94,7 +99,7 @@ DeepEval:
 
   - Generation metrics:
     - Answer Relevancy: evaluates whether the prompt template in your generator is able to instruct your LLM to output relevant and helpful outputs based on the retrieval_context.
-    - Faithfulness: evaluates whether the LLM used in your generator can output information that does not hallucinate AND contradict any factual information presented in the retrieval_context.
+    - Faithfulness: evaluates whether the LLM used in your generator can output information that does not hallucinate AND contradict any factual information presented in the retrieval_context. 3-4 API requests per example (in progress)
   
 - Data generation:
   - The synthetic data generation was the overall best working of the three libraries, as even though I hit rate-limiting errors, I was able to overcome them and generate large size (n=800) datasets by appending several small ones together. Questions and answers generated were the second most "human-like" of the libraries, and after manual review to remove a few non-relevant queries, they were good enough to stand in for a manually created dataset with some very minor edits (specifying years/dates of documents), especially when considering it took a lot less time to use the LLM to generate the dataset vs creating it manually.
@@ -326,7 +331,9 @@ context_relevance_system_prompt = (
 
 
 
-Head to head comparison for Contextual Precision / Context Relevance:
+Head to head comparison for Contextual Precision / Context Relevance and Faithfulness:
+
+Version 1:
 
 Dataset: first 903 examples of datasets/rag_mini_wikipedia_complete_chat.csv (originally ran all 918 examples for RAGAS and DeepEval, then had to remove and label the results for the last 15 examples for the ARES run, as I had forgotten ARES requires labeled examples)
 LLM: Gemini 1.5 Flash for both RAG and metric eval
@@ -334,10 +341,13 @@ LLM: Gemini 1.5 Flash for both RAG and metric eval
 RAGAS:
 
 Average Contextual Precision Score (903 examples): 0.7714837243775122
+Average Faithfulness Score (899 examples, as 4 examples did not produce results): 0.8667681244698191
+- Index #199, 450, 533, 548 gave this message: "No statements were generated from the answer." and couldn't calculate a score, despite multiple reruns.
 
 DeepEval:
 
 Average Contextual Precision Score (903 examples): 0.792454
+Average Faithfulness Score (903 examples): 0.958
 
 ARES:
 
@@ -347,8 +357,35 @@ Average Answer Relevance Score (903 examples): 0.694
 
 Note that probably 5 examples on the ARES run had API rate limit errors, but the end result still gave "Number of times did not extract Yes or No: 0"
 
-Things to try for comparison:
+
+Version 2:
+
+Dataset: first 903 examples of datasets/rag_mini_wikipedia_complete_chat.csv (originally ran all 918 examples for RAGAS and DeepEval, then had to remove and label the results for the last 15 examples for the ARES run, as I had forgotten ARES requires labeled examples)
+LLM: Gemini 2.0 Flash Experimental for metric eval, Gemini 1.5 Flash for RAG/dataset answers and context
+
+RAGAS:
+
+DeepEval:
+
+
+Average Faithfulness Score: 0.967882
+
+ARES:
+
+Average Context Relevance Score: 0.852
+Answer Faithfulness Score: 0.792
+Answer Relevance Score: 0.779
+
+Note that probably 12 examples on the ARES run had API rate limit errors, but the end result still gave "Number of times did not extract Yes or No: 0"
+
+?s from team:
+- diff retriever and generator models
+- try diff llm retrieval v metric llm
+- try open source rag dataset
+
+Result from above: Things to try for comparison:
 - changing dataset from DeepEval generated dataset to a neutral created dataset (found on HuggingFace: rag_mini_wikipedia_complete_chat.csv )
 - change LLM from Gemini to using the chat LLM (used for answer generation for rag_mini_wikipedia_complete_chat.csv)
 - using different LLM for judging metrics : using models/gemini-2.0-flash-exp
+
 
