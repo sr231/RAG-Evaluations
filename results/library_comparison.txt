@@ -365,9 +365,11 @@ LLM: Gemini 2.0 Flash Experimental for metric eval, Gemini 1.5 Flash for RAG/dat
 
 RAGAS:
 
+Average Faithfulness Score: 0.8887978046437826
+
 DeepEval:
 
-
+Average Contextual Precision Score: 0.756079
 Average Faithfulness Score: 0.967882
 
 ARES:
