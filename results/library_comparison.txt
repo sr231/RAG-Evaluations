@@ -122,6 +122,8 @@ DeepEval:
     1) Iterate through LLMTestCases (evaldataset.test_cases) - Looping through test cases seems to work a bit better than option #2, as errors encountered with evaluate() cause no results to be returned, and you can save partial results with looping.
     2) Try to use the evaluate() function to iterate through test cases in bulk. Despite this not returning partial results if you hit an error, it did work for my testing of my small manually curated dataset and a high throttle_value for rate limiting.
 
+  - Note: In more recent versions of DeepEval, there is a "ConversationalTestCase", aka a list of conversation turns represented by a list of LLMTestCases. While an LLMTestCase represents an individual LLM system interaction, a ConversationalTestCase encapsulates a series of LLMTestCases that make up an LLM-based conversation. This could be useful for evaluating a conversation between a user and an LLM-based chatbot. I did not test this capability.
+
   - DeepEval metrics do not have example ranges to compare anything to, so below is my best guess.
 
   - Retrieval metrics:
@@ -391,3 +393,14 @@ Result from above: Things to try for comparison:
 - using different LLM for judging metrics : using models/gemini-2.0-flash-exp
 
 
+
+
+Other notes:
+- While the calculation for RAGAS and DeepEval for the Contextual Precision metric appears to be the same (ask the LLM to judge whether a context node is useful for the query, then calculate weighted cumulative precision), and the prompts for the LLM for each library are almost the same, there are variable inputs into the queries/prompts fed into the LLMs that impact the number of API calls that are made for each library. For example, RAGAS sends 1 API call/prompt query for each context node to judge whether it is useful the query (i.e., 10 context nodes or 1 example = 10 API calls to the LLM). In contrast, DeepEval sends all of the context nodes for evaluation all in the same API call/LLM query (assuming a large enough input token limit). DeepEval later calculates the result by parsing through the output from the 1 API request accordingly.
+  - This is not readily apparent in the code/prompts/documentation when I was searching for why the libraries had such a different number of requests; it took a lot of testing and digging into the code to find this difference.
+- Number of API calls per metric per library (there is no documentation on this that I could find; this are the results through my testing):
+  - RAGAS:
+    - Contextual Precision: 1 API call per context node per example
+  - DeepEval:
+    - Contextual Precision: 1 API call for the metric, 1 optional API call for a reason (which can be turned off as a flag)
+  
