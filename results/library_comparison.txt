@@ -1,15 +1,17 @@
 Overall overview:
-- Each library uses LLM-based metrics, meaning that it uses an LLM to decide whether each question/answer/document matched the criteria for each metric. The library then calculates an overall value for the metric based off of the results.
+- Each library uses LLM-based metrics, meaning that it uses an LLM to decide whether each question/answer/context matched the criteria for each metric. The library then calculates an overall value for the metric based off of the results.
 
 RAGAS:
 
 - Version 0.1.15 - edited locally to resolve a compatibility issue with Gemini
+- Also updated to Version 0.2.12 - no local library edits needed besides one function in notebook to assist with compatibility issue
 
-- Overview (as of August 2024):
+- Overview:
   - Metrics seem well designed and are the most common metrics across RAG evaluation libraries. No explanations are given for the scores.
-  - Synthetic testset generation (question/context/ground truth answer) function worked pretty well, assuming you could get it to work without being rate-limited (didn't seem to work well with traditional rate limiting libraries). Questions generated for the documents were the most "human-like" of all libraries tested.  
-  - Documentation was significantly lacking when tested but has since been updated and may have been improved.
-  - Internal rate limiting functions didn't work well, and RAGAS didn't work well (with limited testing) with external rate limiting libraries.
+  - Synthetic testset generation (question/context/ground truth answer) function worked pretty well, assuming you do not encounter rate-limit issues (didn't seem to work well with traditional rate limiting libraries). Questions generated for the documents were the most "human-like" of all libraries tested.  
+    - In addition to maintaining the same kind of synthetic testset generation in version 0.2.12, RAGAS also added the ability to better specify how a knowledge graph is structured for creating synthetic queries. I did not test this new functionality, but it looks promising.	
+  - Documentation was significantly updated and improved over the last 6+ months.
+  - Internal rate limiting functions do not work well, and RAGAS didn't work well (with limited testing in version 0.1.15) with external rate limiting libraries.
   - Integrates with llamaindex; was able to resolve a local compatibility issue and have it work with Gemini as well
   - Supports all LLMs and Embeddings available in Langchain
 
@@ -404,3 +406,35 @@ Other notes:
   - DeepEval:
     - Contextual Precision: 1 API call for the metric, 1 optional API call for a reason (which can be turned off as a flag)
   
+
+
+Overview of results from Results_Analysis.ipynb:
+
+Across libraries:
+- 
+
+Across judge LLMs:
+
+ARES:
+- Results did vary a good amount in the average total when changing the judge LLM: 
+  - 0.1 (Faithfulness) and 0.141 (Context Precision) difference in the average score
+
+DeepEval: 
+- Results did not vary much for the average totals when changing the judge LLM:	
+  - 0.01 (Faithfulness) and 0.036 (Context Precision) difference in the average score
+
+- Results did vary significantly on an example-by-example basis for Context Precision but not very much for Faithfulness:
+  - 91% of Faithfulness scores were within 0.1 of each other on an example-by-example basis
+  - 66% of Context Precision scores were within 0.1 of each other on an example-by-example basis
+  - 75% of Context Precision scores were within 0.2 of each other on an example-by-example basis
+  - Average difference between CP results was 0.145; between Faithfulness results was 0.053
+
+RAGAS:
+- Results varied very little for the average totals when changing the judge LLM:
+  - 0.02 (Faithfulness) and 0.001 (Context Precision) difference in the average scores
+
+- Results did vary on an example-by-example basis for both metrics
+  - 81% of Faithfulness scores were within 0.1 of each other on an example-by-example basis
+  - 84% of Faithfulness scores were within 0.2 of each other on an example-by-example basis
+  - 79% of Context Precision scores were within 0.1 of each other on an example-by-example basis
+  - 87% of Context Precision scores were within 0.2 of each other on an example-by-example basis
